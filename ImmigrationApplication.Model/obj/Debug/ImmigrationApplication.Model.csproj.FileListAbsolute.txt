@@ -1,5 +1,0 @@
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.dll
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.pdb
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.dll
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.pdb
-C:\Users\Arun\Documents\Visual Studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.dll.config

@@ -1,4 +1,0 @@
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Busines\bin\Debug\ImmigrationApplication.Busines.dll
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Busines\bin\Debug\ImmigrationApplication.Busines.pdb
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Busines\obj\Debug\ImmigrationApplication.Busines.dll
-c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Busines\obj\Debug\ImmigrationApplication.Busines.pdb
