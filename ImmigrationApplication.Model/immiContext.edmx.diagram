@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ad38b1f891e4b5ebbed51f0b7234aa6" Name="Diagram1">
+        <EntityTypeShape EntityType="immigrationModel.Address" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.Child" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.Education" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.Employment" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.FormerSpouse" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.LastArrivalDetail" Width="1.5" PointX="3" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.OtherDetail" Width="1.5" PointX="3" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.Parent" Width="1.5" PointX="3" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.Person" Width="1.5" PointX="0.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.PreviousApplication" Width="1.5" PointX="3" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immigrationModel.USRelative" Width="1.5" PointX="3" PointY="38.875" IsExpanded="true" />
+        <AssociationConnector Association="immigrationModel.FK_Address_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_Children_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_Education_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_Employment_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_FormerSpouse_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_LastArrivalDetails_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_OtherDetails_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_Parent_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_PreviousApplication_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="immigrationModel.FK_USRelative_Person" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -38,3 +38,6 @@ C:\Users\Arun\Documents\Visual Studio 2010\Projects\ImmigrationApplication\Immig
 C:\Users\Arun\Documents\Visual Studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.WebAPI\bin\ImmigrationApplication.DataAccess.pdb
 C:\Users\Arun\Documents\Visual Studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.WebAPI\bin\ImmigrationApplication.Model.dll
 C:\Users\Arun\Documents\Visual Studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.WebAPI\bin\ImmigrationApplication.Model.pdb
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.WebAPI\obj\Debug\ImmigrationApplication.WebAPI.csprojResolveAssemblyReference.cache
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.WebAPI\obj\Debug\ImmigrationApplication.WebAPI.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.WebAPI\obj\Debug\ImmigrationApplication.WebAPI.pdb

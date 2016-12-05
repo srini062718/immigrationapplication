@@ -3,3 +3,11 @@ c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\Immig
 c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.dll
 c:\users\arun\documents\visual studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.pdb
 C:\Users\Arun\Documents\Visual Studio 2010\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.dll.config
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.dll.config
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.pdb
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.csprojResolveAssemblyReference.cache
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.pdb
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Busines.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Busines.pdb
