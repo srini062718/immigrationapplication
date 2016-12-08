@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="immigrationModelStoreContainer" CdmEntityContainer="immigrationEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="immigrationModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Children">
+      <EntityTypeMapping TypeName="immigrationModel.Child">
+        <MappingFragment StoreEntitySet="Children">
+          <ScalarProperty Name="ChildrenID" ColumnName="ChildrenID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Educations">
+      <EntityTypeMapping TypeName="immigrationModel.Education">
+        <MappingFragment StoreEntitySet="Education">
+          <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="FieldofStudy" ColumnName="FieldofStudy" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employments">
+      <EntityTypeMapping TypeName="immigrationModel.Employment">
+        <MappingFragment StoreEntitySet="Employment">
+          <ScalarProperty Name="EmploymentID" ColumnName="EmploymentID" />
+          <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="DateStarted" ColumnName="DateStarted" />
+          <ScalarProperty Name="DateLeft" ColumnName="DateLeft" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormerSpouses">
+      <EntityTypeMapping TypeName="immigrationModel.FormerSpouse">
+        <MappingFragment StoreEntitySet="FormerSpouse">
+          <ScalarProperty Name="FormerSpouseID" ColumnName="FormerSpouseID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
+          <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
+          <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
+          <ScalarProperty Name="CityofDivorced" ColumnName="CityofDivorced" />
+          <ScalarProperty Name="CountryofDivorced" ColumnName="CountryofDivorced" />
+          <ScalarProperty Name="DateofDiverse" ColumnName="DateofDiverse" />
+          <ScalarProperty Name="DateofDeath" ColumnName="DateofDeath" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LastArrivalDetails">
+      <EntityTypeMapping TypeName="immigrationModel.LastArrivalDetail">
+        <MappingFragment StoreEntitySet="LastArrivalDetails">
+          <ScalarProperty Name="LastArrivalDetailsID" ColumnName="LastArrivalDetailsID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="DateofArrival" ColumnName="DateofArrival" />
+          <ScalarProperty Name="NameofFlight" ColumnName="NameofFlight" />
+          <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+          <ScalarProperty Name="AppliedPermanentResident" ColumnName="AppliedPermanentResident" />
+          <ScalarProperty Name="RefusedVisa" ColumnName="RefusedVisa" />
+          <ScalarProperty Name="USConsulate" ColumnName="USConsulate" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OtherDetails">
+      <EntityTypeMapping TypeName="immigrationModel.OtherDetail">
+        <MappingFragment StoreEntitySet="OtherDetails">
+          <ScalarProperty Name="OtherDetailsID" ColumnName="OtherDetailsID" />
+          <ScalarProperty Name="AboutFirm" ColumnName="AboutFirm" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="LanguagesSpoken" ColumnName="LanguagesSpoken" />
+          <ScalarProperty Name="Conviction" ColumnName="Conviction" />
+          <ScalarProperty Name="OtherInformation" ColumnName="OtherInformation" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parents">
+      <EntityTypeMapping TypeName="immigrationModel.Parent">
+        <MappingFragment StoreEntitySet="Parent">
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="CityofBirth" ColumnName="CityofBirth" />
+          <ScalarProperty Name="CityofResidence" ColumnName="CityofResidence" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="immigrationModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="USVisaType" ColumnName="USVisaType" />
+          <ScalarProperty Name="VisaIssueDate" ColumnName="VisaIssueDate" />
+          <ScalarProperty Name="VisaExpiryDate" ColumnName="VisaExpiryDate" />
+          <ScalarProperty Name="LastUSEntryDate" ColumnName="LastUSEntryDate" />
+          <ScalarProperty Name="I94ExpiryDate" ColumnName="I94ExpiryDate" />
+          <ScalarProperty Name="AliasAny" ColumnName="AliasAny" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="Anumber" ColumnName="Anumber" />
+          <ScalarProperty Name="BirthDetails" ColumnName="BirthDetails" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="CountryIssued" ColumnName="CountryIssued" />
+          <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
+          <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+          <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
+          <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
+          <ScalarProperty Name="CityCountryofMarriage" ColumnName="CityCountryofMarriage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreviousApplications">
+      <EntityTypeMapping TypeName="immigrationModel.PreviousApplication">
+        <MappingFragment StoreEntitySet="PreviousApplication">
+          <ScalarProperty Name="PreviousApplicationID" ColumnName="PreviousApplicationID" />
+          <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+          <ScalarProperty Name="DateApplied" ColumnName="DateApplied" />
+          <ScalarProperty Name="StatusGranted" ColumnName="StatusGranted" />
+          <ScalarProperty Name="IndicateIfDenied" ColumnName="IndicateIfDenied" />
+          <ScalarProperty Name="CapGap" ColumnName="CapGap" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USRelatives">
+      <EntityTypeMapping TypeName="immigrationModel.USRelative">
+        <MappingFragment StoreEntitySet="USRelative">
+          <ScalarProperty Name="USRelativeID" ColumnName="USRelativeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="USVisaType" ColumnName="USVisaType" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="MaritialStatus" ColumnName="MaritialStatus" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

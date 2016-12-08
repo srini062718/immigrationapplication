@@ -1,0 +1,5 @@
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Business\bin\Debug\ImmigrationApplication.Business.dll
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Business\bin\Debug\ImmigrationApplication.Business.pdb
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.csprojResolveAssemblyReference.cache
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.dll
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.pdb

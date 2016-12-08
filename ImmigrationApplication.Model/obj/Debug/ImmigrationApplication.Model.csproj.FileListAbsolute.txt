@@ -1,0 +1,10 @@
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.dll
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.pdb
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.csprojResolveAssemblyReference.cache
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.dll
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.pdb
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\ImmigrationApplication.Model.dll.config
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\EntityFramework.dll
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\EntityFramework.xml
+c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Model\bin\Debug\EntityFramework.SqlServer.xml
