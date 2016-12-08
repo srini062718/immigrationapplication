@@ -1,2 +1,0 @@
-﻿// Seeing this comment implies that the code generation for file 'C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\immiContext.edmx'
-// failed. See the ErrorList for details.
