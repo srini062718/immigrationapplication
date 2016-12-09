@@ -12,3 +12,17 @@ c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\
 c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Model.pdb
 c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.xml
 c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.DataAccess.dll.config
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.DataAccess.dll
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.DataAccess.pdb
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Business.dll
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Model.dll
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Business.pdb
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Model.pdb
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\obj\Debug\ImmigrationApplication.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\obj\Debug\ImmigrationApplication.DataAccess.dll
+C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\obj\Debug\ImmigrationApplication.DataAccess.pdb

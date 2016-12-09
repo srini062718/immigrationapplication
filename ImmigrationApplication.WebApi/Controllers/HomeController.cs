@@ -36,8 +36,6 @@ namespace WebApplication3.Controllers
 
         public ActionResult GetPersonName(int id)
         {
-
-
             try
             {
                 con = _uow.PersonRepository.GetById(id);
@@ -47,6 +45,27 @@ namespace WebApplication3.Controllers
                 // TO Do Exception handling
             }
             return View(con);
+        }
+
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+          con=  _uow.PersonRepository.GetById(id);
+            return View(con);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Person P)
+        {
+            //  con =  _uow.PersonRepository.GetById(P.PersonID);
+
+            //   con.Nationality = P.Nationality;
+            //  _uow.Complete();
+            _uow.PersonRepository.Update(P);
+            _uow.Complete();
+            con = _uow.PersonRepository.GetById(P.PersonID);
+            return RedirectToAction("GetPersonName","Home", new { id = P.PersonID });
         }
     }
 }
