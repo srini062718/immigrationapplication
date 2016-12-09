@@ -10,5 +10,6 @@ namespace ImmigrationApplication.DataAccess.Interfaces
     public interface IPersonRepository : IGenericRepository<Person>
     {
         Person GetById(int id);
+        void Update(Person P);
     }
 }

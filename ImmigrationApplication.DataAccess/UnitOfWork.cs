@@ -17,6 +17,8 @@ namespace ImmigrationApplication.DataAccess
         public UnitOfWork()
         {
             _context = new immigrationEntities();
+
+            personRepository = new PersonRepository(_context);
            
         }
 

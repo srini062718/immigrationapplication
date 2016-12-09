@@ -32,6 +32,19 @@ namespace ImmigrationApplication.DataAccess.Repositories
             }
         }
 
+
+
+        public void Update(Person P)
+        {
+            try
+            {
+                entities.Entry(P).State = System.Data.Entity.EntityState.Modified;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public immigrationEntities entities
         {
             get
