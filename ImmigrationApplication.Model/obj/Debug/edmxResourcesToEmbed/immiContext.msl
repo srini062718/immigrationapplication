@@ -141,6 +141,9 @@
     <EntitySetMapping Name="People">
       <EntityTypeMapping TypeName="immigrationModel.Person">
         <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
+          <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
+          <ScalarProperty Name="BirthCity" ColumnName="BirthCity" />
           <ScalarProperty Name="PersonID" ColumnName="PersonID" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -157,14 +160,12 @@
           <ScalarProperty Name="AliasAny" ColumnName="AliasAny" />
           <ScalarProperty Name="SSN" ColumnName="SSN" />
           <ScalarProperty Name="Anumber" ColumnName="Anumber" />
-          <ScalarProperty Name="BirthDetails" ColumnName="BirthDetails" />
           <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
           <ScalarProperty Name="CountryIssued" ColumnName="CountryIssued" />
           <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
           <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
           <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
           <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
-          <ScalarProperty Name="CityCountryofMarriage" ColumnName="CityCountryofMarriage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

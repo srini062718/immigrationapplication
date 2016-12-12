@@ -1,202 +1,165 @@
-﻿@model ImmigrationApplication.Model.Person
+﻿@model IEnumerable<ImmigrationApplication.Model.Person>
 
-@{
-    ViewBag.Title = "Index";
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MartialStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USVisaType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisaIssueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VisaExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUSEntryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.I94ExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AliasAny)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassportNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryIssued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateIssued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateExpired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpouseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofMarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityofMarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryofMarriage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MartialStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USVisaType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VisaIssueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VisaExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUSEntryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.I94ExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AliasAny)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SSN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PassportNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryIssued)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateIssued)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateExpired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpouseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofMarriage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityofMarriage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryofMarriage)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
+        </td>
+    </tr>
 }
 
-<h2>Index</h2>
-
-<div>
-    <h4>Person</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MiddleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MiddleName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sex)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sex)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateofBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateofBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MartialStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MartialStatus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nationality)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USVisaType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USVisaType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VisaIssueDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VisaIssueDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VisaExpiryDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VisaExpiryDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastUSEntryDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastUSEntryDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.I94ExpiryDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.I94ExpiryDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AliasAny)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AliasAny)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SSN)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SSN)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Anumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Anumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDetails)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BirthDetails)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PassportNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PassportNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CountryIssued)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CountryIssued)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateIssued)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateIssued)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateExpired)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateExpired)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SpouseName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SpouseName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateofMarriage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateofMarriage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CityCountryofMarriage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CityCountryofMarriage)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PersonID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</table>

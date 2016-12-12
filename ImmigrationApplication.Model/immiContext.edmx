@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="immigrationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="immigrationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
@@ -80,17 +80,17 @@
             <PropertyRef Name="FormerSpouseID" />
           </Key>
           <Property Name="FormerSpouseID" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DateofBirth" Type="date" Nullable="false" />
-          <Property Name="DateofMarriage" Type="date" Nullable="false" />
-          <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CityofDivorced" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CountryofDivorced" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DateofDiverse" Type="date" Nullable="false" />
-          <Property Name="DateofDeath" Type="date" Nullable="false" />
+          <Property Name="DateofBirth" Type="date" />
+          <Property Name="DateofMarriage" Type="date" />
+          <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityofDivorced" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofDivorced" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateofDiverse" Type="date" />
+          <Property Name="DateofDeath" Type="date" />
           <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LastArrivalDetails">
@@ -114,8 +114,8 @@
           </Key>
           <Property Name="OtherDetailsID" Type="int" Nullable="false" />
           <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
-          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
           <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
           <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
           <Property Name="PersonID" Type="int" Nullable="false" />
@@ -151,17 +151,18 @@
           <Property Name="VisaExpiryDate" Type="date" Nullable="false" />
           <Property Name="LastUSEntryDate" Type="date" Nullable="false" />
           <Property Name="I94ExpiryDate" Type="date" Nullable="false" />
-          <Property Name="AliasAny" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AliasAny" Type="nvarchar" MaxLength="50" />
           <Property Name="SSN" Type="int" Nullable="false" />
-          <Property Name="Anumber" Type="int" Nullable="false" />
-          <Property Name="BirthDetails" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Anumber" Type="int" />
+          <Property Name="BirthCity" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PassportNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CountryIssued" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DateIssued" Type="date" Nullable="false" />
           <Property Name="DateExpired" Type="date" Nullable="false" />
-          <Property Name="SpouseName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DateofMarriage" Type="date" Nullable="false" />
-          <Property Name="CityCountryofMarriage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpouseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateofMarriage" Type="date" />
+          <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PreviousApplication">
           <Key>
@@ -361,8 +362,7 @@
             <End Role="USRelative" EntitySet="USRelative" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="immigrationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -445,17 +445,17 @@
             <PropertyRef Name="FormerSpouseID" />
           </Key>
           <Property Name="FormerSpouseID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateofMarriage" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CityofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountryofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateofDiverse" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateofDeath" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+          <Property Name="DateofMarriage" Type="DateTime" Precision="0" />
+          <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateofDiverse" Type="DateTime" Precision="0" />
+          <Property Name="DateofDeath" Type="DateTime" Precision="0" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_FormerSpouse_Person" FromRole="FormerSpouse" ToRole="Person" />
         </EntityType>
@@ -481,8 +481,8 @@
           </Key>
           <Property Name="OtherDetailsID" Type="Int32" Nullable="false" />
           <Property Name="AboutFirm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Conviction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OtherInformation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
@@ -520,17 +520,15 @@
           <Property Name="VisaExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="LastUSEntryDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="I94ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="AliasAny" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AliasAny" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SSN" Type="Int32" Nullable="false" />
-          <Property Name="Anumber" Type="Int32" Nullable="false" />
-          <Property Name="BirthDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Anumber" Type="Int32" />
           <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CountryIssued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateIssued" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateExpired" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="SpouseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateofMarriage" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CityCountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpouseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateofMarriage" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Person" FromRole="Person" ToRole="Address" />
           <NavigationProperty Name="Children" Relationship="Self.FK_Children_Person" FromRole="Person" ToRole="Children" />
           <NavigationProperty Name="Educations" Relationship="Self.FK_Education_Person" FromRole="Person" ToRole="Education" />
@@ -541,6 +539,9 @@
           <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_Person" FromRole="Person" ToRole="Parent" />
           <NavigationProperty Name="PreviousApplications" Relationship="Self.FK_PreviousApplication_Person" FromRole="Person" ToRole="PreviousApplication" />
           <NavigationProperty Name="USRelatives" Relationship="Self.FK_USRelative_Person" FromRole="Person" ToRole="USRelative" />
+          <Property Name="BirthCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PreviousApplication">
           <Key>
@@ -888,6 +889,9 @@
           <EntitySetMapping Name="People">
             <EntityTypeMapping TypeName="immigrationModel.Person">
               <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
+                <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
+                <ScalarProperty Name="BirthCity" ColumnName="BirthCity" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -904,14 +908,12 @@
                 <ScalarProperty Name="AliasAny" ColumnName="AliasAny" />
                 <ScalarProperty Name="SSN" ColumnName="SSN" />
                 <ScalarProperty Name="Anumber" ColumnName="Anumber" />
-                <ScalarProperty Name="BirthDetails" ColumnName="BirthDetails" />
                 <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
                 <ScalarProperty Name="CountryIssued" ColumnName="CountryIssued" />
                 <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
                 <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
                 <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
                 <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
-                <ScalarProperty Name="CityCountryofMarriage" ColumnName="CityCountryofMarriage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

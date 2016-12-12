@@ -7,3 +7,8 @@ C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\bin\Debug\
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\bin\Debug\ImmigrationApplication.Business.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.pdb
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Business\bin\Debug\ImmigrationApplication.Business.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Business\bin\Debug\ImmigrationApplication.Business.pdb
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.csprojResolveAssemblyReference.cache
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.pdb

@@ -10,7 +10,6 @@ namespace ImmigrationApplication.DataAccess
     public interface IUnitOfWork 
     {
 
-      //  IPersonRepository PersonRepository { get; }
         int Complete();
     }
 }

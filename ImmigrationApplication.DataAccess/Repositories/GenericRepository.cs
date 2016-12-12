@@ -40,14 +40,9 @@ namespace ImmigrationApplication.DataAccess.Repositories
             return Context.Set<TEntity>().ToList();
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public IEnumerable<TEntity> SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
             return Context.Set<TEntity>().Where(predicate);
-        }
-
-        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
-        {
-            return Context.Set<TEntity>().SingleOrDefault(predicate);
         }
 
         public void Add(TEntity entity)
@@ -62,7 +57,9 @@ namespace ImmigrationApplication.DataAccess.Repositories
 
         public void Remove(TEntity entity)
         {
-            Context.Set<TEntity>().Remove(entity);
+           Context.Set<TEntity>().Remove(entity);
+
+          //  Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)

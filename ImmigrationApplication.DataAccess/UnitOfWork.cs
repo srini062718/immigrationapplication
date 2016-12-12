@@ -19,31 +19,9 @@ namespace ImmigrationApplication.DataAccess
         public UnitOfWork()
         {
             _context = new immigrationEntities();
-
-            personRepository = new PersonRepository(_context);
-
+        
         }
 
-        // Add all the repository handles here
-        IPersonRepository personRepository = null;
-
-
-
-        // Initialize all the repository properties here
-/*
-        public IPersonRepository PersonRepository
-        {
-
-            get
-            {
-                if (personRepository == null)
-                {
-                    personRepository = new PersonRepository(_context);
-                }
-                return personRepository;
-            }
-        }
-*/
         public int Complete()
         {
             return _context.SaveChanges();
