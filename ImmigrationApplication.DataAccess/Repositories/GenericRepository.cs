@@ -70,5 +70,10 @@ namespace ImmigrationApplication.DataAccess.Repositories
             Context.Set<TEntity>().RemoveRange(entities);
         }
 
+        public void Update(TEntity entity)
+        {
+            Context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+        }
+
     }
 }

@@ -15,6 +15,5 @@ C:\Users\pandu\immigrationapplication\ImmigrationApplication.Model\bin\Debug\Ent
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Model\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Model\bin\Debug\EntityFramework.xml
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Model\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\pandu\immigrationapplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.csprojResolveAssemblyReference.cache
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Model\obj\Debug\ImmigrationApplication.Model.pdb

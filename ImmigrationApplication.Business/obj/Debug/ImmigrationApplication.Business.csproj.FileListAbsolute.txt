@@ -5,6 +5,5 @@ c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\
 c:\users\sscdev-01\documents\visual studio 2015\Projects\ImmigrationApplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\bin\Debug\ImmigrationApplication.Business.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\bin\Debug\ImmigrationApplication.Business.pdb
-C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.csprojResolveAssemblyReference.cache
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.Business\obj\Debug\ImmigrationApplication.Business.pdb

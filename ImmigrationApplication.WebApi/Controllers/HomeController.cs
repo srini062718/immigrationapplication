@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.Model;
 using System.Web.UI.WebControls;
+using ImmigrationApplication.DataAccess.Repositories;
 
 namespace WebApplication3.Controllers
 {
@@ -29,20 +30,22 @@ namespace WebApplication3.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
-            return View();
+            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
+            IEnumerable<Person> P =   p.GetAll();
+            return View(P);
         }
 
 
-        public ActionResult GetPersonName(int id)
+        public ActionResult Get(int id)
         {
             try
             {
-                con = _uow.PersonRepository.GetById(id);
+                GenericRepository<Person> p = _uow.RepositoryFor<Person>();
+                con = p.Get(id);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                // TO Do Exception handling
+                throw ex;
             }
             return View(con);
         }
@@ -51,21 +54,36 @@ namespace WebApplication3.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-          con=  _uow.PersonRepository.GetById(id);
+            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
+            con = p.Get(id);
             return View(con);
         }
 
         [HttpPost]
         public ActionResult Edit(Person P)
         {
-            //  con =  _uow.PersonRepository.GetById(P.PersonID);
-
-            //   con.Nationality = P.Nationality;
-            //  _uow.Complete();
-            _uow.PersonRepository.Update(P);
+            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
+            p.Update(P);
             _uow.Complete();
-            con = _uow.PersonRepository.GetById(P.PersonID);
-            return RedirectToAction("GetPersonName","Home", new { id = P.PersonID });
+            con = p.Get(P.PersonID);
+            return RedirectToAction("Get", "Home", new { id = P.PersonID });
+        }
+
+        [HttpPost]
+        public ActionResult Add(Person P)
+        { 
+
+         GenericRepository<Person> p = _uow.RepositoryFor<Person>();
+        p.Add(P);
+            _uow.Complete();
+            TempData.Add("id", P.PersonID.ToString());
+            return RedirectToAction("Add", "Address");
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
         }
     }
 }
