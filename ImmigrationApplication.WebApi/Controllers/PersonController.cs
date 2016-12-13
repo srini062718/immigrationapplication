@@ -8,11 +8,11 @@ using ImmigrationApplication.Model;
 using System.Web.UI.WebControls;
 using ImmigrationApplication.DataAccess.Repositories;
 
-namespace WebApplication3.Controllers
+namespace ImmigrationApplication.WebApi.Controllers
 {
+    [Authorize]
     public class PersonController : Controller
     {
-
         private UnitOfWork _uow = null;
 
         public Person con { get; private set; }
@@ -77,13 +77,13 @@ namespace WebApplication3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Person P)
+        public ActionResult Add(Person p)
         {
 
-            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-            p.Add(P);
+            GenericRepository<Person> P = _uow.RepositoryFor<Person>();
+            P.Add(p);
             _uow.Complete();
-            TempData.Add("id", P.PersonID.ToString());
+            TempData.Add("id", p.PersonID.ToString());
             return RedirectToAction("Add", "Address");
         }
 
