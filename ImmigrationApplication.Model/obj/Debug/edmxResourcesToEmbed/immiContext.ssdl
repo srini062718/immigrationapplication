@@ -75,17 +75,17 @@
       <PropertyRef Name="FormerSpouseID" />
     </Key>
     <Property Name="FormerSpouseID" Type="int" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
-    <Property Name="DateofBirth" Type="date" />
-    <Property Name="DateofMarriage" Type="date" />
-    <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" />
-    <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" />
-    <Property Name="CityofDivorced" Type="nvarchar" MaxLength="50" />
-    <Property Name="CountryofDivorced" Type="nvarchar" MaxLength="50" />
-    <Property Name="DateofDiverse" Type="date" />
-    <Property Name="DateofDeath" Type="date" />
+    <Property Name="DateofBirth" Type="date" Nullable="false" />
+    <Property Name="DateofMarriage" Type="date" Nullable="false" />
+    <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CityofDivorced" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryofDivorced" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateofDiverse" Type="date" Nullable="false" />
+    <Property Name="DateofDeath" Type="date" Nullable="false" />
     <Property Name="PersonID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="LastArrivalDetails">
@@ -109,8 +109,8 @@
     </Key>
     <Property Name="OtherDetailsID" Type="int" Nullable="false" />
     <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
-    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
-    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
     <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
     <Property Name="PersonID" Type="int" Nullable="false" />
@@ -146,9 +146,9 @@
     <Property Name="VisaExpiryDate" Type="date" Nullable="false" />
     <Property Name="LastUSEntryDate" Type="date" Nullable="false" />
     <Property Name="I94ExpiryDate" Type="date" Nullable="false" />
-    <Property Name="AliasAny" Type="nvarchar" MaxLength="50" />
+    <Property Name="AliasAny" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SSN" Type="int" Nullable="false" />
-    <Property Name="Anumber" Type="int" />
+    <Property Name="Anumber" Type="int" Nullable="false" />
     <Property Name="BirthCity" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PassportNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CountryIssued" Type="nvarchar" MaxLength="50" Nullable="false" />

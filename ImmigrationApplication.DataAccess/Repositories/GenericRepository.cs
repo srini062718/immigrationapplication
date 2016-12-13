@@ -4,12 +4,14 @@ using System.Linq;
 using ImmigrationApplication.Model;
 using System.Linq.Expressions;
 using ImmigrationApplication.DataAccess.Interfaces;
+using System.Data.Entity;
 
 namespace ImmigrationApplication.DataAccess.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity  : class
     {
         protected readonly immigrationEntities Context;
+       // internal DbSet<TEntity> dbSet;
 
         public GenericRepository(immigrationEntities context)
         {
@@ -54,17 +56,28 @@ namespace ImmigrationApplication.DataAccess.Repositories
         {
             Context.Set<TEntity>().AddRange(entities);
         }
-
+/*
         public void Remove(TEntity entity)
         {
-           Context.Set<TEntity>().Remove(entity);
+         //  Context.Set<TEntity>().Remove(entity);
 
-          //  Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+          Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
+            dbSet.Remove(entity);
+        }
+*/
+        public void Delete(object id)
+        {
+            TEntity entity = Context.Set<TEntity>().Find(id);
+            Context.Set<TEntity>().Remove(entity);
         }
 
-        public void RemoveRange(IEnumerable<TEntity> entities)
+        public void Delete(TEntity entity)
         {
-            Context.Set<TEntity>().RemoveRange(entities);
+            if (Context.Entry(entity).State == EntityState.Detached)
+            {
+                Context.Set<TEntity>().Attach(entity);
+            }
+            Context.Set<TEntity>().Remove(entity);
         }
 
         public void Update(TEntity entity)

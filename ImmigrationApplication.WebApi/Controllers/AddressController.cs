@@ -39,16 +39,16 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             Address a = new Address();
             a.PersonID = Convert.ToInt32( TempData["id"]);
-            return View();
+            return View(a);
         }
 
         [HttpPost]
         public ActionResult Add(Address address)
         {
-            address.PersonID = Convert.ToInt32(TempData["id"]);
+          //  address.PersonID = Convert.ToInt32(TempData["id"]);
             GenericRepository<Address> g = _uow.RepositoryFor<Address>();
             g.Add(address);
-            return RedirectToAction("Details", "Person", new {id = TempData["id"]});
+            return RedirectToAction("Details", "Person", new {id = address.PersonID});
         }
 
         

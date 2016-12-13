@@ -44,7 +44,7 @@ namespace ImmigrationApplication.Model
         public System.DateTime I94ExpiryDate { get; set; }
         public string AliasAny { get; set; }
         public int SSN { get; set; }
-        public Nullable<int> Anumber { get; set; }
+        public int Anumber { get; set; }
         public string PassportNumber { get; set; }
         public string CountryIssued { get; set; }
         public System.DateTime DateIssued { get; set; }

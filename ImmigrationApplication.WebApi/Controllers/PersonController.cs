@@ -69,16 +69,6 @@ namespace WebApplication3.Controllers
             return RedirectToAction("Details", "Person", new { id = P.PersonID });
         }
 
-        [HttpPost]
-        public ActionResult Add(Person P)
-        { 
-
-         GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-        p.Add(P);
-            _uow.Complete();
-            TempData.Add("id", P.PersonID.ToString());
-            return RedirectToAction("Add", "Address");
-        }
 
         [HttpGet]
         public ActionResult Add()
@@ -86,20 +76,31 @@ namespace WebApplication3.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Add(Person P)
+        {
+
+            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
+            p.Add(P);
+            _uow.Complete();
+            TempData.Add("id", P.PersonID.ToString());
+            return RedirectToAction("Add", "Address");
+        }
+
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            Person p = _uow.RepositoryFor<Person>().Get(id);
-            _uow.RepositoryFor<Person>().Remove(p);
-            _uow.Complete();
-            return RedirectToAction("Index", "Person");
+            Person P = _uow.RepositoryFor<Person>().Get(id);
+            return View(P);
         }
 
-        [HttpDelete]
-        public ActionResult Delete(Person P)
+        [HttpPost,ActionName("Delete")]
+        public ActionResult Deleteconfirmed(int id)
         {
-            Person p = _uow.RepositoryFor<Person>().Get(P.PersonID);
-            return View(p);
+          Person P =  _uow.RepositoryFor<Person>().Get(id);
+            _uow.RepositoryFor<Person>().Delete(P.PersonID);
+            _uow.Complete();
+            return RedirectToAction("Index", "Person");
         }
         
     }
