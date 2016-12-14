@@ -13,9 +13,9 @@ namespace ImmigrationApplication.WebApi.Controllers
     [Authorize]
     public class PersonController : Controller
     {
-        private UnitOfWork _uow = null;
+        private readonly UnitOfWork _uow = null;
 
-        public Person con { get; private set; }
+        public Person Con { get; private set; }
 
         public PersonController()
         {
@@ -31,8 +31,8 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             ViewBag.Title = "List of Customers";
             GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-            IEnumerable<Person> P =   p.GetAll();
-            return View(P);
+            IEnumerable<Person> per =   p.GetAll();
+            return View(per);
         }
 
 
@@ -41,13 +41,13 @@ namespace ImmigrationApplication.WebApi.Controllers
             try
             {
                 GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-                con = p.Get(id);
+                Con = p.Get(id);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return View(con);
+            return View(Con);
         }
 
 
@@ -55,19 +55,20 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Edit(int id)
         {
             GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-            con = p.Get(id);
-            return View(con);
+            Con = p.Get(id);
+            return View(Con);
         }
 
         [HttpPost]
-        public ActionResult Edit(Person P)
+        public ActionResult Edit(Person p)
         {
-            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-            p.Update(P);
+            GenericRepository<Person> person = _uow.RepositoryFor<Person>();
+            person.Update(p);
             _uow.Complete();
-            con = p.Get(P.PersonID);
-            return RedirectToAction("Details", "Person", new { id = P.PersonID });
+            Con = person.Get(p.PersonID);
+            return RedirectToAction("Details", "Person", new { id = p.PersonID });
         }
+
 
 
         [HttpGet]

@@ -66,10 +66,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImmigrationApplication.Business\ImmigrationApplication.Business.csproj">
-      <Project>{4085ff67-54e8-4bd2-84fc-40e235d578f8}</Project>
-      <Name>ImmigrationApplication.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ImmigrationApplication.Model\ImmigrationApplication.Model.csproj">
       <Project>{f1404453-36d8-4253-8124-d796770f8e23}</Project>
       <Name>ImmigrationApplication.Model</Name>

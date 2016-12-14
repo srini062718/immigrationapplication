@@ -235,7 +235,17 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\ChildrenController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
+    <Compile Include="Controllers\EmploymentController.cs" />
+    <Compile Include="Controllers\FormerSpouseController.cs" />
+    <Compile Include="Controllers\LastArrivalDetailController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OtherDetailsController.cs" />
+    <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PreviousApplicationController.cs" />
+    <Compile Include="Controllers\UsRelativeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -316,9 +326,38 @@
     <Content Include="Views\Address\Add.cshtml" />
     <Content Include="Views\Person\Delete.cshtml" />
     <Content Include="Views\Address\Index.cshtml" />
+    <Content Include="Views\Education\Index.cshtml" />
+    <Content Include="Views\Address\Edit.cshtml" />
+    <Content Include="Views\Address\Details.cshtml" />
+    <Content Include="Views\Address\Delete.cshtml" />
+    <Content Include="Views\Education\Details.cshtml" />
+    <Content Include="Views\Education\Add.cshtml" />
+    <Content Include="Views\Education\Edit.cshtml" />
+    <Content Include="Views\Education\Delete.cshtml" />
+    <Content Include="Views\Employment\Index.cshtml" />
+    <Content Include="Views\Employment\Details.cshtml" />
+    <Content Include="Views\Employment\Add.cshtml" />
+    <Content Include="Views\Employment\Edit.cshtml" />
+    <Content Include="Views\Employment\Delete.cshtml" />
+    <Content Include="Views\Children\Index.cshtml" />
+    <Content Include="Views\Children\Details.cshtml" />
+    <Content Include="Views\Children\Add.cshtml" />
+    <Content Include="Views\Children\Edit.cshtml" />
+    <Content Include="Views\Children\Delete.cshtml" />
+    <Content Include="Views\FormerSpouse\Index.cshtml" />
+    <Content Include="Views\FormerSpouse\Details.cshtml" />
+    <Content Include="Views\FormerSpouse\Add.cshtml" />
+    <Content Include="Views\FormerSpouse\Edit.cshtml" />
+    <Content Include="Views\FormerSpouse\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\LastArrivalDetail\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\OtherDetails\" />
+    <Folder Include="Views\Parent\" />
+    <Folder Include="Views\PreviousApplication\" />
+    <Folder Include="Views\USRelative\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -329,10 +368,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImmigrationApplication.Business\ImmigrationApplication.Business.csproj">
-      <Project>{4085ff67-54e8-4bd2-84fc-40e235d578f8}</Project>
-      <Name>ImmigrationApplication.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ImmigrationApplication.DataAccess\ImmigrationApplication.DataAccess.csproj">
       <Project>{da5875d1-6342-4d7e-b943-b93d03b15bc6}</Project>
       <Name>ImmigrationApplication.DataAccess</Name>

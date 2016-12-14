@@ -14,7 +14,7 @@ namespace ImmigrationApplication.DataAccess
     public class UnitOfWork : IUnitOfWork
     {
 
-        private immigrationEntities _context = null;
+        private readonly immigrationEntities _context = null;
 
         public UnitOfWork()
         {

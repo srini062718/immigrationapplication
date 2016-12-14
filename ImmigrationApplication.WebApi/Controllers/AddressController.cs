@@ -3,8 +3,6 @@ using ImmigrationApplication.DataAccess.Repositories;
 using ImmigrationApplication.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ImmigrationApplication.WebApi.Controllers
@@ -12,10 +10,7 @@ namespace ImmigrationApplication.WebApi.Controllers
     public class AddressController : Controller
 
     {
-
-        private UnitOfWork _uow = null;
-
-        public Person con { get; private set; }
+        private readonly UnitOfWork _uow = null;
 
         public AddressController()
         {
@@ -28,17 +23,24 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
 
-        // GET: Address
+        // GET: Addresses list of all address
         public ActionResult Index()
         {
-            return View();
+           IEnumerable<Address> address=  _uow.RepositoryFor<Address>().GetAll();
+            return View(address);
+        }
+
+        // Get single address 
+        public ActionResult Details(int id)
+        {
+          Address a=  _uow.RepositoryFor<Address>().Get(id);
+            return View(a);
         }
 
         [HttpGet]
         public ActionResult Add()
         {
-            Address a = new Address();
-            a.PersonID = Convert.ToInt32( TempData["id"]);
+            Address a = new Address {PersonID = Convert.ToInt32(TempData["id"])};
             return View(a);
         }
 
@@ -49,9 +51,43 @@ namespace ImmigrationApplication.WebApi.Controllers
             GenericRepository<Address> g = _uow.RepositoryFor<Address>();
             g.Add(address);
             _uow.Complete();
-            return RedirectToAction("Details", "Person", new {id = address.PersonID});
+            return RedirectToAction("Add", "Education");
         }
 
-        
+
+        // address/edit/id
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Address a = _uow.RepositoryFor<Address>().Get(id);
+            return View(a);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Address a)
+        {
+           GenericRepository<Address>  address = _uow.RepositoryFor<Address>();
+            address.Update(a);
+            _uow.Complete();
+            return RedirectToAction("Details", "Address", new {id = a.PersonID});
+        }
+
+      //  Address/delete/id
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+           Address a = _uow.RepositoryFor<Address>().Get(id);
+            return View(a);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public ActionResult Deleteconfirmed(int id)
+        {
+         Address a =   _uow.RepositoryFor<Address>().Get(id);
+            _uow.RepositoryFor<Address>().Delete(a.AddressID);
+            _uow.Complete();
+            return RedirectToAction("Index", "Address");
+        }
     }
 }

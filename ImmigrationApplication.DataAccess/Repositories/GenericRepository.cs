@@ -20,7 +20,7 @@ namespace ImmigrationApplication.DataAccess.Repositories
 
         public TEntity Get(int id)
         {
-            // Here we are working with a DbContext, not PlutoContext. So we don't have DbSets 
+            // Here we are working with a repository pattern and immigratio entities instance. So we don't have DbSets 
             // such as person and parents, and we need to use the generic Set() method to access them.
 
             return Context.Set<TEntity>().Find(id);
@@ -56,15 +56,7 @@ namespace ImmigrationApplication.DataAccess.Repositories
         {
             Context.Set<TEntity>().AddRange(entities);
         }
-/*
-        public void Remove(TEntity entity)
-        {
-         //  Context.Set<TEntity>().Remove(entity);
 
-          Context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
-            dbSet.Remove(entity);
-        }
-*/
         public void Delete(object id)
         {
             TEntity entity = Context.Set<TEntity>().Find(id);

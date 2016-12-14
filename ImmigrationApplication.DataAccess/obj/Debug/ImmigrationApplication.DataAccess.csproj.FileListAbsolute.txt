@@ -31,9 +31,7 @@ C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplicatio
 C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.DataAccess.pdb
 C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.dll
 C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Business.dll
 C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Model.dll
-C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Business.pdb
 C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Model.pdb
 C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.xml
 C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
