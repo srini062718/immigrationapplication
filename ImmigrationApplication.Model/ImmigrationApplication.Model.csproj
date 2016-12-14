@@ -84,12 +84,14 @@
     <Compile Include="LastArrivalDetail.cs">
       <DependentUpon>immiContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Metadata.cs" />
     <Compile Include="OtherDetail.cs">
       <DependentUpon>immiContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Parent.cs">
       <DependentUpon>immiContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartialClass.cs" />
     <Compile Include="Person.cs">
       <DependentUpon>immiContext.tt</DependentUpon>
     </Compile>

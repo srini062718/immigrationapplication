@@ -48,6 +48,7 @@ namespace ImmigrationApplication.WebApi.Controllers
           //  address.PersonID = Convert.ToInt32(TempData["id"]);
             GenericRepository<Address> g = _uow.RepositoryFor<Address>();
             g.Add(address);
+            _uow.Complete();
             return RedirectToAction("Details", "Person", new {id = address.PersonID});
         }
 
