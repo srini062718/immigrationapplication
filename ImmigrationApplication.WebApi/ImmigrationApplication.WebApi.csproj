@@ -349,10 +349,11 @@
     <Content Include="Views\FormerSpouse\Add.cshtml" />
     <Content Include="Views\FormerSpouse\Edit.cshtml" />
     <Content Include="Views\FormerSpouse\Delete.cshtml" />
+    <Content Include="Views\LastArrivalDetail\Index.cshtml" />
+    <Content Include="Views\LastArrivalDetail\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\LastArrivalDetail\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\OtherDetails\" />
     <Folder Include="Views\Parent\" />

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ImmigrationApplication.Model.LastArrivalDetail>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofArrival)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameofFlight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppliedPermanentResident)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RefusedVisa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USConsulate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofArrival)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameofFlight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppliedPermanentResident)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefusedVisa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USConsulate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LastArrivalDetailsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LastArrivalDetailsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LastArrivalDetailsID })
+        </td>
+    </tr>
+}
+
+</table>
