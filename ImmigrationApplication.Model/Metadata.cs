@@ -9,11 +9,17 @@ using System.Threading.Tasks;
 namespace ImmigrationApplication.Model
 {
    public  class  PersonMetadata
-    {
+    {    
         [Display(Name ="Gender")]
         public string Sex;
 
         [DataType(DataType.Date)]
         public DateTime DateofBirth;
+    }
+
+    public class AddressMetadata
+    {
+        [Required]
+        public string Address1;
     }
 }

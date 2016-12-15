@@ -113,7 +113,6 @@ C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\Immigrat
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\Antlr3.Runtime.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\EntityFramework.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\EntityFramework.SqlServer.dll
-C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\ImmigrationApplication.Business.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\ImmigrationApplication.DataAccess.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\ImmigrationApplication.Model.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\Microsoft.AI.Agent.Intercept.dll
@@ -151,7 +150,6 @@ C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\System.W
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\System.Web.WebPages.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\System.Web.WebPages.Razor.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\WebGrease.dll
-C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\ImmigrationApplication.Business.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\ImmigrationApplication.DataAccess.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\ImmigrationApplication.Model.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.WebApi\bin\Microsoft.AI.DependencyCollector.xml

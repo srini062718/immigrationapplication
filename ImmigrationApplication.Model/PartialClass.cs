@@ -12,4 +12,10 @@ namespace ImmigrationApplication.Model
     {
 
     }
+
+    [MetadataType(typeof(AddressMetadata))]
+    public partial class Address
+    {
+
+    }
 }

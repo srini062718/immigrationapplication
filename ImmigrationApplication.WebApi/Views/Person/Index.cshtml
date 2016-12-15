@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.Person>
 
+
+ @if(@User.IsInRole("Admin"))
+    {
 <p>
     @Html.ActionLink("Create New", "Add")
 </p>
+}
 <table class="table">
     <tr>
         <th>

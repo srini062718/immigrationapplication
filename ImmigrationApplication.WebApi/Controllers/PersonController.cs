@@ -70,13 +70,14 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Add()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Add(Person p)
         {

@@ -17,9 +17,7 @@ C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debu
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.DataAccess.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Business.dll
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Model.dll
-C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Business.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\ImmigrationApplication.Model.pdb
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.xml
 C:\Users\pandu\immigrationapplication\ImmigrationApplication.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
