@@ -59,7 +59,7 @@ namespace ImmigrationApplication.DataAccess.Repositories
 
         public void Delete(object id)
         {
-            TEntity entity = Context.Set<TEntity>().Find(id);
+           var entity = Context.Set<TEntity>().Find(id);
             Context.Set<TEntity>().Remove(entity);
         }
 
@@ -74,7 +74,7 @@ namespace ImmigrationApplication.DataAccess.Repositories
 
         public void Update(TEntity entity)
         {
-            Context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            Context.Entry(entity).State = EntityState.Modified;
         }
 
     }

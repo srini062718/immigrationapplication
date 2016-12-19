@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.Model;
-using System.Web.UI.WebControls;
 using ImmigrationApplication.DataAccess.Repositories;
 
 namespace ImmigrationApplication.WebApi.Controllers
@@ -29,29 +28,22 @@ namespace ImmigrationApplication.WebApi.Controllers
             IEnumerable<Person> per =   p.GetAll();
             if (User.IsInRole("Admin") != true)
             {
-                per = per.Where(X => X.CreatedByName == User.Identity.Name);
+                per = per.Where(x => x.CreatedByName == User.Identity.Name);
             }
             return View(per);
         }
 
         public ActionResult Details(int id)
         {
-            try
-            {
-                GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-                Con = p.Get(id);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var p = _uow.RepositoryFor<Person>();
+            Con = p.Get(id);
             return View(Con);
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
+            var p = _uow.RepositoryFor<Person>();
             Con = p.Get(id);
             return View(Con);
         }
@@ -59,7 +51,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Edit(Person p)
         {
-            GenericRepository<Person> person = _uow.RepositoryFor<Person>();
+            var person = _uow.RepositoryFor<Person>();
             person.Update(p);
             _uow.Complete();
             Con = person.Get(p.PersonID);
@@ -79,11 +71,9 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Add(Person p)
         {
             p.CreatedByName = User.Identity.Name;
-            GenericRepository<Person> P = _uow.RepositoryFor<Person>();
-            P.Add(p);
+            var person = _uow.RepositoryFor<Person>();
+            person.Add(p);
             _uow.Complete();
-        //    P.Get(id);
-        
             TempData.Add("id", p.PersonID.ToString());
             return RedirectToAction("Add", "Address");
         }
@@ -91,15 +81,15 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            Person P = _uow.RepositoryFor<Person>().Get(id);
-            return View(P);
+            var person = _uow.RepositoryFor<Person>().Get(id);
+            return View(person);
         }
 
         [HttpPost,ActionName("Delete")]
         public ActionResult Deleteconfirmed(int id)
         {
-          Person P =  _uow.RepositoryFor<Person>().Get(id);
-            _uow.RepositoryFor<Person>().Delete(P.PersonID);
+          var person =  _uow.RepositoryFor<Person>().Get(id);
+            _uow.RepositoryFor<Person>().Delete(person.PersonID);
             _uow.Complete();
             return RedirectToAction("Index", "Person");
         }

@@ -18,9 +18,6 @@ namespace ImmigrationApplication.WebApi
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            config.Formatters.JsonFormatter.SupportedMediaTypes
-    .Add(new MediaTypeHeaderValue("text/html"));
-
 
 
             // Web API routes

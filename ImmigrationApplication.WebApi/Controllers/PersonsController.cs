@@ -23,6 +23,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             List<Person> persons = _context.People.ToList();
             
             return Request.CreateResponse(HttpStatusCode.OK, persons);
+             
         }
 
 
