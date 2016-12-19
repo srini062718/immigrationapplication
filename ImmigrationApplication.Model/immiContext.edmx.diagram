@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c913f33cf15747e98d1da4b15a6abfcf" Name="Diagram1" ZoomLevel="88">
+      <Diagram DiagramId="c913f33cf15747e98d1da4b15a6abfcf" Name="Diagram1" ZoomLevel="87">
         <EntityTypeShape EntityType="immigrationModel.Address" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.Child" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.Education" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
@@ -26,6 +26,14 @@
         <AssociationConnector Association="immigrationModel.FK_Parent_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_PreviousApplication_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_USRelative_Person" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="immigrationModel.C__MigrationHistory" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="immigrationModel.AspNetRole" Width="1.5" PointX="5.375" PointY="2.5" />
+        <EntityTypeShape EntityType="immigrationModel.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="1" />
+        <EntityTypeShape EntityType="immigrationModel.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="3.75" />
+        <EntityTypeShape EntityType="immigrationModel.AspNetUser" Width="1.5" PointX="7.625" PointY="1.375" />
+        <AssociationConnector Association="immigrationModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="immigrationModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="immigrationModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

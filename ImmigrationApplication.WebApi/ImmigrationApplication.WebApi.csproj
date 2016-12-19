@@ -245,6 +245,7 @@
     <Compile Include="Controllers\OtherDetailsController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PersonsController.cs" />
     <Compile Include="Controllers\PreviousApplicationController.cs" />
     <Compile Include="Controllers\UsRelativeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

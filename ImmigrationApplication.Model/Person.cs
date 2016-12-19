@@ -44,7 +44,7 @@ namespace ImmigrationApplication.Model
         public System.DateTime I94ExpiryDate { get; set; }
         public string AliasAny { get; set; }
         public int SSN { get; set; }
-        public int Anumber { get; set; }
+        public Nullable<int> Anumber { get; set; }
         public string PassportNumber { get; set; }
         public string CountryIssued { get; set; }
         public System.DateTime DateIssued { get; set; }
@@ -54,6 +54,7 @@ namespace ImmigrationApplication.Model
         public string BirthCity { get; set; }
         public string CityofMarriage { get; set; }
         public string CountryofMarriage { get; set; }
+        public string CreatedByName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Address> Addresses { get; set; }

@@ -54,7 +54,22 @@
     <Compile Include="Address.cs">
       <DependentUpon>immiContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>immiContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>immiContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>immiContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>immiContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Child.cs">
+      <DependentUpon>immiContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>immiContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Education.cs">

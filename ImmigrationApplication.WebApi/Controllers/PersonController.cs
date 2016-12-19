@@ -22,19 +22,17 @@ namespace ImmigrationApplication.WebApi.Controllers
             _uow = new UnitOfWork();
         }
 
-        public PersonController(UnitOfWork uow)
-        {
-            this._uow = uow;
-        }
-
         public ActionResult Index()
         {
             ViewBag.Title = "List of Customers";
             GenericRepository<Person> p = _uow.RepositoryFor<Person>();
             IEnumerable<Person> per =   p.GetAll();
+            if (User.IsInRole("Admin") != true)
+            {
+                per = per.Where(X => X.CreatedByName == User.Identity.Name);
+            }
             return View(per);
         }
-
 
         public ActionResult Details(int id)
         {
@@ -49,7 +47,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             }
             return View(Con);
         }
-
 
         [HttpGet]
         public ActionResult Edit(int id)
@@ -81,10 +78,12 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Add(Person p)
         {
-
+            p.CreatedByName = User.Identity.Name;
             GenericRepository<Person> P = _uow.RepositoryFor<Person>();
             P.Add(p);
             _uow.Complete();
+        //    P.Get(id);
+        
             TempData.Add("id", p.PersonID.ToString());
             return RedirectToAction("Add", "Address");
         }
@@ -104,6 +103,5 @@ namespace ImmigrationApplication.WebApi.Controllers
             _uow.Complete();
             return RedirectToAction("Index", "Person");
         }
-        
     }
 }

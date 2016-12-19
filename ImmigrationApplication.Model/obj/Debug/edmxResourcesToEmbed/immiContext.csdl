@@ -79,17 +79,17 @@
       <PropertyRef Name="FormerSpouseID" />
     </Key>
     <Property Name="FormerSpouseID" Type="Int32" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DateofBirth" Type="DateTime" Precision="0" Nullable="false" />
-    <Property Name="DateofMarriage" Type="DateTime" Precision="0" Nullable="false" />
-    <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CityofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CountryofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DateofDiverse" Type="DateTime" Precision="0" Nullable="false" />
-    <Property Name="DateofDeath" Type="DateTime" Precision="0" Nullable="false" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="DateofMarriage" Type="DateTime" Precision="0" />
+    <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CityofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateofDiverse" Type="DateTime" Precision="0" />
+    <Property Name="DateofDeath" Type="DateTime" Precision="0" />
     <Property Name="PersonID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Person" Relationship="Self.FK_FormerSpouse_Person" FromRole="FormerSpouse" ToRole="Person" />
   </EntityType>
@@ -115,8 +115,8 @@
     </Key>
     <Property Name="OtherDetailsID" Type="Int32" Nullable="false" />
     <Property Name="AboutFirm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Conviction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="OtherInformation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PersonID" Type="Int32" Nullable="false" />
@@ -154,9 +154,9 @@
     <Property Name="VisaExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="LastUSEntryDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="I94ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="AliasAny" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AliasAny" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SSN" Type="Int32" Nullable="false" />
-    <Property Name="Anumber" Type="Int32" Nullable="false" />
+    <Property Name="Anumber" Type="Int32" />
     <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CountryIssued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateIssued" Type="DateTime" Nullable="false" Precision="0" />
@@ -176,6 +176,7 @@
     <Property Name="BirthCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedByName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="PreviousApplication">
     <Key>
@@ -376,5 +377,113 @@
       <End Role="Person" EntitySet="People" />
       <End Role="USRelative" EntitySet="USRelatives" />
     </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="immigrationModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="immigrationModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="immigrationModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="immigrationModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="immigrationModel.AspNetUser" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="immigrationModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="immigrationModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="immigrationModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="immigrationModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="immigrationModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="immigrationModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="immigrationModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="immigrationModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetRoles" Relationship="immigrationModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="immigrationModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="immigrationModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="immigrationModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="immigrationModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="immigrationModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="immigrationModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
 </Schema>
