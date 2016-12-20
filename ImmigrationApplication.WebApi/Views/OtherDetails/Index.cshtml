@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ImmigrationApplication.Model.OtherDetail>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AboutFirm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LicenseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LanguagesSpoken)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Conviction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherInformation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AboutFirm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LicenseNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LanguagesSpoken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conviction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherInformation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OtherDetailsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OtherDetailsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OtherDetailsID })
+        </td>
+    </tr>
+}
+
+</table>

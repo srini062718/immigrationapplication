@@ -1,0 +1,66 @@
+﻿@model ImmigrationApplication.Model.OtherDetail
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OtherDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutFirm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutFirm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LicenseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LicenseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LanguagesSpoken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LanguagesSpoken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Conviction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conviction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherInformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherInformation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.LastName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

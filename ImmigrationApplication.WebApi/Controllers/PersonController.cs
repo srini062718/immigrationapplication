@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.Model;
 using ImmigrationApplication.DataAccess.Repositories;
+using Microsoft.AspNet.Identity;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -26,6 +27,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             ViewBag.Title = "List of Customers";
             GenericRepository<Person> p = _uow.RepositoryFor<Person>();
             IEnumerable<Person> per =   p.GetAll();
+          
             if (User.IsInRole("Admin") != true)
             {
                 per = per.Where(x => x.CreatedByName == User.Identity.Name);

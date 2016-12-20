@@ -373,14 +373,33 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\LastArrivalDetail\Add.cshtml" />
+    <Content Include="Views\LastArrivalDetail\Edit.cshtml" />
+    <Content Include="Views\LastArrivalDetail\Delete.cshtml" />
+    <Content Include="Views\OtherDetails\Index.cshtml" />
+    <Content Include="Views\OtherDetails\Details.cshtml" />
+    <Content Include="Views\OtherDetails\Add.cshtml" />
+    <Content Include="Views\OtherDetails\Edit.cshtml" />
+    <Content Include="Views\OtherDetails\Delete.cshtml" />
+    <Content Include="Views\Parent\Index.cshtml" />
+    <Content Include="Views\Parent\Details.cshtml" />
+    <Content Include="Views\Parent\Add.cshtml" />
+    <Content Include="Views\Parent\Edit.cshtml" />
+    <Content Include="Views\Parent\Delete.cshtml" />
+    <Content Include="Views\PreviousApplication\Index.cshtml" />
+    <Content Include="Views\PreviousApplication\Details.cshtml" />
+    <Content Include="Views\PreviousApplication\Add.cshtml" />
+    <Content Include="Views\PreviousApplication\Edit.cshtml" />
+    <Content Include="Views\PreviousApplication\Delete.cshtml" />
+    <Content Include="Views\USRelative\Index.cshtml" />
+    <Content Include="Views\USRelative\Details.cshtml" />
+    <Content Include="Views\USRelative\Add.cshtml" />
+    <Content Include="Views\USRelative\Edit.cshtml" />
+    <Content Include="Views\USRelative\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Providers\" />
-    <Folder Include="Views\OtherDetails\" />
-    <Folder Include="Views\Parent\" />
-    <Folder Include="Views\PreviousApplication\" />
-    <Folder Include="Views\USRelative\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
