@@ -139,6 +139,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ImmigrationApplication.Model.immigrationEntities context = new Model.immigrationEntities();
+            //   System.Collections.Generic.List<    > context;
+       //     context.AspNetRoles
+        //    SelectListItem li = new SelectListItem();
+
             return View();
         }
 
@@ -155,6 +160,8 @@ namespace ImmigrationApplication.WebApi.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    UserManager.AddToRole(user.Id, "Admin")
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

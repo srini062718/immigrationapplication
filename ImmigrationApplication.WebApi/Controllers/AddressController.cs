@@ -4,6 +4,7 @@ using ImmigrationApplication.Model;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -31,10 +32,12 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // Get single address 
-        public ActionResult Details(int id)
+        public ActionResult Details(int personid)
         {
-          Address a=  _uow.RepositoryFor<Address>().Get(id);
-            return View(a);
+
+            IEnumerable<Address> a = _uow.RepositoryFor<Address>().GetAll();
+           Address ax=  a.ToList().Find(x => x.PersonID == personid);
+            return View(a.Where(x=>x.PersonID == personid).FirstOrDefault());
         }
 
         [HttpGet]
@@ -57,10 +60,14 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // address/edit/id
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int personid)
         {
-            Address a = _uow.RepositoryFor<Address>().Get(id);
-            return View(a);
+
+            IEnumerable<Address> a = _uow.RepositoryFor<Address>().GetAll();
+
+            return View(a.Where(x => x.PersonID == personid).FirstOrDefault());
+        //    Address a = _uow.RepositoryFor<Address>().Get(id);
+        //    return View(a);
 
         }
 

@@ -1,5 +1,12 @@
 ﻿@model ImmigrationApplication.Model.Person
-
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Address", "Edit", "Address", new { personid = Model.PersonID}, null)</li>
+        <li>@Html.ActionLink("Edit", "Edit", new { id = Model.PersonID })</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+</div>
 <div>
     <h4>Person</h4>
     <hr />
@@ -9,6 +16,7 @@
         </dt>
 
         <dd>
+            @Html.TextBox(@Model.PersonID.ToString())
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
