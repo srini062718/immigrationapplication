@@ -77,7 +77,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             person.Add(p);
             _uow.Complete();
             TempData.Add("id", p.PersonID.ToString());
-            return RedirectToAction("Add", "Address");
+            return RedirectToAction("Create", "Address");
         }
 
         [HttpGet]

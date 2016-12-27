@@ -18,6 +18,7 @@ namespace ImmigrationApplication.Model
 
         [DataType(DataType.Date)]
         [Required]
+        [Display(Name = "Date of Birth")]
         public DateTime DateofBirth;
 
         [Display(Name ="Middle Name")]
@@ -62,10 +63,6 @@ namespace ImmigrationApplication.Model
         // ReSharper disable once InconsistentNaming
         public string SSN;
 
-        [Display(Name = "Alien Rgistration number")]
-        [Required]
-        public int? Anumber;
-
         [Display(Name = "Passport Number")]
         [Required]
         public string PassportNumber;
@@ -90,6 +87,7 @@ namespace ImmigrationApplication.Model
 
         [DataType(DataType.Date)]
         [Required]
+        [Display(Name = "Date of Marriage")]
         public DateTime DateofMarriage;
 
         [Display(Name = "City of Birth")]

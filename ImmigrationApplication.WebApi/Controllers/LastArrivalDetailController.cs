@@ -42,7 +42,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Create()
         {
 
-            LastArrivalDetail lastarrivaldetail = new LastArrivalDetail
+            var lastarrivaldetail = new LastArrivalDetail
             {
                 PersonID = Convert.ToInt32(TempData["id"])
             };
@@ -52,10 +52,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(LastArrivalDetail lastArrivalDetail)
         {
-            GenericRepository<LastArrivalDetail> ed = _uow.RepositoryFor<LastArrivalDetail>();
+            var ed = _uow.RepositoryFor<LastArrivalDetail>();
             ed.Add(lastArrivalDetail);
             _uow.Complete();
-            return RedirectToAction("Add", "LastArrivalDetail");
+            TempData.Add("id", lastArrivalDetail.PersonID.ToString());
+            return RedirectToAction("Create", "UsRelative");
         }
 
         [HttpGet]

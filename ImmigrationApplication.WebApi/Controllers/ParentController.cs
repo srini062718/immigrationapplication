@@ -48,7 +48,8 @@ namespace ImmigrationApplication.WebApi.Controllers
 
             _uow.RepositoryFor<Parent>().Add(parent);
             _uow.Complete();
-            return RedirectToAction("Index", "Parent");
+            TempData.Add("id", parent.PersonID.ToString());
+            return RedirectToAction("Create", "LastArrivalDetail");
         }
 
         // edit a detail

@@ -155,7 +155,7 @@
     <Property Name="I94ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AliasAny" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SSN" Type="Int32" Nullable="false" />
-    <Property Name="Anumber" Type="Int32" />
+    <Property Name="Anumber" Type="String" />
     <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CountryIssued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateIssued" Type="DateTime" Nullable="false" Precision="0" />

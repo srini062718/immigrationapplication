@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.Person>
 
-
+@Html.Partial("~/Views/Shared/_navbar.cshtml")
  @if(@User.IsInRole("Admin"))
     {
-<p>
-    @Html.ActionLink("Create New", "Add")
+<p style="margin-top:50px;">
+    @Html.ActionLink("Create New", "Create")
 </p>
 }
 <table class="table">
@@ -14,9 +14,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MiddleName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Gender)
@@ -34,43 +31,10 @@
             @Html.DisplayNameFor(model => model.USVisaType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VisaIssueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VisaExpiryDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastUSEntryDate)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.I94ExpiryDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AliasAny)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SSN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Anumber)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.PassportNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CountryIssued)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateIssued)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateExpired)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SpouseName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateofMarriage)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BirthCity)
@@ -93,9 +57,6 @@
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MiddleName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
         <td>
@@ -111,43 +72,10 @@
             @Html.DisplayFor(modelItem => item.USVisaType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.VisaIssueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VisaExpiryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastUSEntryDate)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.I94ExpiryDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AliasAny)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SSN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Anumber)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.PassportNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountryIssued)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateIssued)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateExpired)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SpouseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateofMarriage)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BirthCity)

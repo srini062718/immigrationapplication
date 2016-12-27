@@ -209,7 +209,7 @@
     <Property Name="I94ExpiryDate" Type="date" Nullable="false" />
     <Property Name="AliasAny" Type="nvarchar" MaxLength="50" />
     <Property Name="SSN" Type="int" Nullable="false" />
-    <Property Name="Anumber" Type="int" />
+    <Property Name="Anumber" Type="nvarchar" MaxLength="50" />
     <Property Name="BirthCity" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PassportNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CountryIssued" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -247,7 +247,9 @@
     <Property Name="PersonID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Address_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Address" Type="Self.Address" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -259,7 +261,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Children_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Children" Type="Self.Children" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -327,7 +331,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Education_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Education" Type="Self.Education" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -339,7 +345,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Employment_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -351,7 +359,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_FormerSpouse_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="FormerSpouse" Type="Self.FormerSpouse" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -363,7 +373,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_LastArrivalDetails_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="LastArrivalDetails" Type="Self.LastArrivalDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -375,7 +387,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_OtherDetails_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="OtherDetails" Type="Self.OtherDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -387,7 +401,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parent_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -399,7 +415,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PreviousApplication_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="PreviousApplication" Type="Self.PreviousApplication" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">
@@ -411,7 +429,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_USRelative_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="USRelative" Type="Self.USRelative" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Person">

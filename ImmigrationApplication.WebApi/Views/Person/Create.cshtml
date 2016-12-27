@@ -5,7 +5,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Person</h4>
+        <h4 style="margin-top:40px;">Enter the Details</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <table style="width: 100%;">
@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.DateofBirth)
-                        @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control datepicker" })
+                        @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control" })
                     </div>
 
                     <div class="form-group">
@@ -74,14 +74,13 @@
                         @Html.LabelFor(model => model.I94ExpiryDate)
                         @Html.TextBoxFor(model => model.I94ExpiryDate, new { @class = "form-control" })
                     </div>
-
+                </td>
+                <td>
+                    
                     <div class="form-group">
                         @Html.LabelFor(model => model.AliasAny)
                         @Html.TextBoxFor(model => model.AliasAny, new { @class = "form-control" })
                     </div>
-                </td>
-
-                <td>
                 <div class="form-group">
                     @Html.LabelFor(model => model.SSN)
                     @Html.TextBoxFor(model => model.SSN, new { @class = "form-control" })
@@ -157,12 +156,6 @@
             </tr>
         </table>
     </div>
-    <script type="text/javascript">
-        $(function()
-        {
-            $('.datepicker').datepicker();
-        });
-    </script>
 }
 
 

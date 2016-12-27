@@ -43,7 +43,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Create()
         {
 
-            FormerSpouse formerspouse = new FormerSpouse
+            var formerspouse = new FormerSpouse
             {
                 PersonID = Convert.ToInt32(TempData["id"])
             };
@@ -53,16 +53,17 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(FormerSpouse formerSpouse)
         {
-            GenericRepository<FormerSpouse> ed = _uow.RepositoryFor<FormerSpouse>();
+            var ed = _uow.RepositoryFor<FormerSpouse>();
             ed.Add(formerSpouse);
             _uow.Complete();
-            return RedirectToAction("Add", "FormerSpouse");
+            TempData.Add("id", formerSpouse.PersonID.ToString());
+            return RedirectToAction("Create", "Children");
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            FormerSpouse formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
+            var formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
             return View(formerspouse);
         }
 

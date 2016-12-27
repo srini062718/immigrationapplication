@@ -47,7 +47,8 @@ namespace ImmigrationApplication.WebApi.Controllers
 
             _uow.RepositoryFor<USRelative>().Add(usrelative);
             _uow.Complete();
-            return RedirectToAction("Index", "USRelative");
+            TempData.Add("id", usrelative.PersonID.ToString());
+            return RedirectToAction("Create", "PreviousApplication");
         }
 
         // edit a detail

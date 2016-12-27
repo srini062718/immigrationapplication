@@ -53,10 +53,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Education education)
         {
-          GenericRepository<Education> ed =  _uow.RepositoryFor<Education>();
+          var ed =  _uow.RepositoryFor<Education>();
             ed.Add(education);
             _uow.Complete();
-            return RedirectToAction("Add","Education");
+            TempData.Add("id", education.PersonID.ToString());
+            return RedirectToAction("Create","Employment");
         }
 
         [HttpGet]

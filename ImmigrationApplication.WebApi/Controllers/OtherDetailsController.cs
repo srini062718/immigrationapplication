@@ -51,7 +51,8 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
            _uow.RepositoryFor<OtherDetail>().Add(detail);
             _uow.Complete();
-            return RedirectToAction("Add", "OtherDetails");
+            TempData.Add("id", detail.PersonID.ToString());
+            return RedirectToAction("Index", "Person");
         }
 
 

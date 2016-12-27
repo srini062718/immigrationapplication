@@ -27,7 +27,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: Addresses list of all address
         public ActionResult Index()
         {
-           IEnumerable<Address> address=  _uow.RepositoryFor<Address>().GetAll();
+           var address=  _uow.RepositoryFor<Address>().GetAll();
             return View(address);
         }
 
@@ -50,10 +50,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Create(Address address)
         {
           //  address.PersonID = Convert.ToInt32(TempData["id"]);
-            GenericRepository<Address> g = _uow.RepositoryFor<Address>();
+            var g = _uow.RepositoryFor<Address>();
             g.Add(address);
             _uow.Complete();
-            return RedirectToAction("Add", "Education");
+            TempData.Add("id", address.PersonID.ToString());
+            return RedirectToAction("Create", "Education");
         }
 
 

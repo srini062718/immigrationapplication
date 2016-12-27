@@ -41,7 +41,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Create()
         {
 
-            Child child = new Child
+            var child = new Child
             {
                 PersonID = Convert.ToInt32(TempData["id"])
             };
@@ -51,10 +51,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Child children)
         {
-            GenericRepository<Child> ed = _uow.RepositoryFor<Child>();
+            var ed = _uow.RepositoryFor<Child>();
             ed.Add(children);
             _uow.Complete();
-            return RedirectToAction("Add", "Children");
+            TempData.Add("id", children.PersonID.ToString());
+            return RedirectToAction("Create", "Parent");
         }
 
         [HttpGet]

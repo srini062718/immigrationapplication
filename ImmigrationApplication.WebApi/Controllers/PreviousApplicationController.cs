@@ -34,7 +34,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            PreviousApplication previousapplication = new PreviousApplication
+            var previousapplication = new PreviousApplication
             {
                 PersonID = Convert.ToInt32(TempData["id"])
             };
@@ -47,7 +47,8 @@ namespace ImmigrationApplication.WebApi.Controllers
 
             _uow.RepositoryFor<PreviousApplication>().Add(previousapplication);
             _uow.Complete();
-            return RedirectToAction("Index", "PreviousApplication");
+            TempData.Add("id", previousapplication.PersonID.ToString());
+            return RedirectToAction("Create", "OtherDetails");
         }
 
         // edit a detail
