@@ -37,7 +37,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         //  add a new detail
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             var detail = new OtherDetail
             {
@@ -47,7 +47,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(OtherDetail detail)
+        public ActionResult Create(OtherDetail detail)
         {
            _uow.RepositoryFor<OtherDetail>().Add(detail);
             _uow.Complete();

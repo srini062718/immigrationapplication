@@ -40,7 +40,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
 
             FormerSpouse formerspouse = new FormerSpouse
@@ -51,7 +51,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(FormerSpouse formerSpouse)
+        public ActionResult Create(FormerSpouse formerSpouse)
         {
             GenericRepository<FormerSpouse> ed = _uow.RepositoryFor<FormerSpouse>();
             ed.Add(formerSpouse);

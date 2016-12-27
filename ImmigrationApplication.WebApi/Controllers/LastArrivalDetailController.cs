@@ -39,7 +39,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
 
             LastArrivalDetail lastarrivaldetail = new LastArrivalDetail
@@ -50,7 +50,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(LastArrivalDetail lastArrivalDetail)
+        public ActionResult Create(LastArrivalDetail lastArrivalDetail)
         {
             GenericRepository<LastArrivalDetail> ed = _uow.RepositoryFor<LastArrivalDetail>();
             ed.Add(lastArrivalDetail);

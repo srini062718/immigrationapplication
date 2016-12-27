@@ -35,20 +35,19 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Details(int personid)
         {
 
-            IEnumerable<Address> a = _uow.RepositoryFor<Address>().GetAll();
-           Address ax=  a.ToList().Find(x => x.PersonID == personid);
-            return View(a.Where(x=>x.PersonID == personid).FirstOrDefault());
+            var a = _uow.RepositoryFor<Address>().GetAll();
+            return View(a.FirstOrDefault(x => x.PersonID == personid));
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             Address a = new Address {PersonID = Convert.ToInt32(TempData["id"])};
             return View(a);
         }
 
         [HttpPost]
-        public ActionResult Add(Address address)
+        public ActionResult Create(Address address)
         {
           //  address.PersonID = Convert.ToInt32(TempData["id"]);
             GenericRepository<Address> g = _uow.RepositoryFor<Address>();
@@ -65,7 +64,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
             IEnumerable<Address> a = _uow.RepositoryFor<Address>().GetAll();
 
-            return View(a.Where(x => x.PersonID == personid).FirstOrDefault());
+            return View(a.FirstOrDefault(x => x.PersonID == personid));
         //    Address a = _uow.RepositoryFor<Address>().Get(id);
         //    return View(a);
 
@@ -82,10 +81,10 @@ namespace ImmigrationApplication.WebApi.Controllers
 
       //  Address/delete/id
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int personid)
         {
-           Address a = _uow.RepositoryFor<Address>().Get(id);
-            return View(a);
+           var a = _uow.RepositoryFor<Address>().GetAll();
+            return View(a.SingleOrDefault(x=>x.PersonID==personid));
         }
 
         [HttpPost,ActionName("Delete")]

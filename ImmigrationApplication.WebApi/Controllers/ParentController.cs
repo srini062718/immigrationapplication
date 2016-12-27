@@ -33,7 +33,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
        // add a new 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             Parent parent = new Parent
             {
@@ -43,7 +43,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Parent parent)
+        public ActionResult Create(Parent parent)
         {
 
             _uow.RepositoryFor<Parent>().Add(parent);

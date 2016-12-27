@@ -32,7 +32,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // add a new 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             USRelative usrelative = new USRelative
             {
@@ -42,7 +42,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(USRelative usrelative)
+        public ActionResult Create(USRelative usrelative)
         {
 
             _uow.RepositoryFor<USRelative>().Add(usrelative);

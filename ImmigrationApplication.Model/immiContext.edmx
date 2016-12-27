@@ -4,43 +4,43 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="immigrationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+    <Schema Namespace="immigrationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Nullable="false" MaxLength="150" Type="nvarchar" />
-          <Property Name="ContextKey" Nullable="false" MaxLength="300" Type="nvarchar" />
-          <Property Name="Model" Nullable="false" Type="varbinary(max)" />
-          <Property Name="ProductVersion" Nullable="false" MaxLength="32" Type="nvarchar" />
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
           </Key>
-          <Property Name="AddressID" Nullable="false" Type="int" />
-          <Property Name="Address1" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address2" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="City" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="State" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Country" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="ZipCode" Nullable="false" Type="int" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" MaxLength="128" Type="nvarchar" />
-          <Property Name="Name" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="UserId" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ClaimType" Type="nvarchar(max)" />
           <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
@@ -50,210 +50,210 @@
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Nullable="false" MaxLength="128" Type="nvarchar" />
-          <Property Name="ProviderKey" Nullable="false" MaxLength="128" Type="nvarchar" />
-          <Property Name="UserId" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUserRoles">
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="UserId" Nullable="false" MaxLength="128" Type="nvarchar" />
-          <Property Name="RoleId" Nullable="false" MaxLength="128" Type="nvarchar" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Nullable="false" MaxLength="128" Type="nvarchar" />
-          <Property Name="Email" MaxLength="256" Type="nvarchar" />
-          <Property Name="EmailConfirmed" Nullable="false" Type="bit" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
           <Property Name="SecurityStamp" Type="nvarchar(max)" />
           <Property Name="PhoneNumber" Type="nvarchar(max)" />
-          <Property Name="PhoneNumberConfirmed" Nullable="false" Type="bit" />
-          <Property Name="TwoFactorEnabled" Nullable="false" Type="bit" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
           <Property Name="LockoutEndDateUtc" Type="datetime" />
-          <Property Name="LockoutEnabled" Nullable="false" Type="bit" />
-          <Property Name="AccessFailedCount" Nullable="false" Type="int" />
-          <Property Name="UserName" Nullable="false" MaxLength="256" Type="nvarchar" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="Children">
           <Key>
             <PropertyRef Name="ChildrenID" />
           </Key>
-          <Property Name="ChildrenID" Nullable="false" Type="int" />
-          <Property Name="FirstName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="LastName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="MiddleName" MaxLength="50" Type="nvarchar" />
-          <Property Name="Sex" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="BirthPlace" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="BirthCountry" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="DateofBirth" Nullable="false" Type="date" />
-          <Property Name="MaritalStatus" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address1" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address2" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="City" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="State" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="ZipCode" Nullable="false" Type="int" />
-          <Property Name="PhoneNumber" Nullable="false" Type="int" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="ChildrenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthPlace" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateofBirth" Type="date" Nullable="false" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Education">
           <Key>
             <PropertyRef Name="EducationID" />
           </Key>
-          <Property Name="EducationID" Nullable="false" Type="int" />
-          <Property Name="Name" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address1" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address2" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="City" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="State" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="ZipCode" Nullable="false" Type="int" />
-          <Property Name="FieldofStudy" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="StartDate" Nullable="false" Type="date" />
-          <Property Name="EndDate" Nullable="false" Type="date" />
-          <Property Name="Degree" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="EducationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="int" Nullable="false" />
+          <Property Name="FieldofStudy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Degree" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Employment">
           <Key>
             <PropertyRef Name="EmploymentID" />
           </Key>
-          <Property Name="EmploymentID" Nullable="false" Type="int" />
-          <Property Name="EmployerName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address1" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address2" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="City" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="State" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Zipcode" Nullable="false" Type="int" />
-          <Property Name="JobTitle" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Salary" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="DateStarted" Nullable="false" Type="date" />
-          <Property Name="DateLeft" Nullable="false" Type="date" />
-          <Property Name="Client" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="JobDescription" Nullable="false" Type="nvarchar(max)" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="EmploymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zipcode" Type="int" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Salary" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateStarted" Type="date" Nullable="false" />
+          <Property Name="DateLeft" Type="date" Nullable="false" />
+          <Property Name="Client" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="JobDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FormerSpouse">
           <Key>
             <PropertyRef Name="FormerSpouseID" />
           </Key>
-          <Property Name="FormerSpouseID" Nullable="false" Type="int" />
-          <Property Name="FirstName" MaxLength="50" Type="nvarchar" />
-          <Property Name="LastName" MaxLength="50" Type="nvarchar" />
-          <Property Name="MiddleName" MaxLength="50" Type="nvarchar" />
+          <Property Name="FormerSpouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
           <Property Name="DateofBirth" Type="date" />
           <Property Name="DateofMarriage" Type="date" />
-          <Property Name="CityofMarriage" MaxLength="50" Type="nvarchar" />
-          <Property Name="CountryofMarriage" MaxLength="50" Type="nvarchar" />
-          <Property Name="CityofDivorced" MaxLength="50" Type="nvarchar" />
-          <Property Name="CountryofDivorced" MaxLength="50" Type="nvarchar" />
+          <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityofDivorced" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofDivorced" Type="nvarchar" MaxLength="50" />
           <Property Name="DateofDiverse" Type="date" />
           <Property Name="DateofDeath" Type="date" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LastArrivalDetails">
           <Key>
             <PropertyRef Name="LastArrivalDetailsID" />
           </Key>
-          <Property Name="LastArrivalDetailsID" Nullable="false" Type="int" />
-          <Property Name="City" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="State" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="DateofArrival" Nullable="false" Type="date" />
-          <Property Name="NameofFlight" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="FlightNumber" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="AppliedPermanentResident" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="RefusedVisa" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="USConsulate" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="LastArrivalDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateofArrival" Type="date" Nullable="false" />
+          <Property Name="NameofFlight" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlightNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AppliedPermanentResident" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RefusedVisa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USConsulate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OtherDetails">
           <Key>
             <PropertyRef Name="OtherDetailsID" />
           </Key>
-          <Property Name="OtherDetailsID" Nullable="false" Type="int" />
-          <Property Name="AboutFirm" MaxLength="50" Type="nvarchar" />
-          <Property Name="LicenseNumber" MaxLength="50" Type="nvarchar" />
-          <Property Name="LanguagesSpoken" MaxLength="50" Type="nvarchar" />
-          <Property Name="Conviction" MaxLength="50" Type="nvarchar" />
-          <Property Name="OtherInformation" MaxLength="50" Type="nvarchar" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="OtherDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
+          <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
+          <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Parent">
           <Key>
             <PropertyRef Name="ParentID" />
           </Key>
-          <Property Name="ParentID" Nullable="false" Type="int" />
-          <Property Name="FirstName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="LastName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="MiddleName" MaxLength="50" Type="nvarchar" />
-          <Property Name="DateofBirth" Nullable="false" Type="date" />
-          <Property Name="CityofBirth" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="CityofResidence" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Relationship" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="ParentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateofBirth" Type="date" Nullable="false" />
+          <Property Name="CityofBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityofResidence" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Relationship" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PersonID" Type="int" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="PersonID" />
           </Key>
-          <Property Name="PersonID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="LastName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="FirstName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="MiddleName" MaxLength="50" Type="nvarchar" />
-          <Property Name="Sex" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="DateofBirth" Nullable="false" Type="date" />
-          <Property Name="MartialStatus" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Nationality" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="USVisaType" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="VisaIssueDate" Nullable="false" Type="date" />
-          <Property Name="VisaExpiryDate" Nullable="false" Type="date" />
-          <Property Name="LastUSEntryDate" Nullable="false" Type="date" />
-          <Property Name="I94ExpiryDate" Nullable="false" Type="date" />
-          <Property Name="AliasAny" MaxLength="50" Type="nvarchar" />
-          <Property Name="SSN" Nullable="false" Type="int" />
+          <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateofBirth" Type="date" Nullable="false" />
+          <Property Name="MartialStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USVisaType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VisaIssueDate" Type="date" Nullable="false" />
+          <Property Name="VisaExpiryDate" Type="date" Nullable="false" />
+          <Property Name="LastUSEntryDate" Type="date" Nullable="false" />
+          <Property Name="I94ExpiryDate" Type="date" Nullable="false" />
+          <Property Name="AliasAny" Type="nvarchar" MaxLength="50" />
+          <Property Name="SSN" Type="int" Nullable="false" />
           <Property Name="Anumber" Type="int" />
-          <Property Name="BirthCity" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="PassportNumber" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="CountryIssued" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="DateIssued" Nullable="false" Type="date" />
-          <Property Name="DateExpired" Nullable="false" Type="date" />
-          <Property Name="SpouseName" MaxLength="50" Type="nvarchar" />
+          <Property Name="BirthCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassportNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryIssued" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateIssued" Type="date" Nullable="false" />
+          <Property Name="DateExpired" Type="date" Nullable="false" />
+          <Property Name="SpouseName" Type="nvarchar" MaxLength="50" />
           <Property Name="DateofMarriage" Type="date" />
-          <Property Name="CityofMarriage" MaxLength="50" Type="nvarchar" />
-          <Property Name="CountryofMarriage" MaxLength="50" Type="nvarchar" />
-          <Property Name="CreatedByName" MaxLength="128" Type="nvarchar" />
+          <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedByName" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="PreviousApplication">
           <Key>
             <PropertyRef Name="PreviousApplicationID" />
           </Key>
-          <Property Name="PreviousApplicationID" Nullable="false" Type="int" />
-          <Property Name="ApplicationType" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="DateApplied" Nullable="false" Type="date" />
-          <Property Name="StatusGranted" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="IndicateIfDenied" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="CapGap" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="PreviousApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateApplied" Type="date" Nullable="false" />
+          <Property Name="StatusGranted" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndicateIfDenied" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CapGap" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="USRelative">
           <Key>
             <PropertyRef Name="USRelativeID" />
           </Key>
-          <Property Name="USRelativeID" Nullable="false" Type="int" />
-          <Property Name="Name" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Relationship" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="USVisaType" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Age" Nullable="false" Type="int" />
-          <Property Name="MaritialStatus" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="Address" Nullable="false" Type="nvarchar(max)" />
-          <Property Name="PersonID" Nullable="false" Type="int" />
+          <Property Name="USRelativeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Relationship" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USVisaType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="MaritialStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Address_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.Address" Multiplicity="*" Role="Address" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -264,8 +264,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Children_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.Children" Multiplicity="*" Role="Children" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Children" Type="Self.Children" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -276,10 +276,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="Self.AspNetUsers" Multiplicity="1" Role="AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Self.AspNetUserClaims" Multiplicity="*" Role="AspNetUserClaims" />
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -290,10 +290,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="Self.AspNetUsers" Multiplicity="1" Role="AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Self.AspNetUserLogins" Multiplicity="*" Role="AspNetUserLogins" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -304,10 +304,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-          <End Type="Self.AspNetRoles" Multiplicity="1" Role="AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Self.AspNetUserRoles" Multiplicity="*" Role="AspNetUserRoles" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetRoles">
               <PropertyRef Name="Id" />
@@ -318,10 +318,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-          <End Type="Self.AspNetUsers" Multiplicity="1" Role="AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Self.AspNetUserRoles" Multiplicity="*" Role="AspNetUserRoles" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -332,8 +332,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Education_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.Education" Multiplicity="*" Role="Education" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Education" Type="Self.Education" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -344,8 +344,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employment_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.Employment" Multiplicity="*" Role="Employment" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -356,8 +356,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FormerSpouse_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.FormerSpouse" Multiplicity="*" Role="FormerSpouse" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="FormerSpouse" Type="Self.FormerSpouse" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -368,8 +368,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LastArrivalDetails_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.LastArrivalDetails" Multiplicity="*" Role="LastArrivalDetails" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="LastArrivalDetails" Type="Self.LastArrivalDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -380,8 +380,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OtherDetails_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.OtherDetails" Multiplicity="*" Role="OtherDetails" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="OtherDetails" Type="Self.OtherDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -392,8 +392,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Parent_Person">
-          <End Type="Self.Person" Multiplicity="0..1" Role="Person" />
-          <End Type="Self.Parent" Multiplicity="*" Role="Parent" />
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -404,8 +404,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PreviousApplication_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.PreviousApplication" Multiplicity="*" Role="PreviousApplication" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PreviousApplication" Type="Self.PreviousApplication" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -416,8 +416,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_USRelative_Person">
-          <End Type="Self.Person" Multiplicity="1" Role="Person" />
-          <End Type="Self.USRelative" Multiplicity="*" Role="USRelative" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="USRelative" Type="Self.USRelative" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="PersonID" />
@@ -446,60 +446,60 @@
           <EntitySet Name="PreviousApplication" EntityType="Self.PreviousApplication" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USRelative" EntityType="Self.USRelative" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Address_Person" Association="Self.FK_Address_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="Address" Role="Address" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Address" EntitySet="Address" />
           </AssociationSet>
           <AssociationSet Name="FK_Children_Person" Association="Self.FK_Children_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="Children" Role="Children" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Children" EntitySet="Children" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End EntitySet="AspNetUsers" Role="AspNetUsers" />
-            <End EntitySet="AspNetUserClaims" Role="AspNetUserClaims" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End EntitySet="AspNetUsers" Role="AspNetUsers" />
-            <End EntitySet="AspNetUserLogins" Role="AspNetUserLogins" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-            <End EntitySet="AspNetRoles" Role="AspNetRoles" />
-            <End EntitySet="AspNetUserRoles" Role="AspNetUserRoles" />
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-            <End EntitySet="AspNetUsers" Role="AspNetUsers" />
-            <End EntitySet="AspNetUserRoles" Role="AspNetUserRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
           <AssociationSet Name="FK_Education_Person" Association="Self.FK_Education_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="Education" Role="Education" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Education" EntitySet="Education" />
           </AssociationSet>
           <AssociationSet Name="FK_Employment_Person" Association="Self.FK_Employment_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="Employment" Role="Employment" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Employment" EntitySet="Employment" />
           </AssociationSet>
           <AssociationSet Name="FK_FormerSpouse_Person" Association="Self.FK_FormerSpouse_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="FormerSpouse" Role="FormerSpouse" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="FormerSpouse" EntitySet="FormerSpouse" />
           </AssociationSet>
           <AssociationSet Name="FK_LastArrivalDetails_Person" Association="Self.FK_LastArrivalDetails_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="LastArrivalDetails" Role="LastArrivalDetails" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="LastArrivalDetails" EntitySet="LastArrivalDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_OtherDetails_Person" Association="Self.FK_OtherDetails_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="OtherDetails" Role="OtherDetails" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="OtherDetails" EntitySet="OtherDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Parent_Person" Association="Self.FK_Parent_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="Parent" Role="Parent" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Parent" EntitySet="Parent" />
           </AssociationSet>
           <AssociationSet Name="FK_PreviousApplication_Person" Association="Self.FK_PreviousApplication_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="PreviousApplication" Role="PreviousApplication" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PreviousApplication" EntitySet="PreviousApplication" />
           </AssociationSet>
           <AssociationSet Name="FK_USRelative_Person" Association="Self.FK_USRelative_Person">
-            <End EntitySet="Person" Role="Person" />
-            <End EntitySet="USRelative" Role="USRelative" />
+            <End Role="Person" EntitySet="Person" />
+            <End Role="USRelative" EntitySet="USRelative" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -651,7 +651,6 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MartialStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -683,6 +682,7 @@
           <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedByName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PreviousApplication">
           <Key>
@@ -1138,6 +1138,7 @@
           <EntitySetMapping Name="People">
             <EntityTypeMapping TypeName="immigrationModel.Person">
               <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
                 <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
                 <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
@@ -1146,7 +1147,6 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
                 <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
                 <ScalarProperty Name="Nationality" ColumnName="Nationality" />

@@ -25,8 +25,8 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "List of Customers";
-            GenericRepository<Person> p = _uow.RepositoryFor<Person>();
-            IEnumerable<Person> per =   p.GetAll();
+            var p = _uow.RepositoryFor<Person>();
+            var per =   p.GetAll();
           
             if (User.IsInRole("Admin") != true)
             {
@@ -63,14 +63,14 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             return View();
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Add(Person p)
+        public ActionResult Create(Person p)
         {
             p.CreatedByName = User.Identity.Name;
             var person = _uow.RepositoryFor<Person>();

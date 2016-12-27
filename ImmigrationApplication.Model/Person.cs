@@ -33,7 +33,6 @@ namespace ImmigrationApplication.Model
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
-        public string Sex { get; set; }
         public System.DateTime DateofBirth { get; set; }
         public string MartialStatus { get; set; }
         public string Nationality { get; set; }
@@ -55,6 +54,7 @@ namespace ImmigrationApplication.Model
         public string CityofMarriage { get; set; }
         public string CountryofMarriage { get; set; }
         public string CreatedByName { get; set; }
+        public string Gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Address> Addresses { get; set; }

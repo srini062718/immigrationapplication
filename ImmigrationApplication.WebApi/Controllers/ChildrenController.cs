@@ -38,7 +38,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
 
             Child child = new Child
@@ -49,7 +49,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Child children)
+        public ActionResult Create(Child children)
         {
             GenericRepository<Child> ed = _uow.RepositoryFor<Child>();
             ed.Add(children);

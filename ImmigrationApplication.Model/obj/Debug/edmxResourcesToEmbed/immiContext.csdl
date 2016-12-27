@@ -145,7 +145,6 @@
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="MartialStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -177,6 +176,7 @@
     <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CreatedByName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="PreviousApplication">
     <Key>

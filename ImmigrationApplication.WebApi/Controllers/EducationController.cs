@@ -40,7 +40,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
           
             Education education = new Education
@@ -51,7 +51,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Education education)
+        public ActionResult Create(Education education)
         {
           GenericRepository<Education> ed =  _uow.RepositoryFor<Education>();
             ed.Add(education);

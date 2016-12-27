@@ -322,7 +322,7 @@
     <Content Include="Views\Person\Edit.cshtml" />
     <Content Include="Views\Person\Add.cshtml" />
     <Content Include="Views\Person\Details.cshtml" />
-    <Content Include="Views\Address\Add.cshtml" />
+    <Content Include="Views\Address\Create.cshtml" />
     <Content Include="Views\Person\Delete.cshtml" />
     <Content Include="Views\Address\Index.cshtml" />
     <Content Include="Views\Education\Index.cshtml" />

@@ -32,7 +32,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // add a new 
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
             PreviousApplication previousapplication = new PreviousApplication
             {
@@ -42,7 +42,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(PreviousApplication previousapplication)
+        public ActionResult Create(PreviousApplication previousapplication)
         {
 
             _uow.RepositoryFor<PreviousApplication>().Add(previousapplication);

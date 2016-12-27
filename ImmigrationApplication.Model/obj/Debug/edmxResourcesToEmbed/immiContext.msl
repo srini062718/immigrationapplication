@@ -141,6 +141,7 @@
     <EntitySetMapping Name="People">
       <EntityTypeMapping TypeName="immigrationModel.Person">
         <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
           <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
           <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
@@ -149,7 +150,6 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
           <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
           <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
           <ScalarProperty Name="Nationality" ColumnName="Nationality" />
