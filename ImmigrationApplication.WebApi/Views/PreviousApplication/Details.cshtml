@@ -1,5 +1,5 @@
 ﻿@model ImmigrationApplication.Model.PreviousApplication
-
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
 <div>
     <h4>PreviousApplication</h4>
     <hr />

@@ -17,10 +17,10 @@ namespace ImmigrationApplication.WebApi.Controllers
             _uow = new UnitOfWork();
         }
         // GET: Parent
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
             var previousapplication = _uow.RepositoryFor<PreviousApplication>().GetAll();
-            return View(previousapplication);
+            return View(previousapplication.Where(x=>x.PersonID==personid));
         }
 
         // get by id

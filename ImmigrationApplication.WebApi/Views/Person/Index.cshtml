@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.Person>
 
-@Html.Partial("~/Views/Shared/_navbar.cshtml")
  @if(@User.IsInRole("Admin"))
     {
 <p style="margin-top:50px;">
@@ -39,13 +38,6 @@
         <th>
             @Html.DisplayNameFor(model => model.BirthCity)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CityofMarriage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CountryofMarriage)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -79,12 +71,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BirthCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CityofMarriage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountryofMarriage)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |

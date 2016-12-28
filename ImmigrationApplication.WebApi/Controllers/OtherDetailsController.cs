@@ -20,10 +20,10 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: OtherDetails
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
           var details =  _uow.RepositoryFor<OtherDetail>().GetAll();
-            return View(details);
+            return View(details.Where(x=>x.PersonID==personid));
         }
 
 

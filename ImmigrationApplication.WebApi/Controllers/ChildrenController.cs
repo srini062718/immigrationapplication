@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.DataAccess.Repositories;
 using ImmigrationApplication.Model;
+using System.Linq;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -23,10 +24,10 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: list of all Children details
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
-            IEnumerable<Child> child = _uow.RepositoryFor<Child>().GetAll();
-            return View(child);
+            IEnumerable<Child> children = _uow.RepositoryFor<Child>().GetAll();
+            return View(children.Where(x=>x.PersonID==personid));
         }
 
 

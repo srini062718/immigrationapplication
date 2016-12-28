@@ -25,10 +25,10 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: list of all Education details
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
            IEnumerable<Education> education =  _uow.RepositoryFor<Education>().GetAll();
-            return View(education);
+            return View(education.Where(x=>x.PersonID==personid));
         }
 
 

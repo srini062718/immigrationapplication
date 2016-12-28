@@ -1,5 +1,18 @@
 ﻿@model ImmigrationApplication.Model.Address
 
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+
+<style>
+    dt, dd {
+        padding-bottom: 10px;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 25px;
+        padding-bottom: 15px;
+    }
+</style>
+
 <div>
     <h4>Address</h4>
     <hr />

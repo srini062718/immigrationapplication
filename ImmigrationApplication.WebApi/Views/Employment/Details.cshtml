@@ -1,5 +1,5 @@
 ﻿@model ImmigrationApplication.Model.Employment
-
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
 <div>
     <h4>Employment</h4>
     <hr />

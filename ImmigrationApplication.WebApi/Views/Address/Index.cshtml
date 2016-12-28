@@ -1,6 +1,16 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.Address>
+<style>
+    dt, dd {
+        padding-bottom: 10px;
+    }
 
-@Html.Partial("~/Views/Shared/_navbar.cshtml")
+    .navbar-nav > li > a {
+        padding-top: 25px;
+        padding-bottom: 15px;
+    }
+</style>
+
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary {{ "PersonID", Model.FirstOrDefault().PersonID}})
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

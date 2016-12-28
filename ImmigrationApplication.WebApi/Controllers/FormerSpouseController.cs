@@ -25,10 +25,10 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: list of all FormerSpouse details
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
             IEnumerable<FormerSpouse> formerspouse = _uow.RepositoryFor<FormerSpouse>().GetAll();
-            return View(formerspouse);
+            return View(formerspouse.Where(x=>x.PersonID==personid));
         }
 
 

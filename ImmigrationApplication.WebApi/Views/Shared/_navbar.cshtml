@@ -5,22 +5,33 @@
         margin-bottom:5px;
         float:left;
     }
+    .nav navbar-nav {
+        width:100%;
+    }
+
+      .navbar-nav li a {
+         padding-right:5px;
+    }
+
 
 </style>
-
-
+  
+   @{
+       int PersonID = Convert.ToInt32(ViewData["PersonID"]);
+   }
 
 <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Address", "Index", "Address")</li>
-        <li>@Html.ActionLink("Education", "Index", "Education")</li>
-        <li>@Html.ActionLink("Employment", "Index", "Employment")</li>
-        <li>@Html.ActionLink("Spouse Details", "Index", "FormerSpouse")</li>
-        <li>@Html.ActionLink("Children", "Index", "Children")</li>
-        <li>@Html.ActionLink("Parents", "Index", "Parent")</li>
-        <li>@Html.ActionLink("Previous Application Details", "Index", "PreviousApplication")</li>
-        <li>@Html.ActionLink("Us Relative", "Index", "UsRelative")</li>
-        <li>@Html.ActionLink("Last US Entry Details", "Index", "LastArrivalDetail")</li>
-        <li>@Html.ActionLink("Other Details", "Index", "OtherDetails")</li>
+        <li>@Html.ActionLink("Person", "Index", "Person", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Address", "Index", "Address",new { personid = PersonID}, null)</li>
+        <li>@Html.ActionLink("Education", "Index", "Education",new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Employment", "Index", "Employment", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Spouse Details", "Index", "FormerSpouse", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Children", "Index", "Children", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Parents", "Index", "Parent", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Previous Application Details", "Index", "PreviousApplication", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Us Relative", "Index", "UsRelative", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Last US Entry Details", "Index", "LastArrivalDetail", new { personid = PersonID }, null)</li>
+        <li>@Html.ActionLink("Other Details", "Index", "OtherDetails", new { personid = PersonID }, null)</li>
     </ul>
 </div>

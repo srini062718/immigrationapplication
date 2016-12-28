@@ -25,10 +25,10 @@ namespace ImmigrationApplication.WebApi.Controllers
 
 
         // GET: Addresses list of all address
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
            var address=  _uow.RepositoryFor<Address>().GetAll();
-            return View(address);
+            return View(address.Where(x=>x.PersonID == personid));
         }
 
         // Get single address 

@@ -25,10 +25,10 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: list of all LastArrivalDetail details
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
             IEnumerable<LastArrivalDetail> lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().GetAll();
-            return View(lastarrivaldetail);
+            return View(lastarrivaldetail.Where(x=>x.PersonID==personid));
         }
 
         // Get details of one particular LastArrivalDetail
