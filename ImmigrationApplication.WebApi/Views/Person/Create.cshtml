@@ -13,7 +13,8 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.LastName)
-                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" , @id="lastname"})
+                        <span id ="lastnamespan"></span>
                     </div>
 
                     <div class="form-group">
@@ -37,7 +38,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.DateofBirth)
-                        @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control" })
+                        @Html.EditorFor(model => model.DateofBirth, new { @class = "form-control" })
                     </div>
 
                     <div class="form-group">
@@ -141,7 +142,7 @@
                         <td>
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Next" class="btn btn-default" />
+                                    <input id="test" type="submit" value="Next" class="btn btn-default" />
                                 </div>
                             </div>
                         </td>
@@ -156,6 +157,20 @@
             </tr>
         </table>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $("#test").click(function () {
+                if ($("#lastname").val().length <= 0) {
+                    $("#lastnamespan").text("This field is required");
+                    $("#lastnamespan").css("color", "red");
+                    return false;
+                }
+            });
+        });
+
+    </script>
 }
 
 

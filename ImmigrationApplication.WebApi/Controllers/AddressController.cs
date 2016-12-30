@@ -28,6 +28,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Index(int personid)
         {
            var address=  _uow.RepositoryFor<Address>().GetAll();
+            List<Address> addresslist = address.Where(x => x.PersonID == personid).ToList();
+            if(addresslist.Count == 0)
+            {
+                return RedirectToAction("Create", "Address", new { personid = personid});
+            }
             return View(address.Where(x=>x.PersonID == personid));
         }
 
@@ -39,10 +44,20 @@ namespace ImmigrationApplication.WebApi.Controllers
             return View(a.FirstOrDefault(x => x.PersonID == personid));
         }
 
+
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personid)
         {
-            Address a = new Address {PersonID = Convert.ToInt32(TempData["id"])};
+            Address a;
+            if (personid > 0)
+            {
+                a = new Address { PersonID = personid };
+            }
+            else
+            {
+                a = new Address { PersonID = Convert.ToInt32(TempData["id"]) };
+
+            }
             return View(a);
         }
 
@@ -77,7 +92,7 @@ namespace ImmigrationApplication.WebApi.Controllers
            GenericRepository<Address>  address = _uow.RepositoryFor<Address>();
             address.Update(a);
             _uow.Complete();
-            return RedirectToAction("Details", "Address", new {id = a.PersonID});
+            return RedirectToAction("Details", "Address", new {personid = a.PersonID});
         }
 
       //  Address/delete/id

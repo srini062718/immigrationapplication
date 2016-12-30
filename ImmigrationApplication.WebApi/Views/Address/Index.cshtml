@@ -12,7 +12,7 @@
 
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary {{ "PersonID", Model.FirstOrDefault().PersonID}})
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { personid = Model.FirstOrDefault().PersonID });
 </p>
 <table class="table">
     <tr>
@@ -64,9 +64,9 @@
             @Html.DisplayFor(modelItem => item.Person.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AddressID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AddressID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AddressID })
+            @Html.ActionLink("Edit", "Edit", new { personid=item.PersonID }) |
+            @Html.ActionLink("Details", "Details", new { personid=item.PersonID }) |
+            @Html.ActionLink("Delete", "Delete", new { personid=item.PersonID })
         </td>
     </tr>
 }
