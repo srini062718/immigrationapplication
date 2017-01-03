@@ -27,8 +27,14 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: list of all Employment details
         public ActionResult Index(int personid)
         {
-            IEnumerable<Employment> employ = _uow.RepositoryFor<Employment>().GetAll();
-            return View(employ.Where(x=>x.PersonID==personid));
+            var employ = _uow.RepositoryFor<Employment>().GetAll();
+            var enumerable = employ as Employment[] ?? employ.ToArray();
+            var employlist = enumerable.Where(x => x.PersonID == personid).ToList();
+            if (employlist.Count == 0)
+            {
+                return RedirectToAction("Create", "Employment", new { personid });
+            }
+            return View(enumerable.Where(x=>x.PersonID==personid));
         }
 
 

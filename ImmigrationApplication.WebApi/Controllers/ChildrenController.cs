@@ -26,15 +26,21 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: list of all Children details
         public ActionResult Index(int personid)
         {
-            IEnumerable<Child> children = _uow.RepositoryFor<Child>().GetAll();
-            return View(children.Where(x=>x.PersonID==personid));
+            var children = _uow.RepositoryFor<Child>().GetAll();
+            var enumerable = children as Child[] ?? children.ToArray();
+            var childlist = enumerable.Where(x=>x.PersonID==personid).ToList();
+            if (childlist.Count == 0)
+            {
+                return RedirectToAction("Create", "Children", new {personid});
+            }
+            return View(enumerable.Where(x=>x.PersonID==personid));
         }
 
 
         // Get details of one particular Children
         public ActionResult Details(int id)
         {
-            Child child = _uow.RepositoryFor<Child>().Get(id);
+            var child = _uow.RepositoryFor<Child>().Get(id);
             return View(child);
         }
 

@@ -1,11 +1,17 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.Person>
+<style>
+    .body-content {
+        padding-top:25px;
+    }
 
- @if(@User.IsInRole("Admin"))
-    {
-<p style="margin-top:50px;">
-    @Html.ActionLink("Create New", "Create")
-</p>
+</style>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 }
+
 <table class="table">
     <tr>
         <th>

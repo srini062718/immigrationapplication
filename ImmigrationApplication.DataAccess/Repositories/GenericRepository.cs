@@ -11,7 +11,6 @@ namespace ImmigrationApplication.DataAccess.Repositories
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity  : class
     {
         protected readonly immigrationEntities Context;
-       // internal DbSet<TEntity> dbSet;
 
         public GenericRepository(immigrationEntities context)
         {
@@ -20,7 +19,7 @@ namespace ImmigrationApplication.DataAccess.Repositories
 
         public TEntity Get(int id)
         {
-            // Here we are working with a repository pattern and immigratio entities instance. So we don't have DbSets 
+            // Here we are working with a repository pattern and immigration entities instance. So we don't have DbSets 
             // such as person and parents, and we need to use the generic Set() method to access them.
 
             return Context.Set<TEntity>().Find(id);

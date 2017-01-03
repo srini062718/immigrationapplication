@@ -13,13 +13,14 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.LastName)
-                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" , @id="lastname"})
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" , id="lastname"})
                         <span id ="lastnamespan"></span>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.FirstName)
-                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", id = "firstname" })
+                        <span id="firstnamespan"></span>
                     </div>
 
                     <div class="form-group">
@@ -162,11 +163,15 @@
         $(document).ready(function () {
             debugger;
             $("#test").click(function () {
-                if ($("#lastname").val().length <= 0) {
+                if ($("#lastname").val().length === 0) {
                     $("#lastnamespan").text("This field is required");
                     $("#lastnamespan").css("color", "red");
-                    return false;
                 }
+                else if ($("#firstname").val().length === 0) {
+                    $("#firstnamespan").text("This field is required");
+                    $("#firstnamespan").css("color", "red");
+                }
+                return false;
             });
         });
 

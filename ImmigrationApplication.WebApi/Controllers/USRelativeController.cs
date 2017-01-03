@@ -20,7 +20,13 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Index(int personid)
         {
             var usrelative = _uow.RepositoryFor<USRelative>().GetAll();
-            return View(usrelative.Where(x=>x.PersonID==personid));
+            var enumerable = usrelative as USRelative[] ?? usrelative.ToArray();
+            var relativeslist = enumerable.Where(x => x.PersonID == personid).ToList();
+            if (relativeslist.Count == 0)
+            {
+                return RedirectToAction("Create", "USRelative", new { personid });
+            }
+            return View(enumerable.Where(x=>x.PersonID==personid));
         }
 
         // get by id

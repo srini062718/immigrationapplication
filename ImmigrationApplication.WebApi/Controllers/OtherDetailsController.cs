@@ -23,7 +23,13 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Index(int personid)
         {
           var details =  _uow.RepositoryFor<OtherDetail>().GetAll();
-            return View(details.Where(x=>x.PersonID==personid));
+            var enumerable = details as OtherDetail[] ?? details.ToArray();
+            var otherdetaillist = enumerable.Where(x => x.PersonID == personid).ToList();
+            if (otherdetaillist.Count == 0)
+            {
+                return RedirectToAction("Create", "OtherDetails", new { personid });
+            }
+            return View(enumerable.Where(x=>x.PersonID==personid));
         }
 
 

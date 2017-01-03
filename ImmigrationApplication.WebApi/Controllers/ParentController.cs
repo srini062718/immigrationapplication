@@ -17,11 +17,18 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             _uow = new UnitOfWork();
         }
+
         // GET: Parent
         public ActionResult Index(int personid)
         {
            var parents =  _uow.RepositoryFor<Parent>().GetAll();
-            return View(parents.Where(x=>x.PersonID==personid));
+            var enumerable = parents as Parent[] ?? parents.ToArray();
+            var parentlist = enumerable.Where(x => x.PersonID == personid).ToList();
+            if (parentlist.Count == 0)
+            {
+                return RedirectToAction("Create", "Parent", new { personid });
+            }
+            return View(enumerable.Where(x=>x.PersonID==personid));
         }
 
         // get by id

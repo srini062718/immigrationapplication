@@ -12,8 +12,7 @@
 
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary {{ "PersonID", Model.FirstOrDefault().PersonID}})
 <p>
-    @Html.ActionLink("Create New", "Create", new { personid = Model.FirstOrDefault().PersonID });
-</p>
+    @Html.ActionLink("Create New", "Create", new { personid = Model.FirstOrDefault().PersonID })</p>
 <table class="table">
     <tr>
         <th>

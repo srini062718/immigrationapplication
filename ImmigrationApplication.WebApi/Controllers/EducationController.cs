@@ -27,8 +27,14 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: list of all Education details
         public ActionResult Index(int personid)
         {
-           IEnumerable<Education> education =  _uow.RepositoryFor<Education>().GetAll();
-            return View(education.Where(x=>x.PersonID==personid));
+           var education =  _uow.RepositoryFor<Education>().GetAll();
+            var enumerable = education as Education[] ?? education.ToArray();
+            var educationlist = enumerable.Where(x => x.PersonID == personid).ToList();
+            if (educationlist.Count == 0)
+            {
+                return RedirectToAction("Create", "Education", new {personid});
+            }
+            return View(enumerable.Where(x=>x.PersonID==personid));
         }
 
 

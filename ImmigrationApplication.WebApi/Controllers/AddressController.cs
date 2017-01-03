@@ -28,12 +28,13 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Index(int personid)
         {
            var address=  _uow.RepositoryFor<Address>().GetAll();
-            List<Address> addresslist = address.Where(x => x.PersonID == personid).ToList();
+            var enumerable = address as Address[] ?? address.ToArray();
+            var addresslist = enumerable.Where(x => x.PersonID == personid).ToList();
             if(addresslist.Count == 0)
             {
-                return RedirectToAction("Create", "Address", new { personid = personid});
+                return RedirectToAction("Create", "Address", new {personid});
             }
-            return View(address.Where(x=>x.PersonID == personid));
+            return View(enumerable.Where(x=>x.PersonID == personid));
         }
 
         // Get single address 

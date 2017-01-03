@@ -20,7 +20,13 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Index(int personid)
         {
             var previousapplication = _uow.RepositoryFor<PreviousApplication>().GetAll();
-            return View(previousapplication.Where(x=>x.PersonID==personid));
+            var enumerable = previousapplication as PreviousApplication[] ?? previousapplication.ToArray();
+            var previouslist = enumerable.Where(x => x.PersonID == personid).ToList();
+            if (previouslist.Count == 0)
+            {
+                return RedirectToAction("Create", "PreviousApplication", new { personid });
+            }
+            return View(enumerable.Where(x=>x.PersonID==personid));
         }
 
         // get by id
@@ -32,7 +38,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // add a new 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personid)
         {
             var previousapplication = new PreviousApplication
             {

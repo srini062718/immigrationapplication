@@ -5,8 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.Model;
-using ImmigrationApplication.DataAccess.Repositories;
-using Microsoft.AspNet.Identity;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -27,12 +25,17 @@ namespace ImmigrationApplication.WebApi.Controllers
             ViewBag.Title = "List of Customers";
             var p = _uow.RepositoryFor<Person>();
             var per =   p.GetAll();
-          
-            if (User.IsInRole("Admin") != true)
-            {
+           
+            if (User.IsInRole("Admin") != true )
+                {
                 per = per.Where(x => x.CreatedByName == User.Identity.Name);
-            }
-            return View(per);
+                }
+           
+            if(!per.Any())
+                {
+                    return RedirectToAction("Create","Person");
+                }
+                return View(per);
         }
 
         public ActionResult Details(int id)
@@ -61,14 +64,12 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Person p)
         {
@@ -87,6 +88,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             return View(person);
         }
 
+        [Authorize]
         [HttpPost,ActionName("Delete")]
         public ActionResult Deleteconfirmed(int id)
         {
