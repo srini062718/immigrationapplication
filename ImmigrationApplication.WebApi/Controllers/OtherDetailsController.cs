@@ -12,7 +12,7 @@ namespace ImmigrationApplication.WebApi.Controllers
     public class OtherDetailsController : Controller
     {
 
-        private readonly UnitOfWork _uow = null;
+        private readonly UnitOfWork _uow;
 
         public OtherDetailsController()
         {

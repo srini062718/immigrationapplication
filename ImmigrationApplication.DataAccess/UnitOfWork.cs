@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ImmigrationApplication.DataAccess.Interfaces;
-using ImmigrationApplication.Model;
-using System.Linq.Expressions;
-
+﻿using ImmigrationApplication.Model;
 using ImmigrationApplication.DataAccess.Repositories;
 
 namespace ImmigrationApplication.DataAccess
