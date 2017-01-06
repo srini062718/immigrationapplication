@@ -5,26 +5,35 @@
         margin-bottom:5px;
         float:left;
     }
-    .nav navbar-nav {
-        width:100%;
-        padding-top:15px;
-    }
+    .navbar-nav > li > a :hover{
+    padding-top: 2px;
+    text-decoration:none;
+    background-color:blue;
+}
+    .flex-container {
+  padding: 0;
+  margin: 10px;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+/* ReSharper disable once CssBrowserCompatibility */
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+  display: block;
+}
 
-   a.classname {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    border: solid 1px #20538D;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-    background: #4479BA;
-    color: #FFF;
-    padding: 4px 5px;
-    text-decoration: none;
-    margin-right:10px;
-    }
+    .flex-item {
+  background: #ccf28f;
+  width: 110px;
+  height: 60px;
+  margin-top: 12px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
 
 </style>
   
@@ -33,17 +42,17 @@
    }
 
 <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Person", "Index", "Person", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Address", "Index", "Address",new { personid = personId}, null)</li>
-        <li>@Html.ActionLink("Education", "Index", "Education",new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Employment", "Index", "Employment", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Spouse Details", "Index", "FormerSpouse", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Children", "Index", "Children", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Parents", "Index", "Parent", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Previous Application Details", "Index", "PreviousApplication", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Us Relative", "Index", "UsRelative", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Last US Entry Details", "Index", "LastArrivalDetail", new { personid = personId }, null)</li>
-        <li>@Html.ActionLink("Other Details", "Index", "OtherDetails", new { personid = personId }, null)</li>
+    <ul class="nav navbar-nav flex-container">
+        <li class="flex-item hvr-bounce-to-top" style=" padding-top: 2px;" >@Html.ActionLink("Person", "Index", "Person", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Address", "Index", "Address",new { personid = personId}, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Education", "Index", "Education",new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Employment", "Index", "Employment", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Spouse Details", "Index", "FormerSpouse", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Children", "Index", "Children", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Parents", "Index", "Parent", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Previous Application Details", "Index", "PreviousApplication", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Us Relative", "Index", "UsRelative", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Last US Entry Details", "Index", "LastArrivalDetail", new { personid = personId }, null)</li>
+        <li class="flex-item hvr-bounce-to-top">@Html.ActionLink("Other Details", "Index", "OtherDetails", new { personid = personId }, null)</li>
     </ul>
 </div>

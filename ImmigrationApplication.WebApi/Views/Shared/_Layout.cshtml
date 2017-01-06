@@ -11,13 +11,18 @@
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/Content/hover.css" />
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <style>
         .navbar-inverse .navbar-nav > li > a {
-    color: #fff;
+            color: #fff;
             font-size: medium;
             padding-top: 10px;
+                }
+
+        .navbar-nav > li > a {
+            padding-top: 2px;
 }
 
     .navbar-inverse .navbar-brand {
