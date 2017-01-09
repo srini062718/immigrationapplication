@@ -80,7 +80,7 @@ namespace ImmigrationApplication.WebApi.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public string Role { get; set; }
+        public object PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -101,7 +101,8 @@ namespace ImmigrationApplication.WebApi.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public string Code { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
     }
 
     public class ForgotPasswordViewModel

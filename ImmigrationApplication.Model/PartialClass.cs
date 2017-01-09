@@ -18,4 +18,10 @@ namespace ImmigrationApplication.Model
     {
 
     }
+
+    [MetadataType(typeof(EmploymentMetaData))]
+    public partial class Employment
+    {
+        
+    }
 }

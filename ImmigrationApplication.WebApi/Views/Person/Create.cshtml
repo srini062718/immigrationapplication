@@ -173,7 +173,10 @@
                         </td>
                         <td>
                             <div>
-                                @Html.ActionLink("Back to List", "Index")
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Back to List", "Index")
+                                }
                             </div>
                         </td>
                     </tr>

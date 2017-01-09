@@ -20,6 +20,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         public AccountController()
         {
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,11 +140,6 @@ namespace ImmigrationApplication.WebApi.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-           var context = new Model.immigrationEntities();
-            //   System.Collections.Generic.List<    > context;
-          
-        //    SelectListItem li = new SelectListItem();
-
             return View();
         }
 
@@ -261,7 +257,7 @@ namespace ImmigrationApplication.WebApi.Controllers
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            var result = await UserManager.ResetPasswordAsync(user.Id, model.PhoneNumber, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
