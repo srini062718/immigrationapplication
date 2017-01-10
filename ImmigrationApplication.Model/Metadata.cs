@@ -69,7 +69,7 @@ namespace ImmigrationApplication.Model
         [Display(Name = "Social Security Number")]
         [Required]
         // ReSharper disable once InconsistentNaming
-        public string SSN;
+        public int SSN;
 
         [Display(Name = "Passport Number")]
         [Required]
@@ -136,7 +136,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Zip Code")]
-        public string Zipcode;
+        public int ZipCode;
 
 
     }
@@ -169,7 +169,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Zip Code")]
-        public string Zipcode;
+        public int ZipCode;
 
         [Required]
         [Display(Name = "Job Title")]
@@ -218,7 +218,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Zip Code")]
-        public string Zipcode;
+        public int ZipCode;
 
         [Required]
         [Display(Name ="Field of Study")]
@@ -237,7 +237,7 @@ namespace ImmigrationApplication.Model
         public string Degree;
     }
 
-    public class Children
+    public class ChildrenMetaData
     {
         [Required]
         [Display(Name = "First Name ")]
@@ -264,6 +264,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateofBirth;
 
         [Required]
@@ -288,10 +289,41 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Zip Code")]
-        public string Zipcode;
+        public int ZipCode;
 
         [Required]
         [Display(Name ="Phone Number")]
         public string PhoneNumber;
     }
+
+    public class ParentMetaData
+    {
+        [Required]
+        [Display(Name = "First Name ")]
+        public string FirstName;
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName;
+
+        [Display(Name = "Middle Name")]
+        public string MiddleName;
+
+        [Required]
+        [Display(Name = "Date of Birth")]
+        public DateTime DateofBirth;
+
+        [Display(Name = "City of Birth")]
+        [Required]
+        public string CityofBirth;
+
+        [Display(Name = "City of Birth")]
+        [Required]
+        public string CityofResidence;
+
+        [Display(Name = "Relation Ship with the Applicant")]
+        [Required]
+        public string Relationship;
+    }
+
 }

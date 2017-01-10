@@ -73,12 +73,17 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Person p)
         {
-            p.CreatedByName = User.Identity.Name;
-            var person = _uow.RepositoryFor<Person>();
-            person.Add(p);
-            _uow.Complete();
-            TempData.Add("id", p.PersonID.ToString());
-            return RedirectToAction("Details", "Person", new { id = p.PersonID });
+            if (ModelState.IsValid)
+            {
+                p.CreatedByName = User.Identity.Name;
+                var person = _uow.RepositoryFor<Person>();
+                person.Add(p);
+                _uow.Complete();
+                TempData.Add("id", p.PersonID.ToString());
+                return RedirectToAction("Details", "Person", new { id = p.PersonID });
+            }
+            return View();
+
         }
 
         [HttpGet]

@@ -247,6 +247,7 @@
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\PersonsController.cs" />
     <Compile Include="Controllers\PreviousApplicationController.cs" />
+    <Compile Include="Controllers\PrintDetailsController.cs" />
     <Compile Include="Controllers\UsRelativeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -259,6 +260,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\PrintApplicantDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -408,6 +410,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Providers\" />
+    <Folder Include="Views\PrintDetails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
