@@ -9,7 +9,7 @@ namespace ImmigrationApplication.WebApi.Controllers
     public class PrintDetailsController : Controller
     {
         // GET: PrintDetails
-        public ActionResult Index()
+        public ActionResult Details(int personid)
         {
             return View();
         }

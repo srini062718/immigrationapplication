@@ -50,7 +50,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(PreviousApplication previousapplication)
         {
-
+            if (!ModelState.IsValid) return View();
             _uow.RepositoryFor<PreviousApplication>().Add(previousapplication);
             _uow.Complete();
             TempData.Add("id", previousapplication.PersonID.ToString());
@@ -68,6 +68,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Edit(PreviousApplication previousapplication)
         {
+            if (!ModelState.IsValid) return View();
             _uow.RepositoryFor<PreviousApplication>().Update(previousapplication);
             _uow.Complete();
             return RedirectToAction("Details", "PreviousApplication", new { id = previousapplication.PreviousApplicationID });

@@ -52,7 +52,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Parent parent)
         {
-
+            if (!ModelState.IsValid) return View();
             _uow.RepositoryFor<Parent>().Add(parent);
             _uow.Complete();
             TempData.Add("id", parent.PersonID.ToString());

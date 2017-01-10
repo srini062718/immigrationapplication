@@ -18,11 +18,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             _uow = new UnitOfWork();
         }
 
-        public ChildrenController(UnitOfWork uow)
-        {
-            _uow = uow;
-        }
-
         // GET: list of all Children details
         public ActionResult Index(int personid)
         {
@@ -35,7 +30,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
-
 
         // Get details of one particular Children
         public ActionResult Details(int id)
@@ -58,6 +52,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Child children)
         {
+            if (!ModelState.IsValid) return View();
             var ed = _uow.RepositoryFor<Child>();
             ed.Add(children);
             _uow.Complete();

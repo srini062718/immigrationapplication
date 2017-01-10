@@ -58,6 +58,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(LastArrivalDetail lastArrivalDetail)
         {
+            if (!ModelState.IsValid) return View();
             var ed = _uow.RepositoryFor<LastArrivalDetail>();
             ed.Add(lastArrivalDetail);
             _uow.Complete();
@@ -68,14 +69,15 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            LastArrivalDetail lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
+            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
             return View(lastarrivaldetail);
         }
 
         [HttpPost]
         public ActionResult Edit(LastArrivalDetail lastarrivaldetail)
         {
-            GenericRepository<LastArrivalDetail> ed = _uow.RepositoryFor<LastArrivalDetail>();
+            if (!ModelState.IsValid) return View();
+            var ed = _uow.RepositoryFor<LastArrivalDetail>();
             ed.Update(lastarrivaldetail);
             _uow.Complete();
             return RedirectToAction("Details", "LastArrivalDetail", new { id = lastarrivaldetail.LastArrivalDetailsID });
@@ -84,14 +86,14 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            LastArrivalDetail lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
+            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
             return View(lastarrivaldetail);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult Deleteconfirmed(int id)
         {
-            LastArrivalDetail lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
+            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
             _uow.RepositoryFor<LastArrivalDetail>().Delete(lastarrivaldetail.LastArrivalDetailsID);
             _uow.Complete();
             return RedirectToAction("Index", "LastArrivalDetail");

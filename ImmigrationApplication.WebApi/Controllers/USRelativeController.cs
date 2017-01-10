@@ -50,7 +50,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(USRelative usrelative)
         {
-
+            if (!ModelState.IsValid) return View();
             _uow.RepositoryFor<USRelative>().Add(usrelative);
             _uow.Complete();
             TempData.Add("id", usrelative.PersonID.ToString());

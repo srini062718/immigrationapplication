@@ -59,6 +59,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(FormerSpouse formerSpouse)
         {
+            if (!ModelState.IsValid) return View();
             var ed = _uow.RepositoryFor<FormerSpouse>();
             ed.Add(formerSpouse);
             _uow.Complete();
@@ -76,7 +77,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Edit(FormerSpouse formerspouse)
         {
-            GenericRepository<FormerSpouse> ed = _uow.RepositoryFor<FormerSpouse>();
+            var ed = _uow.RepositoryFor<FormerSpouse>();
             ed.Update(formerspouse);
             _uow.Complete();
             return RedirectToAction("Details", "FormerSpouse", new { id = formerspouse.FormerSpouseID });

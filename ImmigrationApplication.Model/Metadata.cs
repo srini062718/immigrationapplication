@@ -109,7 +109,6 @@ namespace ImmigrationApplication.Model
         [Display(Name = "Country of Marriage")]
         [Required]
         public string CountryofMarriage;
-
     }
 
     public class AddressMetadata
@@ -169,7 +168,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Zip Code")]
-        public int ZipCode;
+        public int Zipcode;
 
         [Required]
         [Display(Name = "Job Title")]
@@ -226,10 +225,12 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name ="Date Started")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string StartDate;
 
         [Required]
         [Display(Name = "Date Ended")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string EndDate;
 
         [Required]
@@ -311,6 +312,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateofBirth;
 
         [Display(Name = "City of Birth")]
@@ -326,4 +328,154 @@ namespace ImmigrationApplication.Model
         public string Relationship;
     }
 
+    public class FormerSpouseMetaData
+    {
+        [Display(Name = "Last Name")]
+        [Required]
+        public string LastName;
+
+        [Display(Name = "First Name")]
+        [Required]
+        public string FirstName;
+
+        [Required]
+        [Display(Name = "Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateofBirth;
+
+        [Display(Name = "Middle Name")]
+        [Required]
+        public string MiddleName;
+
+        [Required]
+        [Display(Name = "Date of Marriage")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateofMarriage;
+
+        [Display(Name = "Date of Divorce")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateofDiverse;
+
+        [Display(Name ="City of Marriage")]
+        public string CityofMarriage;
+
+        [Display(Name ="Country of Marriage")]
+        public string CountryofMarriage;
+
+        [Display(Name ="Date of Death")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateofDeath;
+    }
+
+    public class LastArrivalDetailsMetaData
+    {
+        [Required]
+        public string City;
+
+        [Required]
+        public string State;
+
+        [Required]
+        [Display(Name ="Date of Arrival")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateofArrival;
+
+        [Required]
+        [Display(Name ="Name of the Airlines")]
+        public string NameofFlight;
+
+        [Required]
+        [Display(Name ="Flight Number")]
+        public string FlightNumber;
+
+        [Required]
+        [Display(Name ="Applied for Green Card")]
+        public string AppliedPermanentResident;
+
+        [Required]
+        [Display(Name ="Is Visa Rejected?")]
+        public string RefusedVisa;
+
+
+        
+        // ReSharper disable once InconsistentNaming
+        [Required]
+        [Display(Name ="Place of Visa Issued Consulate")]
+        public string USConsulate;
+    }
+
+    public class OtherDetails
+    {
+        [Required]
+        [Display(Name ="About Firm")]
+        public string AboutFirm;
+
+        [Required]
+        [Display(Name ="Driving License Number")]
+        public string LicenseNumber;
+
+        [Required]
+        [Display(Name ="Lanuages Known")]
+        public string LanguagesSpoken;
+
+        [Required]
+        [Display(Name ="Any Conviction ?")]
+        public string Conviction;
+
+        [Required]
+        [Display(Name ="Other Details Information")]
+        public string OtherInformation;
+    }
+
+    public class PreviousApplicationMetaData
+    {
+        [Required]
+        [Display(Name ="Application Type")]
+        public string ApplicationType;
+
+        [Required]
+        [Display(Name ="Date Applied")]
+        public DateTime DateApplied;
+
+        [Required]
+        [Display(Name ="Is Application Approved ?")]
+        public string StatusGranted;
+
+        [Required]
+        [Display(Name ="Please Indicate the Reason If Denied")]
+        public string IndicateIfDenied;
+
+        [Required]
+        [Display(Name ="Cap Gap Period If Any ?")]
+        public string CapGap;
+    }
+
+    // ReSharper disable once InconsistentNaming
+    public class USRelativeMetaData
+    {
+        [Required]
+        [Display(Name ="Relative Name")]
+        public string Name;
+
+        [Required]
+        [Display(Name = "Relative Name")]
+        public string Relationship;
+
+        // ReSharper disable once InconsistentNaming
+        [Required]
+        [Display(Name = "Visa Type of Relative")]
+        public string USVisaType;
+
+        [Required]
+        [Display(Name = "Age")]
+        public int Age;
+
+        [Required]
+        [Display(Name = "Martial Status")]
+        public string MaritialStatus;
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address;
+    }
 }

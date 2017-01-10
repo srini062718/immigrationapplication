@@ -55,7 +55,8 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(OtherDetail detail)
         {
-           _uow.RepositoryFor<OtherDetail>().Add(detail);
+            if (!ModelState.IsValid) return View();
+            _uow.RepositoryFor<OtherDetail>().Add(detail);
             _uow.Complete();
             TempData.Add("id", detail.PersonID.ToString());
             return RedirectToAction("Index", "Person");

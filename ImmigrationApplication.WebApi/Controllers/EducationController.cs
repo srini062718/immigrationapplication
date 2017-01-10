@@ -19,11 +19,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             _uow = new UnitOfWork();
         }
 
-        public EducationController(UnitOfWork uow)
-        {
-            _uow = uow;
-        }
-
         // GET: list of all Education details
         public ActionResult Index(int personid)
         {
@@ -59,11 +54,12 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Education education)
         {
-          var ed =  _uow.RepositoryFor<Education>();
+            if (!ModelState.IsValid) return View();
+            var ed = _uow.RepositoryFor<Education>();
             ed.Add(education);
             _uow.Complete();
             TempData.Add("id", education.PersonID.ToString());
-            return RedirectToAction("Create","Employment");
+            return RedirectToAction("Create", "Employment");
         }
 
         [HttpGet]

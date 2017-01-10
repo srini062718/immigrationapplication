@@ -41,7 +41,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         // Get details of one particular Employment
         public ActionResult Details(int id)
         {
-            Employment employ = _uow.RepositoryFor<Employment>().Get(id);
+            var employ = _uow.RepositoryFor<Employment>().Get(id);
             return View(employ);
         }
 
@@ -59,6 +59,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Employment employment)
         {
+            if (!ModelState.IsValid) return View();
             var ed = _uow.RepositoryFor<Employment>();
             ed.Add(employment);
             _uow.Complete();

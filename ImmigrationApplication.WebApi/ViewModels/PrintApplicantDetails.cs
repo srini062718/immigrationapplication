@@ -18,6 +18,6 @@ namespace ImmigrationApplication.WebApi.ViewModels
         public PreviousApplication Previousapplication { get; set; }
         public OtherDetail Otherdetail { get; set; }
         public USRelative Usrelative { get; set; }
-        public LastArrivalDetail Lastarrivaldetails { get; set; }
+        public LastArrivalDetail LastArrivalDetail { get; set; }
     }
 }

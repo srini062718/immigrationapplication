@@ -52,11 +52,17 @@ namespace ImmigrationApplication.WebApi.Controllers
             Address a;
             if (personid > 0)
             {
-                a = new Address { PersonID = personid };
+                a = new Address
+                {
+                    PersonID = personid
+                };
             }
             else
             {
-                a = new Address { PersonID = Convert.ToInt32(TempData["id"]) };
+                a = new Address
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
 
             }
             return View(a);
@@ -65,7 +71,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Address address)
         {
-          //  address.PersonID = Convert.ToInt32(TempData["id"]);
+            if (!ModelState.IsValid) return View();
             var g = _uow.RepositoryFor<Address>();
             g.Add(address);
             _uow.Complete();
@@ -79,7 +85,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Edit(int personid)
         {
 
-            IEnumerable<Address> a = _uow.RepositoryFor<Address>().GetAll();
+            var a = _uow.RepositoryFor<Address>().GetAll();
 
             return View(a.FirstOrDefault(x => x.PersonID == personid));
         //    Address a = _uow.RepositoryFor<Address>().Get(id);
@@ -90,7 +96,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Edit(Address a)
         {
-           GenericRepository<Address>  address = _uow.RepositoryFor<Address>();
+           var  address = _uow.RepositoryFor<Address>();
             address.Update(a);
             _uow.Complete();
             return RedirectToAction("Details", "Address", new {personid = a.PersonID});

@@ -24,4 +24,47 @@ namespace ImmigrationApplication.Model
     {
         
     }
+
+    [MetadataType(typeof(EducationMetaData))]
+    public partial class Education
+    {
+
+    }
+
+    [MetadataType(typeof(ParentMetaData))]
+    public partial class Parent
+    {
+
+    }
+
+    [MetadataType(typeof(ChildrenMetaData))]
+    public partial class Child
+    {
+
+    }
+
+    [MetadataType(typeof(PreviousApplicationMetaData))]
+    public partial class PreviousApplication
+    {
+
+    }
+
+    [MetadataType(typeof(FormerSpouseMetaData))]
+    public partial class FormerSpouse
+    {
+
+    }
+
+    [MetadataType(typeof(LastArrivalDetailsMetaData))]
+    public partial class LastArrivalDetail
+    {
+
+    }
+
+    [MetadataType(typeof(USRelativeMetaData))]
+    // ReSharper disable once InconsistentNaming
+    public partial class USRelative
+    {
+
+    }
 }
