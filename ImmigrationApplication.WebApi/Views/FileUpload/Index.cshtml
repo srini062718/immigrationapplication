@@ -1,0 +1,19 @@
+﻿
+@Html.Partial("~/Views/Shared/_navbar.cshtml")
+
+<style>
+    
+ form {
+        margin-top:50px; 
+    }
+ input {
+     margin-bottom: 10px;
+ }
+</style>
+
+
+@using (Html.BeginForm("Upload", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="File" />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+}

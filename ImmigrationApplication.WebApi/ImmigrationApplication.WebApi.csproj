@@ -238,6 +238,7 @@
     <Compile Include="Controllers\ChildrenController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\EmploymentController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\FormerSpouseController.cs" />
     <Compile Include="Controllers\LastArrivalDetailController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -272,6 +273,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\professional-group.jpg" />
+    <Content Include="Images\students_pupils.jpg" />
     <Content Include="Images\sunshine_logo.png" />
     <Content Include="Login.html" />
     <Content Include="Register.html" />
@@ -406,10 +409,12 @@
     <Content Include="Views\USRelative\Edit.cshtml" />
     <Content Include="Views\USRelative\Delete.cshtml" />
     <Content Include="Views\Shared\_navbar.cshtml" />
+    <Content Include="Views\FileUpload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Providers\" />
+    <Folder Include="Uploads\" />
     <Folder Include="Views\PrintDetails\" />
   </ItemGroup>
   <ItemGroup>

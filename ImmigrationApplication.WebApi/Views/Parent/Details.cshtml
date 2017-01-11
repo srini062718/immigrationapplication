@@ -1,5 +1,12 @@
 ﻿@model ImmigrationApplication.Model.Parent
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+
+<style>
+    a {
+        color: black;
+        background-color:blue;
+    }
+</style>
 <div>
     <h4>Parent</h4>
     <hr />
@@ -71,6 +78,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ParentID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParentID}) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+

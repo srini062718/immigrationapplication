@@ -30,11 +30,9 @@ namespace ImmigrationApplication.WebApi.Controllers
            var address=  _uow.RepositoryFor<Address>().GetAll();
             var enumerable = address as Address[] ?? address.ToArray();
             var addresslist = enumerable.Where(x => x.PersonID == personid).ToList();
-            if(addresslist.Count == 0)
-            {
-                return RedirectToAction("Create", "Address", new {personid});
-            }
-            return View(enumerable.Where(x=>x.PersonID == personid));
+            if (addresslist.Count != 0) return View(enumerable.Where(x => x.PersonID == personid));
+            Console.WriteLine("You didn't provide the address details, Please provide it now.");
+            return RedirectToAction("Create", "Address", new {personid});
         }
 
         // Get single address 

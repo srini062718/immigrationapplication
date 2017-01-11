@@ -42,7 +42,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             var p = _uow.RepositoryFor<Person>();
             Con = p.Get(id);
-            return View(Con);
+            return Con == null ? View() : View(Con);
         }
 
         [HttpGet]

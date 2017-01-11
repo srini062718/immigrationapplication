@@ -20,5 +20,25 @@ namespace ImmigrationApplication.WebApi
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        public void Application_End()
+        {
+            
+        }
+
+        public void Application_Error()
+        {
+            
+        }
+
+        public void Session_Start()
+        {
+            
+        }
+
+        public void Session_End()
+        {
+            
+        }
     }
 }
