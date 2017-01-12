@@ -410,12 +410,12 @@
     <Content Include="Views\USRelative\Delete.cshtml" />
     <Content Include="Views\Shared\_navbar.cshtml" />
     <Content Include="Views\FileUpload\Index.cshtml" />
+    <Content Include="Views\PrintDetails\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Providers\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\PrintDetails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
