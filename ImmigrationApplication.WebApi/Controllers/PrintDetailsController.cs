@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Rotativa;
 using ImmigrationApplication.Model;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.WebApi.ViewModels;
+using Rotativa.Options;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -73,14 +75,15 @@ namespace ImmigrationApplication.WebApi.Controllers
             return View(viewmodel);
         }
 
-        public ActionResult ExportPDF(int id)
+        public ActionResult ExportPdf(int id)
         {
 
-            PrintDetailsController p =new PrintDetailsController();
-            var model = p.Details(id);
-            return new ActionAsPdf("Details", model);
+            return new ActionAsPdf("Details", new {personid = id})
             {
-                FileName = Server.MapPath("ListDetails.pdf");
+                PageSize = Size.A4,
+                PageOrientation = Orientation.Portrait,
+                PageMargins = { Left = 1, Right = 1 },
+                FileName = Server.MapPath("ListDetails.pdf")
             };
         }
     }

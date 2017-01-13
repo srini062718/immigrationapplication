@@ -1,7 +1,7 @@
 ﻿@model ImmigrationApplication.Model.Address
 
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
-
+@Html.HiddenFor(model => model.Person.PersonID)
 <style>
     dt, dd {
         padding-bottom: 10px;
@@ -67,6 +67,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AddressID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PersonID }) |
+    @Html.ActionLink("Back to List", "Index","Address", new {id = Model.PersonID})
 </p>

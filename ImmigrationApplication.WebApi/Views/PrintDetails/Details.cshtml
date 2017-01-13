@@ -1,5 +1,6 @@
 ﻿@model ImmigrationApplication.WebApi.ViewModels.PrintApplicantDetails
-@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.Person.PersonID } })
+    
+
 @{
     ViewBag.Title = "Print View"; 
 }
@@ -13,4 +14,6 @@
 <h1>@Model.Education.Name</h1>
 
 <br />
-<a href="@Url.Action("ExportPDF","PrintDetails")">Export PDF</a>
+<p>
+@Html.ActionLink("Print","ExportPdf")
+ </p>
