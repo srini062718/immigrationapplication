@@ -9,7 +9,7 @@ namespace ImmigrationApplication.WebApi.ViewModels
     public class PrintApplicantDetails
     {
         public Person Person { get; set; }
-        public Address Address { get; set; }
+        public List<Address> Address { get; set; }
         public Education Education { get; set; }
         public Employment Employment { get; set; }
         public Child Child { get; set; }

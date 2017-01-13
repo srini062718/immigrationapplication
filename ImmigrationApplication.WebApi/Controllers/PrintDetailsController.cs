@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Rotativa;
 using ImmigrationApplication.Model;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.WebApi.ViewModels;
@@ -11,7 +12,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 {
     public class PrintDetailsController : Controller
     {
-
+        public string FileName;
         private readonly UnitOfWork _uow = null;
 
         public PrintDetailsController()
@@ -24,8 +25,8 @@ namespace ImmigrationApplication.WebApi.Controllers
             var  person = _uow.RepositoryFor<Person>().Get(personid);
 
             var a = _uow.RepositoryFor<Address>().GetAll();
-            var address =  a.FirstOrDefault(x => x.PersonID == personid);
-
+            var addresslist = a.Where(x => x.PersonID == personid).ToList();
+            var address = addresslist;
 
             var e = _uow.RepositoryFor<Education>().GetAll();
             var education =  e.FirstOrDefault(x => x.PersonID == personid);
@@ -70,6 +71,17 @@ namespace ImmigrationApplication.WebApi.Controllers
                 PreviousApplication = previousApplication
             };
             return View(viewmodel);
+        }
+
+        public ActionResult ExportPDF(int id)
+        {
+
+            PrintDetailsController p =new PrintDetailsController();
+            var model = p.Details(id);
+            return new ActionAsPdf("Details", model);
+            {
+                FileName = Server.MapPath("ListDetails.pdf");
+            };
         }
     }
 }
