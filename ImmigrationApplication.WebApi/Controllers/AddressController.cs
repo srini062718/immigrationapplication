@@ -47,7 +47,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpGet]
         public ActionResult Create(int personid)
         {
-            Address a;
+            Address a = null;
             if (personid > 0)
             {
                 a = new Address
@@ -74,7 +74,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             g.Add(address);
             _uow.Complete();
             TempData.Add("id", address.PersonID.ToString());
-            return RedirectToAction("Create", "Education");
+            return RedirectToAction("Index", "Address", new { personid = address.PersonID });
         }
 
 

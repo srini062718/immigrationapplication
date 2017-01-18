@@ -33,10 +33,6 @@
         <th>
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -58,9 +54,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person.LastName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { personid=item.PersonID }) |

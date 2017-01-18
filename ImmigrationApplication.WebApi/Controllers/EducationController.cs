@@ -27,7 +27,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var educationlist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (educationlist.Count == 0)
             {
-                return RedirectToAction("Create", "Education", new {personid});
+                return RedirectToAction("Create", "Education", new { personID = personid });
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
@@ -41,14 +41,18 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personID)
         {
-          
-            Education education = new Education
+
+            if (personID > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
-            return View(education);
+                Education education = new Education
+                {
+                    PersonID = personID
+                };
+                return View(education);
+            }
+            return View();
         }
 
         [HttpPost]
