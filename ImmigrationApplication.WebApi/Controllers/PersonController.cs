@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.Model;
+using Microsoft.AspNet.Identity;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -28,7 +29,7 @@ namespace ImmigrationApplication.WebApi.Controllers
            
             if (User.IsInRole("Admin") != true )
                 {
-                per = per.Where(x => x.CreatedByName == User.Identity.Name);
+                per = per.Where(x => x.CreatedByName == User.Identity.GetUserName());
                 }
            
             if(!per.Any())
@@ -59,7 +60,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             var person = _uow.RepositoryFor<Person>();
             person.Update(p);
             _uow.Complete();
-            Con = person.Get(p.PersonID);
             return RedirectToAction("Details", "Person", new { id = p.PersonID });
         }
 
@@ -100,7 +100,7 @@ namespace ImmigrationApplication.WebApi.Controllers
           var person =  _uow.RepositoryFor<Person>().Get(id);
             _uow.RepositoryFor<Person>().Delete(person.PersonID);
             _uow.Complete();
-            return RedirectToAction("Index", "Person");
+            return RedirectToAction("Index", "Person" , new { personid = id });
         }
     }
 }

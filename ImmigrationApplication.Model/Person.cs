@@ -18,7 +18,6 @@ namespace ImmigrationApplication.Model
         public Person()
         {
             this.Addresses = new HashSet<Address>();
-            this.Children = new HashSet<Child>();
             this.Educations = new HashSet<Education>();
             this.Employments = new HashSet<Employment>();
             this.FormerSpouses = new HashSet<FormerSpouse>();
@@ -27,6 +26,7 @@ namespace ImmigrationApplication.Model
             this.Parents = new HashSet<Parent>();
             this.PreviousApplications = new HashSet<PreviousApplication>();
             this.USRelatives = new HashSet<USRelative>();
+            this.Children = new HashSet<Child>();
         }
     
         public int PersonID { get; set; }
@@ -59,8 +59,6 @@ namespace ImmigrationApplication.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Address> Addresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Child> Children { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education> Educations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employment> Employments { get; set; }
@@ -76,5 +74,7 @@ namespace ImmigrationApplication.Model
         public virtual ICollection<PreviousApplication> PreviousApplications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USRelative> USRelatives { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Child> Children { get; set; }
     }
 }

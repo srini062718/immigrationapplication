@@ -32,7 +32,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var arrivallist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (arrivallist.Count == 0)
             {
-                return RedirectToAction("Create", "LastArrivalDetail", new { personid });
+                return RedirectToAction("Create", "LastArrivalDetail", new { personId = personid });
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
@@ -45,14 +45,24 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personId)
         {
-
-            var lastarrivaldetail = new LastArrivalDetail
+            LastArrivalDetail lad;
+            if (personId > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
-            return View(lastarrivaldetail);
+                lad = new LastArrivalDetail
+                {
+                    PersonID = personId
+                };
+            }
+            else
+            {
+                lad = new LastArrivalDetail
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
+            }
+            return View(lad);
         }
 
         [HttpPost]
@@ -62,8 +72,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var ed = _uow.RepositoryFor<LastArrivalDetail>();
             ed.Add(lastArrivalDetail);
             _uow.Complete();
-            TempData.Add("id", lastArrivalDetail.PersonID.ToString());
-            return RedirectToAction("Create", "UsRelative");
+            return RedirectToAction("Index", "LastArrivalDetail", new {personid = lastArrivalDetail.PersonID});
         }
 
         [HttpGet]
@@ -96,7 +105,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
             _uow.RepositoryFor<LastArrivalDetail>().Delete(lastarrivaldetail.LastArrivalDetailsID);
             _uow.Complete();
-            return RedirectToAction("Index", "LastArrivalDetail");
+            return RedirectToAction("Index", "LastArrivalDetail" , new { personid = id });
         }
     }
 }

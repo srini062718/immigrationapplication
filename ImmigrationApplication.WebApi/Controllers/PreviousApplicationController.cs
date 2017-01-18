@@ -24,7 +24,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var previouslist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (previouslist.Count == 0)
             {
-                return RedirectToAction("Create", "PreviousApplication", new { personid });
+                return RedirectToAction("Create", "PreviousApplication", new { personId = personid });
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
@@ -38,12 +38,24 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // add a new 
         [HttpGet]
-        public ActionResult Create(int personid)
+        public ActionResult Create(int personId)
         {
-            var previousapplication = new PreviousApplication
+            PreviousApplication previousapplication;
+            if (personId > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
+                previousapplication = new PreviousApplication
+                {
+                    PersonID = personId
+                };
+            }
+            else
+            {
+                previousapplication = new PreviousApplication
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
+            }
+           
             return View(previousapplication);
         }
 
@@ -53,8 +65,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             if (!ModelState.IsValid) return View();
             _uow.RepositoryFor<PreviousApplication>().Add(previousapplication);
             _uow.Complete();
-            TempData.Add("id", previousapplication.PersonID.ToString());
-            return RedirectToAction("Create", "OtherDetails");
+            return RedirectToAction("Index", "PreviousApplication", new { personid = previousapplication.PersonID });
         }
 
         // edit a detail

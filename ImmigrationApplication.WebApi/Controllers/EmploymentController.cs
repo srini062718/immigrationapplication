@@ -32,10 +32,11 @@ namespace ImmigrationApplication.WebApi.Controllers
             var employlist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (employlist.Count == 0)
             {
-                return RedirectToAction("Create", "Employment", new { personid });
+                return RedirectToAction("Create", "Employment", new { personId = personid });
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
+
 
 
         // Get details of one particular Employment
@@ -46,13 +47,24 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personId)
         {
-
-            Employment employ = new Employment
+            Employment employ;
+            if (personId > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
+              employ = new Employment
+                {
+                    PersonID = personId
+                };
+            }
+            else
+            {
+                employ = new Employment
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
+
+            }
             return View(employ);
         }
 
@@ -63,15 +75,14 @@ namespace ImmigrationApplication.WebApi.Controllers
             var ed = _uow.RepositoryFor<Employment>();
             ed.Add(employment);
             _uow.Complete();
-            TempData.Add("id", employment.PersonID.ToString());
-            return RedirectToAction("Create", "FormerSpouse");
+            return RedirectToAction("Index", "Employment", new {personid = employment.PersonID});
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int personid)
         {
-            Employment employ = _uow.RepositoryFor<Employment>().Get(id);
-            return View(employ);
+            var employ = _uow.RepositoryFor<Employment>().GetAll();
+            return View(employ.SingleOrDefault(x=>x.PersonID==personid));
         }
 
         [HttpPost]

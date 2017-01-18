@@ -22,33 +22,33 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: list of all Education details
         public ActionResult Index(int personid)
         {
-           var education =  _uow.RepositoryFor<Education>().GetAll();
+            var education = _uow.RepositoryFor<Education>().GetAll();
             var enumerable = education as Education[] ?? education.ToArray();
             var educationlist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (educationlist.Count == 0)
             {
-                return RedirectToAction("Create", "Education", new { personID = personid });
+                return RedirectToAction("Create", "Education", new {personId = personid});
             }
-            return View(enumerable.Where(x=>x.PersonID==personid));
+            return View(enumerable.Where(x => x.PersonID == personid));
         }
 
 
         // Get details of one particular education
         public ActionResult Details(int id)
         {
-          Education education =   _uow.RepositoryFor<Education>().Get(id);
+          var education =   _uow.RepositoryFor<Education>().Get(id);
             return View(education);
         }
 
         [HttpGet]
-        public ActionResult Create(int personID)
+        public ActionResult Create(int personId)
         {
 
-            if (personID > 0)
+            if (personId > 0)
             {
-                Education education = new Education
+                var education = new Education
                 {
-                    PersonID = personID
+                    PersonID = personId
                 };
                 return View(education);
             }
@@ -62,40 +62,39 @@ namespace ImmigrationApplication.WebApi.Controllers
             var ed = _uow.RepositoryFor<Education>();
             ed.Add(education);
             _uow.Complete();
-            TempData.Add("id", education.PersonID.ToString());
-            return RedirectToAction("Create", "Employment");
+            return RedirectToAction("Index", "Education",new {personid = education.PersonID});
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int personid)
         {
-          Education education =  _uow.RepositoryFor<Education>().Get(id);
-            return View(education);
+          var education =  _uow.RepositoryFor<Education>().GetAll();
+            return View(education.SingleOrDefault(x=>x.PersonID==personid));
         }
 
         [HttpPost]
         public ActionResult Edit(Education education)
         {
-         GenericRepository<Education> ed = _uow.RepositoryFor<Education>();
+         var ed = _uow.RepositoryFor<Education>();
             ed.Update(education);
             _uow.Complete();
             return RedirectToAction("Details", "Education", new {id = education.EducationID});
         }
 
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int personid)
         {
-           Education education = _uow.RepositoryFor<Education>().Get(id);
-            return View(education);
+           var education = _uow.RepositoryFor<Education>().GetAll();
+            return View(education.SingleOrDefault(x=>x.PersonID==personid));
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult Deleteconfirmed(int id)
         {
-            Education education = _uow.RepositoryFor<Education>().Get(id);
+            var education = _uow.RepositoryFor<Education>().Get(id);
             _uow.RepositoryFor<Education>().Delete(education.EducationID);
             _uow.Complete();
-            return RedirectToAction("Index", "Education");
+            return RedirectToAction("Index", "Education", new {personid = education.PersonID});
         }
     }
 }

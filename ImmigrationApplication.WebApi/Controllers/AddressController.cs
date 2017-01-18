@@ -17,12 +17,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             _uow = new UnitOfWork();
         }
-
-        public AddressController(UnitOfWork uow)
-        {
-            this._uow = uow;
-        }
-
+       
 
         // GET: Addresses list of all address
         public ActionResult Index(int personid)
@@ -47,7 +42,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpGet]
         public ActionResult Create(int personid)
         {
-            Address a = null;
+            Address a;
             if (personid > 0)
             {
                 a = new Address
@@ -73,7 +68,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             var g = _uow.RepositoryFor<Address>();
             g.Add(address);
             _uow.Complete();
-            TempData.Add("id", address.PersonID.ToString());
             return RedirectToAction("Index", "Address", new { personid = address.PersonID });
         }
 

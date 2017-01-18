@@ -32,7 +32,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var spouselist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (spouselist.Count == 0)
             {
-                return RedirectToAction("Create", "FormerSpouse", new {personid});
+                return RedirectToAction("Create", "FormerSpouse", new {personId = personid});
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
@@ -46,14 +46,24 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personId)
         {
-
-            var formerspouse = new FormerSpouse
+            FormerSpouse fs;
+            if (personId > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
-            return View(formerspouse);
+                fs = new FormerSpouse
+                {
+                    PersonID = personId
+                };
+            }
+            else
+            {
+                fs = new FormerSpouse
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
+            }
+            return View(fs);
         }
 
         [HttpPost]
@@ -63,8 +73,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var ed = _uow.RepositoryFor<FormerSpouse>();
             ed.Add(formerSpouse);
             _uow.Complete();
-            TempData.Add("id", formerSpouse.PersonID.ToString());
-            return RedirectToAction("Create", "Children");
+            return RedirectToAction("Index", "FormerSpouse", new {personid = formerSpouse.PersonID});
         }
 
         [HttpGet]

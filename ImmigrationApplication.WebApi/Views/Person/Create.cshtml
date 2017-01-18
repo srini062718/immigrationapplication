@@ -1,6 +1,6 @@
 ﻿@model ImmigrationApplication.Model.Person
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Person", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -13,9 +13,9 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.LastName)
-                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" , id="lastname"})
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", id = "lastname" })
                         @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                        <span id ="lastnamespan"></span>
+                        <span id="lastnamespan"></span>
                     </div>
 
                     <div class="form-group">
@@ -37,13 +37,13 @@
                         {
                             new SelectListItem { Text = "Male", Value = "Male"},
                             new SelectListItem {Text = "Female", Value = "Female" },
-                        }, "Select Gender", new {@class = "form-control"})
+                        }, "Select Gender", new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.DateofBirth)
-                        @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control datepicker"})
+                        @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control datepicker" })
                         @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
                     </div>
 
@@ -67,35 +67,35 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.VisaIssueDate)
-                        @Html.TextBoxFor(model => model.VisaIssueDate, new { @class = "form-control datepicker"})
+                        @Html.TextBoxFor(model => model.VisaIssueDate, new { @class = "form-control datepicker" })
                         @Html.ValidationMessageFor(model => model.VisaIssueDate, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.VisaExpiryDate)
-                        @Html.TextBoxFor(model => model.VisaExpiryDate, new { @class = "form-control datepicker"})
+                        @Html.TextBoxFor(model => model.VisaExpiryDate, new { @class = "form-control datepicker" })
                         @Html.ValidationMessageFor(model => model.VisaExpiryDate, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.LastUSEntryDate)
-                        @Html.TextBoxFor(model => model.LastUSEntryDate, new { @class = "form-control datepicker"})
+                        @Html.TextBoxFor(model => model.LastUSEntryDate, new { @class = "form-control datepicker" })
                         @Html.ValidationMessageFor(model => model.LastUSEntryDate, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.I94ExpiryDate)
-                        @Html.TextBoxFor(model => model.I94ExpiryDate, new { @class = "form-control datepicker"})
+                        @Html.TextBoxFor(model => model.I94ExpiryDate, new { @class = "form-control datepicker" })
                         @Html.ValidationMessageFor(model => model.I94ExpiryDate, "", new { @class = "text-danger" })
                     </div>
                 </td>
                 <td>
-                    
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.AliasAny)
-                        @Html.TextBoxFor(model => model.AliasAny, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.AliasAny, "", new { @class = "text-danger" })
-                    </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AliasAny)
+                    @Html.TextBoxFor(model => model.AliasAny, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AliasAny, "", new { @class = "text-danger" })
+                </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.SSN)
                     @Html.TextBoxFor(model => model.SSN, new { @class = "form-control" })
@@ -122,13 +122,13 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.DateIssued)
-                    @Html.TextBoxFor(model => model.DateIssued, new { @class = "form-control datepicker"})
+                    @Html.TextBoxFor(model => model.DateIssued, new { @class = "form-control datepicker" })
                     @Html.ValidationMessageFor(model => model.DateIssued, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.DateExpired)
-                    @Html.TextBoxFor(model => model.DateExpired, new { @class = "form-control datepicker"})
+                    @Html.TextBoxFor(model => model.DateExpired, new { @class = "form-control datepicker" })
                     @Html.ValidationMessageFor(model => model.DateExpired, "", new { @class = "text-danger" })
                 </div>
 
@@ -185,8 +185,7 @@
             </tr>
         </table>
     </div>
-
-    <script type="text/javascript" >
+    <script type="text/javascript">
        $(function () {
             $(".datepicker").datepicker();
             $("#test").click(function () {
@@ -194,7 +193,7 @@
                     $("#lastnamespan").text("This field is required");
                     $("#lastnamespan").css("color", "red");
                 }
-                else if ($("#firstname").val().length === 0) {
+                if ($("#firstname").val().length === 0) {
                     $("#firstnamespan").text("This field is required");
                     $("#firstnamespan").css("color", "red");
                 }

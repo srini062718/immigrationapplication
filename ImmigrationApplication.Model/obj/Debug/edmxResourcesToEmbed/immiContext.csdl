@@ -14,28 +14,6 @@
     <Property Name="PersonID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Person" Relationship="Self.FK_Address_Person" FromRole="Address" ToRole="Person" />
   </EntityType>
-  <EntityType Name="Child">
-    <Key>
-      <PropertyRef Name="ChildrenID" />
-    </Key>
-    <Property Name="ChildrenID" Type="Int32" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="BirthCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ZipCode" Type="Int32" Nullable="false" />
-    <Property Name="PhoneNumber" Type="Int32" Nullable="false" />
-    <Property Name="PersonID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Person" Relationship="Self.FK_Children_Person" FromRole="Children" ToRole="Person" />
-  </EntityType>
   <EntityType Name="Education">
     <Key>
       <PropertyRef Name="EducationID" />
@@ -155,7 +133,7 @@
     <Property Name="I94ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AliasAny" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SSN" Type="Int32" Nullable="false" />
-    <Property Name="Anumber" Type="String" />
+    <Property Name="Anumber" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CountryIssued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DateIssued" Type="DateTime" Nullable="false" Precision="0" />
@@ -163,7 +141,6 @@
     <Property Name="SpouseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DateofMarriage" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Person" FromRole="Person" ToRole="Address" />
-    <NavigationProperty Name="Children" Relationship="Self.FK_Children_Person" FromRole="Person" ToRole="Children" />
     <NavigationProperty Name="Educations" Relationship="Self.FK_Education_Person" FromRole="Person" ToRole="Education" />
     <NavigationProperty Name="Employments" Relationship="Self.FK_Employment_Person" FromRole="Person" ToRole="Employment" />
     <NavigationProperty Name="FormerSpouses" Relationship="Self.FK_FormerSpouse_Person" FromRole="Person" ToRole="FormerSpouse" />
@@ -177,6 +154,7 @@
     <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CreatedByName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Children" Relationship="immigrationModel.FK_Children_Person" FromRole="Person" ToRole="Child" />
   </EntityType>
   <EntityType Name="PreviousApplication">
     <Key>
@@ -213,18 +191,6 @@
         <PropertyRef Name="PersonID" />
       </Principal>
       <Dependent Role="Address">
-        <PropertyRef Name="PersonID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Children_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
-    <End Role="Children" Type="Self.Child" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Person">
-        <PropertyRef Name="PersonID" />
-      </Principal>
-      <Dependent Role="Children">
         <PropertyRef Name="PersonID" />
       </Dependent>
     </ReferentialConstraint>
@@ -327,7 +293,6 @@
   </Association>
   <EntityContainer Name="immigrationEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Addresses" EntityType="Self.Address" />
-    <EntitySet Name="Children" EntityType="Self.Child" />
     <EntitySet Name="Educations" EntityType="Self.Education" />
     <EntitySet Name="Employments" EntityType="Self.Employment" />
     <EntitySet Name="FormerSpouses" EntityType="Self.FormerSpouse" />
@@ -340,10 +305,6 @@
     <AssociationSet Name="FK_Address_Person" Association="Self.FK_Address_Person">
       <End Role="Person" EntitySet="People" />
       <End Role="Address" EntitySet="Addresses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Children_Person" Association="Self.FK_Children_Person">
-      <End Role="Person" EntitySet="People" />
-      <End Role="Children" EntitySet="Children" />
     </AssociationSet>
     <AssociationSet Name="FK_Education_Person" Association="Self.FK_Education_Person">
       <End Role="Person" EntitySet="People" />
@@ -393,6 +354,11 @@
     <AssociationSet Name="AspNetUserRoles" Association="immigrationModel.AspNetUserRoles">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="Children" EntityType="immigrationModel.Child" />
+    <AssociationSet Name="FK_Children_Person" Association="immigrationModel.FK_Children_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Child" EntitySet="Children" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
@@ -485,5 +451,38 @@
   <Association Name="AspNetUserRoles">
     <End Type="immigrationModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="immigrationModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Child">
+    <Key>
+      <PropertyRef Name="ChildrenID" />
+    </Key>
+    <Property Name="ChildrenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthPlace" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BirthCountry" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MaritalStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="Int32" Nullable="false" />
+    <Property Name="PersonID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="immigrationModel.FK_Children_Person" FromRole="Child" ToRole="Person" />
+  </EntityType>
+  <Association Name="FK_Children_Person">
+    <End Type="immigrationModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="immigrationModel.Child" Role="Child" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonID" />
+      </Principal>
+      <Dependent Role="Child">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

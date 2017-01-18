@@ -24,7 +24,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var relativeslist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (relativeslist.Count == 0)
             {
-                return RedirectToAction("Create", "USRelative", new { personid });
+                return RedirectToAction("Create", "USRelative", new { personId = personid });
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
@@ -38,12 +38,24 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // add a new 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personId)
         {
-            USRelative usrelative = new USRelative
+            USRelative usrelative;
+            if (personId > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
+                usrelative = new USRelative
+                {
+                    PersonID = personId
+                };
+            }
+            else
+            {
+                usrelative = new USRelative
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
+            }
+           
             return View(usrelative);
         }
 
@@ -53,8 +65,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             if (!ModelState.IsValid) return View();
             _uow.RepositoryFor<USRelative>().Add(usrelative);
             _uow.Complete();
-            TempData.Add("id", usrelative.PersonID.ToString());
-            return RedirectToAction("Create", "PreviousApplication");
+            return RedirectToAction("Index", "UsRelative" , new {personid = usrelative.PersonID});
         }
 
         // edit a detail

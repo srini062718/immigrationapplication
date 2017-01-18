@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.PreviousApplication>
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { personId = Model.FirstOrDefault().PersonID })
 </p>
 <table class="table">
     <tr>
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Person.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PreviousApplicationID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PreviousApplicationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PreviousApplicationID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
         </td>
     </tr>
 }

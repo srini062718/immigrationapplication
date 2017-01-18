@@ -1,7 +1,7 @@
 ﻿@model ImmigrationApplication.Model.OtherDetail
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "OtherDetails", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.PersonID)
@@ -13,7 +13,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AboutFirm, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AboutFirm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.AboutFirm, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.AboutFirm, "", new { @class = "text-danger" })
             </div>
         </div>

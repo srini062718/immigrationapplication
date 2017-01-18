@@ -27,7 +27,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var otherdetaillist = enumerable.Where(x => x.PersonID == personid).ToList();
             if (otherdetaillist.Count == 0)
             {
-                return RedirectToAction("Create", "OtherDetails", new { personid });
+                return RedirectToAction("Create", "OtherDetails", new { personId = personid });
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
@@ -43,23 +43,35 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         //  add a new detail
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personId)
         {
-            var detail = new OtherDetail
+            OtherDetail od;
+            if (personId > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
-            return View(detail);
+                od = new OtherDetail
+                {
+                    PersonID = personId
+                };
+            }
+            else
+            {
+             od = new OtherDetail
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
+            }
+            
+            return View(od);
         }
 
         [HttpPost]
         public ActionResult Create(OtherDetail detail)
         {
             if (!ModelState.IsValid) return View();
-            _uow.RepositoryFor<OtherDetail>().Add(detail);
+            var od = _uow.RepositoryFor<OtherDetail>();
+            od.Add(detail);
             _uow.Complete();
-            TempData.Add("id", detail.PersonID.ToString());
-            return RedirectToAction("Index", "Person");
+            return RedirectToAction("Index", "OtherDetails", new { personid = detail.PersonID });
         }
 
 
@@ -93,7 +105,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             _uow.RepositoryFor<OtherDetail>().Delete(detail.OtherDetailsID);
             _uow.Complete();
-            return RedirectToAction("Index", "OtherDetails");
+            return RedirectToAction("Index", "OtherDetails" , new {personid = detail.PersonID});
         }
     }
 }

@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c913f33cf15747e98d1da4b15a6abfcf" Name="Diagram1" ZoomLevel="87">
         <EntityTypeShape EntityType="immigrationModel.Address" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="immigrationModel.Child" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.Education" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.Employment" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.FormerSpouse" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
@@ -17,7 +16,6 @@
         <EntityTypeShape EntityType="immigrationModel.PreviousApplication" Width="1.5" PointX="3" PointY="35.625" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.USRelative" Width="1.5" PointX="3" PointY="38.875" IsExpanded="true" />
         <AssociationConnector Association="immigrationModel.FK_Address_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="immigrationModel.FK_Children_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_Education_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_Employment_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_FormerSpouse_Person" ManuallyRouted="false" />
@@ -34,6 +32,8 @@
         <AssociationConnector Association="immigrationModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="immigrationModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="immigrationModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="immigrationModel.Child" Width="1.5" PointX="3" PointY="6.25" />
+        <AssociationConnector Association="immigrationModel.FK_Children_Person" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

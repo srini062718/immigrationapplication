@@ -26,7 +26,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var childlist = enumerable.Where(x=>x.PersonID==personid).ToList();
             if (childlist.Count == 0)
             {
-                return RedirectToAction("Create", "Children", new {personid});
+                return RedirectToAction("Create", "Children", new {personId = personid});
             }
             return View(enumerable.Where(x=>x.PersonID==personid));
         }
@@ -39,14 +39,26 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(int personId)
         {
-
-            var child = new Child
+            Child c;
+            if (personId > 0)
             {
-                PersonID = Convert.ToInt32(TempData["id"])
-            };
-            return View(child);
+                c = new Child
+                {
+                    PersonID = personId
+                };
+
+            }
+            else
+            {
+                 c = new Child
+                {
+                    PersonID = Convert.ToInt32(TempData["id"])
+                };
+            }
+           
+            return View(c);
         }
 
         [HttpPost]
@@ -56,15 +68,14 @@ namespace ImmigrationApplication.WebApi.Controllers
             var ed = _uow.RepositoryFor<Child>();
             ed.Add(children);
             _uow.Complete();
-            TempData.Add("id", children.PersonID.ToString());
-            return RedirectToAction("Create", "Parent");
+            return RedirectToAction("Index", "Children", new {personid = children.PersonID});
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int personid)
         {
-            Child child = _uow.RepositoryFor<Child>().Get(id);
-            return View(child);
+           var child = _uow.RepositoryFor<Child>().GetAll();
+            return View(child.SingleOrDefault(x=>x.PersonID == personid));
         }
 
         [HttpPost]
@@ -77,10 +88,10 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int personid)
         {
-            Child child = _uow.RepositoryFor<Child>().Get(id);
-            return View(child);
+            var child = _uow.RepositoryFor<Child>().GetAll();
+            return View(child.FirstOrDefault(x=>x.PersonID==personid));
         }
 
         [HttpPost, ActionName("Delete")]

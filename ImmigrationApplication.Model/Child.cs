@@ -18,7 +18,7 @@ namespace ImmigrationApplication.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        public string Sex { get; set; }
+        public string Gender { get; set; }
         public string BirthPlace { get; set; }
         public string BirthCountry { get; set; }
         public System.DateTime DateofBirth { get; set; }
@@ -28,7 +28,6 @@ namespace ImmigrationApplication.Model
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
-        public int PhoneNumber { get; set; }
         public int PersonID { get; set; }
     
         public virtual Person Person { get; set; }

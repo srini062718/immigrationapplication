@@ -253,7 +253,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Gender")]
-        public string Sex;
+        public string Gender;
 
         [Required]
         [Display(Name = "Birth Place")]
@@ -292,9 +292,6 @@ namespace ImmigrationApplication.Model
         [Display(Name = "Zip Code")]
         public int ZipCode;
 
-        [Required]
-        [Display(Name ="Phone Number")]
-        public string PhoneNumber;
     }
 
     public class ParentMetaData

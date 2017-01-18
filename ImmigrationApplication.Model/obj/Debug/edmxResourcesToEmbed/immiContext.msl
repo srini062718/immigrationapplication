@@ -15,28 +15,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Children">
-      <EntityTypeMapping TypeName="immigrationModel.Child">
-        <MappingFragment StoreEntitySet="Children">
-          <ScalarProperty Name="ChildrenID" ColumnName="ChildrenID" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
-          <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
-          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
-          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
-          <ScalarProperty Name="Address1" ColumnName="Address1" />
-          <ScalarProperty Name="Address2" ColumnName="Address2" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Educations">
       <EntityTypeMapping TypeName="immigrationModel.Education">
         <MappingFragment StoreEntitySet="Education">
@@ -260,5 +238,26 @@
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Children">
+      <EntityTypeMapping TypeName="immigrationModel.Child">
+        <MappingFragment StoreEntitySet="Children">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ChildrenID" ColumnName="ChildrenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

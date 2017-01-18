@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.OtherDetail>
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { personId = Model.FirstOrDefault().PersonID })
 </p>
 <table class="table">
     <tr>
@@ -20,10 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.OtherInformation)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -44,12 +40,9 @@
             @Html.DisplayFor(modelItem => item.OtherInformation)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Person.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OtherDetailsID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OtherDetailsID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OtherDetailsID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
         </td>
     </tr>
 }
