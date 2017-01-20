@@ -1,6 +1,5 @@
-﻿
-@Html.Partial("~/Views/Shared/_navbar.cshtml")
-
+﻿@Html.Partial("~/Views/Shared/_navbar.cshtml")
+@using System.Data;
 <style>
     
  form {
@@ -9,11 +8,54 @@
  input {
      margin-bottom: 10px;
  }
+table {
+    font-family: arial, sans-serif;
+    border : 1px solid black;
+    padding:5px;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 </style>
 
 
 @using (Html.BeginForm("Upload", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <input type="file" name="File" />
-    <input type="submit" name="Submit" id="Submit" value="Upload" />
+    <table>
+        <tr>
+            <td><input type="file" name="File" /></td>
+            <td><input type="submit" name="Submit" id="Submit" value="Upload" /></td>
+       </tr>
+    </table>
+    <br />
 }
+
+
+<table>
+    <tr>
+        <th>File Upload Details</th>
+    </tr>
+    <tr>
+        <th>File Name</th>
+        <th>File Length</th>
+        <th>File Type</th>
+    </tr>
+  
+    @foreach (string str in ViewBag.fir)
+    {
+        FileInfo fi = new FileInfo(str);
+        <tr>
+            <td>@Html.ActionLink(@fi.Name, "Download", "FileUpload", new { fileName = @fi.Name})</td>
+            <td>@fi.Length</td>s
+            <td>@fi.Extension</td>
+        </tr>
+    }
+</table>

@@ -1,10 +1,10 @@
 ﻿@model ImmigrationApplication.Model.Address
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit","Address",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(model => model.PersonID)
     <div class="form-horizontal">
         <h4>Address</h4>
         <hr />
