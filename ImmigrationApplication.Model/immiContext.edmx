@@ -173,11 +173,11 @@
             <PropertyRef Name="OtherDetailsID" />
           </Key>
           <Property Name="OtherDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
-          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
-          <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
-          <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
+          <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Conviction" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Parent">
@@ -388,20 +388,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OtherDetails_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="OtherDetails" Type="Self.OtherDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="PersonID" />
-            </Principal>
-            <Dependent Role="OtherDetails">
-              <PropertyRef Name="PersonID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Parent_Person">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -444,6 +430,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_PrintDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="immigrationModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
@@ -501,10 +490,6 @@
           <AssociationSet Name="FK_LastArrivalDetails_Person" Association="Self.FK_LastArrivalDetails_Person">
             <End Role="Person" EntitySet="Person" />
             <End Role="LastArrivalDetails" EntitySet="LastArrivalDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OtherDetails_Person" Association="Self.FK_OtherDetails_Person">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="OtherDetails" EntitySet="OtherDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Parent_Person" Association="Self.FK_Parent_Person">
             <End Role="Person" EntitySet="Person" />
@@ -615,11 +600,11 @@
             <PropertyRef Name="OtherDetailsID" />
           </Key>
           <Property Name="OtherDetailsID" Type="Int32" Nullable="false" />
-          <Property Name="AboutFirm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Conviction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OtherInformation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboutFirm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Conviction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OtherInformation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_OtherDetails_Person" FromRole="OtherDetails" ToRole="Person" />
         </EntityType>
@@ -883,6 +868,12 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Child" EntitySet="Children" />
           </AssociationSet>
+          <FunctionImport Name="PrintDetails" ReturnType="Collection(immigrationModel.sp_PrintDetails_Result)">
+            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PrintDetailsByID" ReturnType="Collection(immigrationModel.sp_PrintDetails_Result)">
+            <Parameter Name="PersonID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -1008,6 +999,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_PrintDetails_Result">
+          <Property Type="Int32" Name="PersonID" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DateofBirth" Nullable="false" />
+          <Property Type="String" Name="MartialStatus" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nationality" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="USVisaType" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="VisaIssueDate" Nullable="false" />
+          <Property Type="DateTime" Name="VisaExpiryDate" Nullable="false" />
+          <Property Type="DateTime" Name="LastUSEntryDate" Nullable="false" />
+          <Property Type="DateTime" Name="I94ExpiryDate" Nullable="false" />
+          <Property Type="String" Name="AliasAny" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SSN" Nullable="false" />
+          <Property Type="String" Name="Anumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BirthCity" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassportNumber" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CountryIssued" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DateIssued" Nullable="false" />
+          <Property Type="DateTime" Name="DateExpired" Nullable="false" />
+          <Property Type="String" Name="SpouseName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateofMarriage" Nullable="true" />
+          <Property Type="String" Name="CityofMarriage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CountryofMarriage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="128" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1272,6 +1291,70 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PrintDetails" FunctionName="immigrationModel.Store.sp_PrintDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="immigrationModel.sp_PrintDetails_Result">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="USVisaType" ColumnName="USVisaType" />
+                <ScalarProperty Name="VisaIssueDate" ColumnName="VisaIssueDate" />
+                <ScalarProperty Name="VisaExpiryDate" ColumnName="VisaExpiryDate" />
+                <ScalarProperty Name="LastUSEntryDate" ColumnName="LastUSEntryDate" />
+                <ScalarProperty Name="I94ExpiryDate" ColumnName="I94ExpiryDate" />
+                <ScalarProperty Name="AliasAny" ColumnName="AliasAny" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Anumber" ColumnName="Anumber" />
+                <ScalarProperty Name="BirthCity" ColumnName="BirthCity" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="CountryIssued" ColumnName="CountryIssued" />
+                <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
+                <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+                <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
+                <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
+                <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
+                <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
+                <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PrintDetailsByID" FunctionName="immigrationModel.Store.sp_PrintDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="immigrationModel.sp_PrintDetails_Result">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="USVisaType" ColumnName="USVisaType" />
+                <ScalarProperty Name="VisaIssueDate" ColumnName="VisaIssueDate" />
+                <ScalarProperty Name="VisaExpiryDate" ColumnName="VisaExpiryDate" />
+                <ScalarProperty Name="LastUSEntryDate" ColumnName="LastUSEntryDate" />
+                <ScalarProperty Name="I94ExpiryDate" ColumnName="I94ExpiryDate" />
+                <ScalarProperty Name="AliasAny" ColumnName="AliasAny" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Anumber" ColumnName="Anumber" />
+                <ScalarProperty Name="BirthCity" ColumnName="BirthCity" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="CountryIssued" ColumnName="CountryIssued" />
+                <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
+                <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+                <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
+                <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
+                <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
+                <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
+                <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

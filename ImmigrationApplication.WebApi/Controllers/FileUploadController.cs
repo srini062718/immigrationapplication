@@ -11,18 +11,22 @@ namespace ImmigrationApplication.WebApi.Controllers
     public class FileUploadController : Controller
     {
         // GET: FileUpload
-        public ActionResult Index()
+        public ActionResult Index(int personid)
         {
-            int personid = 1;
             var path1 = Path.Combine(Server.MapPath("~/Uploads"));
+            var path2 = path1 + "/" + personid;
+            if (!Directory.Exists(path2))
+            {
+                return RedirectToAction("Upload", "FileUpload",new {personId = personid});
+
+            }
             ViewBag.fir = Directory.GetFiles(path1 + "/" + personid);
             return View(ViewBag.fir);
         }
 
         [HttpPost]
-        public ActionResult Upload()
+        public ActionResult Upload(int personId)
         {
-            int personid = 1;
             if (Request.Files.Count <= 0) return RedirectToAction("Index");
             var file = Request.Files[0];
             if (file == null || file.ContentLength <= 0) return RedirectToAction("Index");
@@ -44,25 +48,23 @@ namespace ImmigrationApplication.WebApi.Controllers
                 Console.WriteLine("Maximum File Size is 2MB, Only files of below 2MB are allowed");
             }
             var path1 = Path.Combine(Server.MapPath("~/Uploads"));
-            if (!Directory.Exists(path1 + "/" + personid))
+            if (!Directory.Exists(path1 + "/" + personId))
             {
-                DirectoryInfo dir = Directory.CreateDirectory(path1 + "/" + personid);
+                DirectoryInfo dir = Directory.CreateDirectory(path1 + "/" + personId);
                 file.SaveAs(dir.FullName + "/" + filename);
             }
             else
             {
-                var path = path1 + "/" + personid + "/" + filename;
+                var path = path1 + "/" + personId + "/" + filename;
                 file.SaveAs(path);
             }
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult Download(string fileName)
+        public FileResult Download(int personid, string name)
         {
-            //  int personid = 1;
-            //  return new File((Server.MapPath("~/uploads")) + "/" + personid + "/" + fileName);
-            return View();
+           return  new FilePathResult((Server.MapPath("~/uploads")) + "/" + personid + "/" + name,System.Net.Mime.MediaTypeNames.Application.Octet);
         }
     }
 }

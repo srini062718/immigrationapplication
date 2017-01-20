@@ -12,6 +12,8 @@ namespace ImmigrationApplication.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class immigrationEntities : DbContext
     {
@@ -41,5 +43,23 @@ namespace ImmigrationApplication.Model
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Child> Children { get; set; }
+    
+        public virtual ObjectResult<sp_PrintDetails_Result> PrintDetails(Nullable<int> personID)
+        {
+            var personIDParameter = personID.HasValue ?
+                new ObjectParameter("PersonID", personID) :
+                new ObjectParameter("PersonID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PrintDetails_Result>("PrintDetails", personIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_PrintDetails_Result> sp_PrintDetailsByID(Nullable<int> personID)
+        {
+            var personIDParameter = personID.HasValue ?
+                new ObjectParameter("PersonID", personID) :
+                new ObjectParameter("PersonID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PrintDetails_Result>("sp_PrintDetailsByID", personIDParameter);
+        }
     }
 }

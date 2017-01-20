@@ -168,11 +168,11 @@
       <PropertyRef Name="OtherDetailsID" />
     </Key>
     <Property Name="OtherDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
-    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
-    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
-    <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
-    <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
+    <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Conviction" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PersonID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Parent">
@@ -383,20 +383,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_OtherDetails_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="OtherDetails" Type="Self.OtherDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Person">
-        <PropertyRef Name="PersonID" />
-      </Principal>
-      <Dependent Role="OtherDetails">
-        <PropertyRef Name="PersonID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Parent_Person">
     <End Role="Person" Type="Self.Person" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -439,6 +425,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_PrintDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PersonID" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="immigrationModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
@@ -496,10 +485,6 @@
     <AssociationSet Name="FK_LastArrivalDetails_Person" Association="Self.FK_LastArrivalDetails_Person">
       <End Role="Person" EntitySet="Person" />
       <End Role="LastArrivalDetails" EntitySet="LastArrivalDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OtherDetails_Person" Association="Self.FK_OtherDetails_Person">
-      <End Role="Person" EntitySet="Person" />
-      <End Role="OtherDetails" EntitySet="OtherDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_Parent_Person" Association="Self.FK_Parent_Person">
       <End Role="Person" EntitySet="Person" />

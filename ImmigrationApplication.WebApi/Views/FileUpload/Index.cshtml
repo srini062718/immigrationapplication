@@ -1,4 +1,4 @@
-﻿@Html.Partial("~/Views/Shared/_navbar.cshtml")
+﻿@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
 @using System.Data;
 <style>
     
@@ -49,12 +49,12 @@ tr:nth-child(even) {
         <th>File Type</th>
     </tr>
   
-    @foreach (string str in ViewBag.fir)
+    @foreach(string str in ViewBag.fir)
     {
         FileInfo fi = new FileInfo(str);
         <tr>
-            <td>@Html.ActionLink(@fi.Name, "Download", "FileUpload", new { fileName = @fi.Name})</td>
-            <td>@fi.Length</td>s
+            <td>@Html.ActionLink(@fi.Name, "Download",new { id = Model.PersonID,name = fi.Name})</td>
+            <td>@fi.Length</td>
             <td>@fi.Extension</td>
         </tr>
     }
