@@ -13,14 +13,16 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: FileUpload
         public ActionResult Index(int personid)
         {
+            ViewBag.PersonID = personid;
             var path1 = Path.Combine(Server.MapPath("~/Uploads"));
             var path2 = path1 + "/" + personid;
             if (!Directory.Exists(path2))
             {
-                return RedirectToAction("Upload", "FileUpload",new {personId = personid});
-
+                Directory.CreateDirectory(path2);
             }
-            ViewBag.fir = Directory.GetFiles(path1 + "/" + personid);
+
+
+            ViewBag.fir = Directory.GetFiles(path2);
             return View(ViewBag.fir);
         }
 
@@ -59,12 +61,13 @@ namespace ImmigrationApplication.WebApi.Controllers
                 file.SaveAs(path);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { personid = personId });
         }
 
-        public FileResult Download(int personid, string name)
+        public FileResult Download(string name)
         {
-           return  new FilePathResult((Server.MapPath("~/uploads")) + "/" + personid + "/" + name,System.Net.Mime.MediaTypeNames.Application.Octet);
+            //     return  new FilePathResult((Server.MapPath("~/uploads")) + "/" + personid + "/" + name,System.Net.Mime.MediaTypeNames.Application.Octet);
+            return new FilePathResult(name, System.Net.Mime.MediaTypeNames.Application.Octet);
         }
     }
 }

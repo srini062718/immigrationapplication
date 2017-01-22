@@ -27,22 +27,9 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: PrintDetails
         public ActionResult Details(int personid)
         {
-            string cs = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(cs))
-            {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Person where PersonID = @personid", con);
-                cmd.Parameters.AddWithValue("@personid", personid);
-                con.Open();
-                SqlDataReader rdr =  cmd.ExecuteReader();
-                rdr.Read();
-                con.Close();
-            }
-            var viewmodel = new PrintApplicantDetails
-            {
-
-            };
-           
-            return View();
+            PrintRepository pr = new PrintRepository();
+          PrintDetails p =  pr.GetPersonDetailsById(personid);
+            return View(p);
         }
 
         public ActionResult ExportPdf(int id)

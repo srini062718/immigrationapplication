@@ -323,5 +323,45 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_personjoin" FunctionName="immigrationModel.Store.sp_personjoin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="immigrationModel.sp_personjoin_Result">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="MartialStatus" ColumnName="MartialStatus" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="USVisaType" ColumnName="USVisaType" />
+          <ScalarProperty Name="VisaIssueDate" ColumnName="VisaIssueDate" />
+          <ScalarProperty Name="VisaExpiryDate" ColumnName="VisaExpiryDate" />
+          <ScalarProperty Name="LastUSEntryDate" ColumnName="LastUSEntryDate" />
+          <ScalarProperty Name="I94ExpiryDate" ColumnName="I94ExpiryDate" />
+          <ScalarProperty Name="AliasAny" ColumnName="AliasAny" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="Anumber" ColumnName="Anumber" />
+          <ScalarProperty Name="BirthCity" ColumnName="BirthCity" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="CountryIssued" ColumnName="CountryIssued" />
+          <ScalarProperty Name="DateIssued" ColumnName="DateIssued" />
+          <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+          <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
+          <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
+          <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
+          <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="PersonID1" ColumnName="PersonID1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

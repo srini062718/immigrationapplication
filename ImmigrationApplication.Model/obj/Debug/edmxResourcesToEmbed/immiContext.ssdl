@@ -168,11 +168,11 @@
       <PropertyRef Name="OtherDetailsID" />
     </Key>
     <Property Name="OtherDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Conviction" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
+    <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
+    <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
     <Property Name="PersonID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Parent">
@@ -425,6 +425,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_personjoin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_PrintDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PersonID" Type="int" Mode="In" />
   </Function>

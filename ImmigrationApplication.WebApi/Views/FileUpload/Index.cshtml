@@ -1,4 +1,4 @@
-﻿@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+﻿@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", ViewBag.PersonID } })
 @using System.Data;
 <style>
     
@@ -27,7 +27,7 @@ tr:nth-child(even) {
 </style>
 
 
-@using (Html.BeginForm("Upload", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Upload", "FileUpload", new { personId = ViewBag.PersonID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <table>
         <tr>
@@ -53,7 +53,7 @@ tr:nth-child(even) {
     {
         FileInfo fi = new FileInfo(str);
         <tr>
-            <td>@Html.ActionLink(@fi.Name, "Download",new { id = Model.PersonID,name = fi.Name})</td>
+            <td>@Html.ActionLink(@fi.Name, "Download",new {name = str})</td>
             <td>@fi.Length</td>
             <td>@fi.Extension</td>
         </tr>

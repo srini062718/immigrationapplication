@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\immiContext.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\pandu\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\immiContext.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

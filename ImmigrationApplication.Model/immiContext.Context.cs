@@ -61,5 +61,10 @@ namespace ImmigrationApplication.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_PrintDetails_Result>("sp_PrintDetailsByID", personIDParameter);
         }
+    
+        public virtual ObjectResult<sp_personjoin_Result> sp_personjoin()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_personjoin_Result>("sp_personjoin");
+        }
     }
 }
