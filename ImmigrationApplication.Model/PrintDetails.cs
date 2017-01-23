@@ -10,15 +10,15 @@ namespace ImmigrationApplication.Model
     {
         public Person Person { get; set; }
         public List<Address> Address { get; set; }
-        public Education Education { get; set; }
-        public Employment Employment { get; set; }
-        public Child Child { get; set; }
-        public FormerSpouse FormerSpouse { get; set; }
-        public Parent Parent { get; set; }
-        public PreviousApplication PreviousApplication { get; set; }
-        public OtherDetail OtherDetail { get; set; }
+        public List<Education> Education { get; set; }
+        public List<Employment> Employment { get; set; }
+        public List<Child> Child { get; set; }
+        public List<FormerSpouse> FormerSpouse { get; set; }
+        public List<Parent> Parent { get; set; }
+        public List<PreviousApplication> PreviousApplication { get; set; }
+        public List<OtherDetail> OtherDetail { get; set; }
         // ReSharper disable once InconsistentNaming
-        public USRelative USRelative { get; set; }
-        public LastArrivalDetail LastArrivalDetail { get; set; }
+        public List<USRelative> USRelative { get; set; }
+        public List<LastArrivalDetail> LastArrivalDetail { get; set; }
     }
 }

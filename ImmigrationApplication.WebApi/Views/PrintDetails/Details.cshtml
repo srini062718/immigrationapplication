@@ -1,15 +1,224 @@
-﻿@model ImmigrationApplication.Model.PrintDetails
+﻿@using ImmigrationApplication.Model
+@model ImmigrationApplication.Model.PrintDetails
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
     
 
 @{
     ViewBag.Title = "Print View"; 
 }
 
-<h1>@Model.Person.FirstName</h1>
-<h1>@Model.Person.LastName</h1>
+<h3>Details</h3>
 
-
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Middle Name</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Marital Status</th>
+       
+    </tr>
+    <tr>
+        <td>@Model.Person.FirstName</td>
+        <td>@Model.Person.LastName</td>
+        <td>@Model.Person.MiddleName</td>
+        <td>@Model.Person.Gender</td>
+        <td>@Model.Person.DateofBirth.ToShortDateString()</td>
+        <td>@Model.Person.MartialStatus</td>
+      
+    </tr>
+</table>
 <br />
-<p>
-@Html.ActionLink("Print","ExportPdf")
- </p>
+<table>
+    <tr>
+        <th>USA Visa Type</th>
+        <th>Date of Visa Issue</th>
+        <th>Date of Visa Expiration</th>
+        <th>Date of Last US Entry</th>
+        <th>I-94 Expiration Date</th>
+        <th>Alias Any(Names)</th>
+        
+    </tr>
+    <tr>
+        <td>@Model.Person.USVisaType</td>
+        <td>@Model.Person.VisaIssueDate.ToShortDateString()</td>
+        <td>@Model.Person.VisaExpiryDate.ToShortDateString()</td>
+        <td>@Model.Person.LastUSEntryDate.ToShortDateString()</td>
+        <td>@Model.Person.I94ExpiryDate.ToShortDateString()</td>
+        <td>@Model.Person.AliasAny</td>
+       
+    </tr>
+</table>
+<br />
+<table>
+    <tr>
+        <th>Social Security Number</th>
+        <th>Passport Number</th>
+        <th>Passport Issued Country</th>
+        <th>Date of Passport Issue</th>
+        <th>Date of Passport Expiration</th>
+        <th>Spouse Name</th>
+     
+    </tr>
+    <tr>
+        <td>@Model.Person.SSN</td>
+        <td>@Model.Person.PassportNumber</td>
+        <td>@Model.Person.CountryIssued</td>
+        <td>@Model.Person.DateIssued.ToShortDateString()</td>
+        <td>@Model.Person.DateExpired.ToShortDateString()</td>
+        <td>@Model.Person.SpouseName</td>
+    </tr>
+</table>
+<br />
+<table>
+    <tr>
+        <th>Nationality</th>
+        <th>City of Birth</th>
+        <th>City of Marriage</th>
+        <th>Country of Marriage</th>
+        <th>Alien Registration Number</th>
+        <th>Date of Marriage</th>
+    </tr>
+    <tr>
+        <td>@Model.Person.Nationality</td>
+        <td>@Model.Person.BirthCity</td>
+        <td>@Model.Person.CityofMarriage</td>
+        <td>@Model.Person.CountryofMarriage</td>
+        <td>@Model.Person.Anumber</td>
+        <td>@Model.Person.DateofMarriage</td>
+    </tr>
+</table>
+<br />
+<h3>Address</h3>
+<table>
+    <tr>
+        <th>Address 1</th>
+        <th>Address 2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Zip Code</th>
+    </tr>
+  @foreach (var item in Model.Address)
+  {
+      <tr>
+          <td>@item.Address1</td>
+          <td>@item.Address2</td>
+          <td>@item.City</td>
+          <td>@item.State</td>
+          <td>@item.Country</td>
+          <td>@item.ZipCode</td>
+      </tr>
+  }
+</table>
+<br />
+<h3>Education</h3>
+<table>
+    <tr>
+        <th>School or University Name</th>
+        <th>Address 1</th>
+        <th>Address 2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Start Date of Program</th>
+        
+    </tr>
+    
+    @foreach (var item in Model.Education)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Address1</td>
+            <td>@item.Address2</td>
+            <td>@item.City</td>
+            <td>@item.State</td>
+            <td>@item.StartDate.ToShortDateString()</td>
+           
+        </tr>
+       
+    }
+</table>
+<br />
+<table>
+    <tr>
+        <th> End Date of Program</th>
+        <th>Degree Type</th>
+        <th>Field of Study</th>
+        <th>Zip Code</th>
+    </tr>
+    @foreach (var item in Model.Education)
+    {
+        <tr>
+            <td>@item.EndDate.ToShortDateString()</td>
+            <td>@item.Degree</td>
+            <td>@item.FieldofStudy</td>
+            <td>@item.ZipCode</td>
+        </tr>
+    }
+</table>
+<br />
+<h3>Employment</h3>
+<table>
+    <tr>
+        <th>Employer Name</th>
+        <th>Address 1</th>
+        <th>Address 2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+
+    </tr>
+
+    @foreach (var item in Model.Employment)
+    {
+        <tr>
+            <td>@item.EmployerName</td>
+            <td>@item.Address1</td>
+            <td>@item.Address2</td>
+            <td>@item.City</td>
+            <td>@item.State</td>
+            <td>@item.Zipcode</td>
+
+        </tr>
+
+    }
+</table>
+<br />
+<table>
+    <tr>
+        <th>Job Title</th>
+        <th>Salary</th>
+        <th>Employment Start Date</th>
+        <th>Employment End Date</th>
+        <th>Client Name</th>
+        <th>Job Description</th>
+    </tr>
+    @foreach (var item in Model.Employment)
+    {
+        <tr>
+            <td>@item.JobTitle</td>
+            <td>@item.Salary</td>
+            <td>@item.DateStarted.ToShortDateString()</td>
+            <td>@item.DateLeft.ToShortDateString()</td>
+            <td>@item.Client</td>
+            <td>@item.JobDescription</td>
+        </tr>
+    }
+</table>

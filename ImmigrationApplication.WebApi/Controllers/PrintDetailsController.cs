@@ -27,8 +27,8 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: PrintDetails
         public ActionResult Details(int personid)
         {
-            PrintRepository pr = new PrintRepository();
-          PrintDetails p =  pr.GetPersonDetailsById(personid);
+            var pr = new PrintRepository();
+          var p =  pr.GetPersonDetailsById(personid);
             return View(p);
         }
 
@@ -39,7 +39,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 PageSize = Size.A4,
                 PageOrientation = Orientation.Portrait,
-                PageMargins = { Left = 1, Right = 1 },
                 FileName = Server.MapPath("ListDetails.pdf")
             };
         }
