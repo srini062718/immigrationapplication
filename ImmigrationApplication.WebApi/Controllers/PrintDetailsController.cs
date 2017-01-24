@@ -27,7 +27,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: PrintDetails
         public ActionResult Details(int personid)
         {
-            var pr = new PrintRepository();
+            var pr = new PrintDetailRepository();
           var p =  pr.GetPersonDetailsById(personid);
             return View(p);
         }

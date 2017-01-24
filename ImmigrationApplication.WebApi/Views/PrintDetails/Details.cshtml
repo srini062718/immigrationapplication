@@ -222,3 +222,221 @@
         </tr>
     }
 </table>
+<br />
+<h3>Parent Details</h3>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Middle Name</th>
+        <th>City of Birth</th>
+        <th>City of Residence</th>
+        <th>Relation Ship</th>
+        <th>Date of Birth</th>
+    </tr>
+
+    @foreach (var item in Model.Parent)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.MiddleName</td>
+            <td>@item.CityofBirth</td>
+            <td>@item.CityofResidence</td>
+            <td>@item.Relationship</td>
+            <td>@item.DateofBirth</td>
+        </tr>
+    }
+</table>
+<br />
+<h3>Spouse Details</h3>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Middle Name</th>
+        <th>City of Marriage</th>
+        <th>City of Divorce</th>
+        <th>Country of Marriage</th>
+    </tr>
+    @foreach (var item in Model.FormerSpouse)
+    {
+    <tr>
+        <td>@item.FirstName</td>
+        <td>@item.LastName</td>
+        <td>@item.MiddleName</td>
+        <td>@item.CityofMarriage</td>
+        <td>@item.CityofDivorced</td>
+        <td>@item.CountryofMarriage</td>
+    </tr>
+    }
+</table>
+<br />
+<table>
+    <tr>
+        <th>Country of Divorce</th>
+        <th>Date of Birth</th>
+        <th>Date of Marriage</th>
+        <th>Date of Death</th>
+        <th>Date of Divorce</th>
+    </tr>
+    @foreach (var item in Model.FormerSpouse)
+    {
+        <tr>
+            <td>@item.CountryofDivorced</td>
+            <td>@item.DateofBirth</td>
+            <td>@item.DateofMarriage</td>
+            <td>@item.DateofDeath</td>
+            <td>@item.DateofDiverse</td>
+        </tr>
+    }
+</table>
+<br />
+<h3>Last Us Entry Details Any</h3>
+<table>
+    <tr>
+        <th>Applied Permanent Resident ?</th>
+        <th>Visa Issued USA Consulate</th>
+        <th>Name of the Airlinesth>
+        <th>Flight Number</th>
+        <th>City of Arrival</th>
+        <th>State of Arrival</th>
+    </tr>
+    @foreach (var item in Model.LastArrivalDetail)
+    {
+        <tr>
+            <td>@item.AppliedPermanentResident</td>
+            <td>@item.USConsulate</td>
+            <td>@item.NameofFlight</td>
+            <td>@item.FlightNumber</td>
+            <td>@item.City</td>
+            <td>@item.State</td>
+        </tr>
+    }
+</table>
+<br />
+<table>
+    <tr>
+        <th>Date of Entry to USA</th>
+        <th>Visa Refused Any ?</th>
+    </tr>
+    @foreach (var item in Model.LastArrivalDetail)
+    {
+        <tr>
+            <td>@item.DateofArrival.ToShortDateString()</td>
+            <td>@item.RefusedVisa</td>
+        </tr>
+    }
+</table>
+<br />
+<h3>Children Details</h3>
+<table>
+<tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Middle Name</th>
+    <th>Gender</th>
+    <th>Date of Birth</th>
+    <th>Marital Status</th>
+    <th>Birth Place</th>
+</tr>
+    @foreach (var item in Model.Child)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.MiddleName</td>
+            <td>@item.Gender</td>
+            <td>@item.DateofBirth.ToShortDateString()</td>
+            <td>@item.MaritalStatus</td>
+            <td>@item.BirthPlace</td>
+        </tr>
+    }
+</table>
+<br />
+<table>
+    <tr>
+        <th>Address 1</th>
+        <th>Address 2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Birth Country</th>
+        <th>Zip Code</th>
+    </tr>
+    @foreach (var item in Model.Child)
+    {
+        <tr>
+            <td>@item.Address1</td>
+            <td>@item.Address2</td>
+            <td>@item.City</td>
+            <td>@item.State</td>
+            <td>@item.BirthCountry</td>
+            <td>@item.ZipCode</td>
+        </tr>
+    }
+</table>
+<br />
+<h3>US Relative Details</h3>
+<table>
+        <tr>
+            <th>Relative Name</th>
+            <th>Relation Ship</th>
+            <th>US Visa Type of Relative</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Marital Status</th>
+        </tr>
+        @foreach (var item in Model.USRelative)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Relationship</td>
+                <td>@item.USVisaType</td>
+                <td>@item.Age</td>
+                <td>@item.Address</td>
+                <td>@item.MaritialStatus</td>
+            </tr>
+        }
+    </table>
+<br />
+<h3>Previous Application Details</h3>
+<table>
+    <tr>
+        <th>Application Type</th>
+        <th>Status Granted</th>
+        <th>Indicate if Application Denied ?</th>
+        <th>Cap Gap Period Any ?</th>
+        <th>Date Applied</th>
+    </tr>
+    @foreach (var item in Model.PreviousApplication)
+    {
+        <tr>
+            <td>@item.ApplicationType</td>
+            <td>@item.StatusGranted</td>
+            <td>@item.IndicateIfDenied</td>
+            <td>@item.CapGap</td>
+            <td>@item.DateApplied.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+< br />
+<h3> Other Information Any</h3>
+<table>
+    <tr>
+        <th>About Firm Details</th>
+        <th>Languages Known</th>
+        <th>Conviction Any</th>
+        <th>License Number</th>
+        <th>Other Details Any</th>
+    </tr>
+    @foreach (var item in Model.OtherDetail)
+    {
+        <tr>
+            <td>@item.AboutFirm</td>
+            <td>@item.LanguagesSpoken</td>
+            <td>@item.Conviction</td>
+            <td>@item.LicenseNumber</td>
+            <td>@item.OtherInformation</td>
+        </tr>
+    }
+</table>

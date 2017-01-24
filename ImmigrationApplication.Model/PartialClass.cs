@@ -67,7 +67,7 @@ namespace ImmigrationApplication.Model
     {
 
     }
-    [MetadataType(typeof(OtherDetail))]
+    [MetadataType(typeof(OtherDetails))]
     public partial class OtherDetail
     {
         

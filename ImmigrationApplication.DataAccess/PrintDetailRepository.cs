@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 
 namespace ImmigrationApplication.DataAccess
 {
-    public class PrintRepository
+    public class PrintDetailRepository
     {
         private readonly PrintDetails _pd = new PrintDetails();
         private readonly DataSet _ds = new DataSet();
-        public PrintRepository()
+        public PrintDetailRepository()
         {
             _pd.Address = new List<Address>();
             _pd.Education = new List<Education>();
