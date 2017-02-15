@@ -1,0 +1,108 @@
+﻿@model ImmigrationApplication.Model.Employment
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+<div>
+    <h4>Employment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zipcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zipcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateStarted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateStarted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateLeft)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateLeft)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmploymentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

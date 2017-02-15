@@ -111,6 +111,27 @@ namespace ImmigrationApplication.Model
         public string CountryofMarriage;
     }
 
+    public class AspNetUsers
+    {
+        [Required(ErrorMessage ="The Email field is required")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
+        public string Email;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public class AddressMetadata
     {
         [Required]

@@ -1,0 +1,208 @@
+﻿@model ImmigrationApplication.Model.Person
+
+@using (Html.BeginForm("Create", "Person", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="margin-top:40px;">Enter the Details</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", id = "lastname" })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        <span id="lastnamespan"></span>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", id = "firstname" })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        <span id="firstnamespan"></span>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MiddleName)
+                        @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gender)
+                        @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Male", Value = "Male"},
+                            new SelectListItem {Text = "Female", Value = "Female" },
+                        }, "Select Gender", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateofBirth)
+                        @Html.TextBoxFor(model => model.DateofBirth, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MartialStatus)
+                        @Html.TextBoxFor(model => model.MartialStatus, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MartialStatus, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nationality)
+                        @Html.TextBoxFor(model => model.Nationality, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.USVisaType)
+                        @Html.TextBoxFor(model => model.USVisaType, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.USVisaType, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.VisaIssueDate)
+                        @Html.TextBoxFor(model => model.VisaIssueDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.VisaIssueDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.VisaExpiryDate)
+                        @Html.TextBoxFor(model => model.VisaExpiryDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.VisaExpiryDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastUSEntryDate)
+                        @Html.TextBoxFor(model => model.LastUSEntryDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.LastUSEntryDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.I94ExpiryDate)
+                        @Html.TextBoxFor(model => model.I94ExpiryDate, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.I94ExpiryDate, "", new { @class = "text-danger" })
+                    </div>
+                </td>
+                <td>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AliasAny)
+                    @Html.TextBoxFor(model => model.AliasAny, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AliasAny, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SSN)
+                    @Html.TextBoxFor(model => model.SSN, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SSN, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Anumber)
+                    @Html.TextBoxFor(model => model.Anumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Anumber, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PassportNumber)
+                    @Html.TextBoxFor(model => model.PassportNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PassportNumber, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CountryIssued)
+                    @Html.TextBoxFor(model => model.CountryIssued, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CountryIssued, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateIssued)
+                    @Html.TextBoxFor(model => model.DateIssued, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.DateIssued, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateExpired)
+                    @Html.TextBoxFor(model => model.DateExpired, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.DateExpired, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SpouseName)
+                    @Html.TextBoxFor(model => model.SpouseName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SpouseName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateofMarriage)
+                    @Html.TextBoxFor(model => model.DateofMarriage, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.DateofMarriage, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthCity)
+                    @Html.TextBoxFor(model => model.BirthCity, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BirthCity, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CityofMarriage)
+                    @Html.TextBoxFor(model => model.CityofMarriage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CityofMarriage, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CountryofMarriage)
+                    @Html.TextBoxFor(model => model.CountryofMarriage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CountryofMarriage, "", new { @class = "text-danger" })
+                </div>
+
+                <table style="width:50%">
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input id="test" type="submit" value="Next" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Back to List", "Index")
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+       $(function () {
+            $(".datepicker").datepicker();
+            $("#test").click(function () {
+                if ($("#lastname").val().length === 0) {
+                    $("#lastnamespan").text("This field is required");
+                    $("#lastnamespan").css("color", "red");
+                }
+                if ($("#firstname").val().length === 0) {
+                    $("#firstnamespan").text("This field is required");
+                    $("#firstnamespan").css("color", "red");
+                }
+                return false;
+            });
+        });
+
+    </script>
+}
+
+
+

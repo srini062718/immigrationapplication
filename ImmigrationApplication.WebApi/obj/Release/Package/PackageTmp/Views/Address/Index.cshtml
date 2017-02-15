@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ImmigrationApplication.Model.Address>
+<style>
+    dt, dd {
+        padding-bottom: 10px;
+    }
+
+</style>
+
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary {{ "PersonID", Model.FirstOrDefault().PersonID}})
+<p>
+    @Html.ActionLink("Create New", "Create", new { personid = Model.FirstOrDefault().PersonID })</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Address1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { personid=item.PersonID }) |
+            @Html.ActionLink("Details", "Details", new {personid=item.PersonID }) |
+            @Html.ActionLink("Delete", "Delete", new {personid=item.PersonID })
+        </td>
+    </tr>
+}
+
+</table>

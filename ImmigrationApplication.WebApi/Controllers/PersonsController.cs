@@ -16,12 +16,11 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         [HttpGet]
         [Route("details")]
-        public HttpResponseMessage PersonswdController()
+        public HttpResponseMessage PersonswdController(int personid)
         {
             _context = new immigrationEntities();
             _context.Configuration.ProxyCreationEnabled = false;
-            List<Person> persons = _context.People.ToList();
-            
+          var persons = _context.People.Find(personid);
             return Request.CreateResponse(HttpStatusCode.OK, persons);
              
         }

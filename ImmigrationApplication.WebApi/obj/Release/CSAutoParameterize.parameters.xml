@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="immigrationEntities-Web.config Connection String" description="immigrationEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/immiContext.csdl|res://*/immiContext.ssdl|res://*/immiContext.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-9C4BAA5\SQLEXPRESS;initial catalog=immigration;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\SSCDEV-01\\Documents\\GitHub\\immigrationapplication\\ImmigrationApplication\.WebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='immigrationEntities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=DESKTOP-9C4BAA5\SQLEXPRESS;Initial Catalog=immigration;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\SSCDEV-01\\Documents\\GitHub\\immigrationapplication\\ImmigrationApplication\.WebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ImmigrationApplication.Model.FormerSpouse>
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
+<p>
+    @Html.ActionLink("Create New", "Create",new {personid = Model.FirstOrDefault().PersonID})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofMarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityofMarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryofMarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityofDivorced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryofDivorced)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofDiverse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofDeath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofMarriage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityofMarriage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryofMarriage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityofDivorced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryofDivorced)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofDiverse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofDeath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
+        </td>
+    </tr>
+}
+
+</table>

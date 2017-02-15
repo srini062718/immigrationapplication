@@ -1,0 +1,68 @@
+﻿@model ImmigrationApplication.Model.USRelative
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+<div>
+    <h4>USRelative</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Relationship)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Relationship)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USVisaType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USVisaType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaritialStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaritialStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.LastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.USRelativeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

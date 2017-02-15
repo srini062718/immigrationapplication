@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>my webform</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#btnGetEmployee')
+                .click(function() {
+                    var empid = $('#txtId').val();
+                    $.ajax({
+                        url: 'api/person/details',
+                        data: { personid : empid },
+                        method: 'Get',
+                        dataType: 'xml',
+                        success:function(data) {
+                            var jqueryxml = $(data);
+                            $('#txtLastName').val(jqueryxml.find('LastName').text());
+                            $('#txtGender').val(jqueryxml.find('Gender').text());
+                            $('#txtFirstName').val(jqueryxml.find('FirstName').text());
+                        },
+                        error: function(err) {
+                            alert(err);
+                        }
+                    });
+                });
+        });
+    </script>
+</head>
+<body>
+        ID : <input id="txtId" type="text" style="width:100px" />
+        <input type="button" id="btnGetEmployee" value="Get Employee" />
+        <br /><br />
+        <table style="border-collapse:collapse">
+            <tr>
+                <td>Last Name</td>
+                <td><input id="txtLastName" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input id="txtGender" type="text" /></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input id="txtFirstName" type="text" /></td>
+            </tr>
+        </table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Release\ImmigrationApplication.Model.dll.config
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Release\ImmigrationApplication.Model.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Release\ImmigrationApplication.Model.pdb
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Release\EntityFramework.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Release\EntityFramework.xml
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\obj\Release\ImmigrationApplication.Model.csprojResolveAssemblyReference.cache
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\obj\Release\ImmigrationApplication.Model.dll
+C:\Users\SSCDEV-01\Documents\GitHub\immigrationapplication\ImmigrationApplication.Model\obj\Release\ImmigrationApplication.Model.pdb

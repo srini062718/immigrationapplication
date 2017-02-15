@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ImmigrationApplication.Model.PreviousApplication>
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
+<p>
+    @Html.ActionLink("Create New", "Create", new { personId = Model.FirstOrDefault().PersonID })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateApplied)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusGranted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndicateIfDenied)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CapGap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateApplied)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusGranted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IndicateIfDenied)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CapGap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
+        </td>
+    </tr>
+}
+
+</table>

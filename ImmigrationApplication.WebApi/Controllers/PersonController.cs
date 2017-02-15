@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
@@ -23,6 +24,19 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         public ActionResult Index()
         {
+            /*
+            var  msg = new MailMessage("pandureddy0254@gmail.com","panduchinna54@gmail.com","Hello pandu","This is a asp.net mvc application message");
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential
+                {
+                    UserName = "pandureddy0254@gmail.com",
+                    Password = "aspire123"
+                },
+                EnableSsl = true
+            };
+            client.Send(msg);
+            */
             ViewBag.Title = "List of Customers";
             var p = _uow.RepositoryFor<Person>();
             var per =   p.GetAll();

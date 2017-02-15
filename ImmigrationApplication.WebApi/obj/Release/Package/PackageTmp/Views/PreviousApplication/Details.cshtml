@@ -1,0 +1,60 @@
+﻿@model ImmigrationApplication.Model.PreviousApplication
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+<div>
+    <h4>PreviousApplication</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateApplied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateApplied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusGranted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusGranted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicateIfDenied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndicateIfDenied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapGap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapGap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.LastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PreviousApplicationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

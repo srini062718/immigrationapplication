@@ -72,4 +72,10 @@ namespace ImmigrationApplication.Model
     {
         
     }
+
+    [MetadataType(typeof(AspNetUsers))]
+    public partial class ApNetUser
+    {
+        
+    }
 }
