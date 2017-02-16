@@ -38,7 +38,7 @@ namespace ImmigrationApplication.WebApi.Controllers
                 throw new Exception("filename doesnot exist");
             }
             var filextension = Path.GetExtension(file.FileName);
-            if (filextension != null && (filextension.ToLower() != ".doc" && filextension.ToLower() != ".pdf" &&
+            if (filextension != null && (filextension.ToLower() != ".docx" && filextension.ToLower() != ".pdf" &&
                                          filextension.ToLower() != ".png" && filextension.ToLower() != ".jpeg"))
             {
                 Console.WriteLine("The file format can only be .png , .jpeg, .pdf, .doc");
@@ -66,7 +66,6 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         public FileResult Download(string name)
         {
-            //     return  new FilePathResult((Server.MapPath("~/uploads")) + "/" + personid + "/" + name,System.Net.Mime.MediaTypeNames.Application.Octet);
             return new FilePathResult(name, System.Net.Mime.MediaTypeNames.Application.Octet);
         }
     }

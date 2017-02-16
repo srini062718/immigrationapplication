@@ -15,7 +15,7 @@ namespace ImmigrationApplication.WebApi.Controllers
     {
         private readonly UnitOfWork _uow = null;
 
-        public Person Con { get; private set; }
+        public Person Person { get; private set; }
 
         public PersonController()
         {
@@ -24,19 +24,6 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         public ActionResult Index()
         {
-            /*
-            var  msg = new MailMessage("pandureddy0254@gmail.com","panduchinna54@gmail.com","Hello pandu","This is a asp.net mvc application message");
-            var client = new SmtpClient("smtp.gmail.com", 587)
-            {
-                Credentials = new System.Net.NetworkCredential
-                {
-                    UserName = "pandureddy0254@gmail.com",
-                    Password = "aspire123"
-                },
-                EnableSsl = true
-            };
-            client.Send(msg);
-            */
             ViewBag.Title = "List of Customers";
             var p = _uow.RepositoryFor<Person>();
             var per =   p.GetAll();
@@ -53,19 +40,23 @@ namespace ImmigrationApplication.WebApi.Controllers
                 return View(per);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
+            EncryptAndDecrypt encryptdecrypt = new EncryptAndDecrypt();
+            int personid = encryptdecrypt.DecryptToBase64(id);
             var p = _uow.RepositoryFor<Person>();
-            Con = p.Get(id);
-            return Con == null ? View() : View(Con);
+            Person = p.Get(personid);
+            return Person == null ? View() : View(Person);
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
+            EncryptAndDecrypt encryptdecrypt = new EncryptAndDecrypt();
+            int personid = encryptdecrypt.DecryptToBase64(id);
             var p = _uow.RepositoryFor<Person>();
-            Con = p.Get(id);
-            return View(Con);
+            Person = p.Get(personid);
+            return View(Person);
         }
 
         [HttpPost]

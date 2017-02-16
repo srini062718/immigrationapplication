@@ -19,16 +19,18 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: Parent
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
-           var parents =  _uow.RepositoryFor<Parent>().GetAll();
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var id = encryptdecrypt.DecryptToBase64(personid);
+            var parents =  _uow.RepositoryFor<Parent>().GetAll();
             var enumerable = parents as Parent[] ?? parents.ToArray();
-            var parentlist = enumerable.Where(x => x.PersonID == personid).ToList();
+            var parentlist = enumerable.Where(x => x.PersonID == id).ToList();
             if (parentlist.Count == 0)
             {
                 return RedirectToAction("Create", "Parent", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==personid));
+            return View(enumerable.Where(x=>x.PersonID==id));
         }
 
         // get by id

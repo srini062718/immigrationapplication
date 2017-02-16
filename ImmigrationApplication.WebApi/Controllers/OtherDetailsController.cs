@@ -20,16 +20,18 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: OtherDetails
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
-          var details =  _uow.RepositoryFor<OtherDetail>().GetAll();
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var id = encryptdecrypt.DecryptToBase64(personid);
+            var details =  _uow.RepositoryFor<OtherDetail>().GetAll();
             var enumerable = details as OtherDetail[] ?? details.ToArray();
-            var otherdetaillist = enumerable.Where(x => x.PersonID == personid).ToList();
+            var otherdetaillist = enumerable.Where(x => x.PersonID == id).ToList();
             if (otherdetaillist.Count == 0)
             {
                 return RedirectToAction("Create", "OtherDetails", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==personid));
+            return View(enumerable.Where(x=>x.PersonID==id));
         }
 
 

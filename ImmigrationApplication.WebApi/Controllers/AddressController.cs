@@ -20,16 +20,18 @@ namespace ImmigrationApplication.WebApi.Controllers
        
 
         // GET: Addresses list of all address
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
-           var address=  _uow.RepositoryFor<Address>().GetAll();
+           var encryptdecrypt = new EncryptAndDecrypt();
+           var id =  encryptdecrypt.DecryptToBase64(personid);
+            var address=  _uow.RepositoryFor<Address>().GetAll();
             var enumerable = address as Address[] ?? address.ToArray();
-            var addresslist = enumerable.Where(x => x.PersonID == personid).ToList();
-            if (addresslist.Count != 0) return View(enumerable.Where(x => x.PersonID == personid));
+           var addresslist = enumerable.Where(x => x.PersonID == id).ToList();
+           if (addresslist.Count != 0) return View(enumerable.Where(x => x.PersonID == id));
             Console.WriteLine("You didn't provide the address details, Please provide it now.");
             return RedirectToAction("Create", "Address", new {personid});
         }
-
+        
         // Get single address 
         public ActionResult Details(int personid)
         {

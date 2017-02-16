@@ -25,16 +25,18 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: list of all LastArrivalDetail details
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var id = encryptdecrypt.DecryptToBase64(personid);
             var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().GetAll();
             var enumerable = lastarrivaldetail as LastArrivalDetail[] ?? lastarrivaldetail.ToArray();
-            var arrivallist = enumerable.Where(x => x.PersonID == personid).ToList();
+            var arrivallist = enumerable.Where(x => x.PersonID == id).ToList();
             if (arrivallist.Count == 0)
             {
                 return RedirectToAction("Create", "LastArrivalDetail", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==personid));
+            return View(enumerable.Where(x=>x.PersonID==id));
         }
 
         // Get details of one particular LastArrivalDetail

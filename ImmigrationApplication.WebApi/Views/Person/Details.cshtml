@@ -1,4 +1,9 @@
 ﻿@model ImmigrationApplication.Model.Person
+@using ImmigrationApplication.DataAccess
+@{
+    EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+ //  int personid = encdyc.DecryptToBase64(Model.PersonID);
+}
 
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary {{ "PersonID", Model.PersonID }})
     

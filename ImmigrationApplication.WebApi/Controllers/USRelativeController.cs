@@ -17,16 +17,18 @@ namespace ImmigrationApplication.WebApi.Controllers
             _uow = new UnitOfWork();
         }
         // GET: Parent
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var id = encryptdecrypt.DecryptToBase64(personid);
             var usrelative = _uow.RepositoryFor<USRelative>().GetAll();
             var enumerable = usrelative as USRelative[] ?? usrelative.ToArray();
-            var relativeslist = enumerable.Where(x => x.PersonID == personid).ToList();
+            var relativeslist = enumerable.Where(x => x.PersonID == id).ToList();
             if (relativeslist.Count == 0)
             {
                 return RedirectToAction("Create", "USRelative", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==personid));
+            return View(enumerable.Where(x=>x.PersonID==id));
         }
 
         // get by id

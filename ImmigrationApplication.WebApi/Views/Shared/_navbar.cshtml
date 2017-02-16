@@ -1,4 +1,4 @@
-﻿
+﻿@using ImmigrationApplication.DataAccess;
 <style>
     .nav {
         margin-top: 10px;
@@ -61,7 +61,8 @@
 </style>
 
 @{
-    var personId = Convert.ToInt32(ViewData["PersonID"]);
+    EncryptAndDecrypt encryptdecrypt = new EncryptAndDecrypt();
+    var personId = encryptdecrypt.EncryptToBase64(Convert.ToInt32(ViewData["PersonID"]));
 }
 
 <div class="navbar-collapse collapse">

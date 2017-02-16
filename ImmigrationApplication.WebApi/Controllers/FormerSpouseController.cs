@@ -25,16 +25,18 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: list of all FormerSpouse details
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var id = encryptdecrypt.DecryptToBase64(personid);
             var formerspouse = _uow.RepositoryFor<FormerSpouse>().GetAll();
             var enumerable = formerspouse as FormerSpouse[] ?? formerspouse.ToArray();
-            var spouselist = enumerable.Where(x => x.PersonID == personid).ToList();
+            var spouselist = enumerable.Where(x => x.PersonID == id).ToList();
             if (spouselist.Count == 0)
             {
                 return RedirectToAction("Create", "FormerSpouse", new {personId = personid});
             }
-            return View(enumerable.Where(x=>x.PersonID==personid));
+            return View(enumerable.Where(x=>x.PersonID==id));
         }
 
 

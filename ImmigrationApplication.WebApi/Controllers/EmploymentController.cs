@@ -25,16 +25,18 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // GET: list of all Employment details
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var id = encryptdecrypt.DecryptToBase64(personid);
             var employ = _uow.RepositoryFor<Employment>().GetAll();
             var enumerable = employ as Employment[] ?? employ.ToArray();
-            var employlist = enumerable.Where(x => x.PersonID == personid).ToList();
+            var employlist = enumerable.Where(x => x.PersonID == id).ToList();
             if (employlist.Count == 0)
             {
                 return RedirectToAction("Create", "Employment", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==personid));
+            return View(enumerable.Where(x=>x.PersonID==id));
         }
 
 
