@@ -27,12 +27,10 @@ namespace ImmigrationApplication.WebApi.Controllers
             ViewBag.Title = "List of Customers";
             var p = _uow.RepositoryFor<Person>();
             var per =   p.GetAll();
-           
             if (User.IsInRole("Admin") != true )
                 {
                 per = per.Where(x => x.CreatedByName == User.Identity.GetUserName());
                 }
-           
             if(!per.Any())
                 {
                     return RedirectToAction("Create","Person");
@@ -40,20 +38,20 @@ namespace ImmigrationApplication.WebApi.Controllers
                 return View(per);
         }
 
-        public ActionResult Details(string id)
+        public ActionResult Details(string personId)
         {
-            EncryptAndDecrypt encryptdecrypt = new EncryptAndDecrypt();
-            int personid = encryptdecrypt.DecryptToBase64(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             var p = _uow.RepositoryFor<Person>();
             Person = p.Get(personid);
             return Person == null ? View() : View(Person);
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string personId)
         {
-            EncryptAndDecrypt encryptdecrypt = new EncryptAndDecrypt();
-            int personid = encryptdecrypt.DecryptToBase64(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             var p = _uow.RepositoryFor<Person>();
             Person = p.Get(personid);
             return View(Person);
@@ -78,34 +76,32 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Person p)
         {
-            if (ModelState.IsValid)
-            {
-                p.CreatedByName = User.Identity.Name;
-                var person = _uow.RepositoryFor<Person>();
-                person.Add(p);
-                _uow.Complete();
-                TempData.Add("id", p.PersonID.ToString());
-                return RedirectToAction("Details", "Person", new { id = p.PersonID });
-            }
-            return View();
-
+            if (!ModelState.IsValid) return View();
+            p.CreatedByName = User.Identity.Name;
+            var person = _uow.RepositoryFor<Person>();
+            person.Add(p);
+            _uow.Complete();
+            TempData.Add("id", p.PersonID.ToString());
+            return RedirectToAction("Details", "Person", new { id = p.PersonID });
         }
 
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int personId)
         {
-            var person = _uow.RepositoryFor<Person>().Get(id);
+            var person = _uow.RepositoryFor<Person>().Get(personId);
             return View(person);
         }
 
         [Authorize]
         [HttpPost,ActionName("Delete")]
-        public ActionResult Deleteconfirmed(int id)
+        public ActionResult Deleteconfirmed(string personId)
         {
-          var person =  _uow.RepositoryFor<Person>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
+            var person =  _uow.RepositoryFor<Person>().Get(personid);
             _uow.RepositoryFor<Person>().Delete(person.PersonID);
             _uow.Complete();
-            return RedirectToAction("Index", "Person" , new { personid = id });
+            return RedirectToAction("Index", "Person" , new { personid });
         }
     }
 }
