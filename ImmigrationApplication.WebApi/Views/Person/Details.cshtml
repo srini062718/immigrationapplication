@@ -2,9 +2,8 @@
 @using ImmigrationApplication.DataAccess
 @{
     EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
- //  int personid = encdyc.DecryptToBase64(Model.PersonID);
+    string pid = encdyc.EncryptToBase64(Model.PersonID);
 }
-
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary {{ "PersonID", Model.PersonID }})
     
     <style>
@@ -212,7 +211,8 @@
         </dl>
     </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PersonID }) |
+   
+    @Html.ActionLink("Edit", "Edit", new {personId = pid}) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 

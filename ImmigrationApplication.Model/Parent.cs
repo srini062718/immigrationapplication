@@ -22,7 +22,7 @@ namespace ImmigrationApplication.Model
         public string CityofBirth { get; set; }
         public string CityofResidence { get; set; }
         public string Relationship { get; set; }
-        public Nullable<int> PersonID { get; set; }
+        public int PersonID { get; set; }
     
         public virtual Person Person { get; set; }
     }

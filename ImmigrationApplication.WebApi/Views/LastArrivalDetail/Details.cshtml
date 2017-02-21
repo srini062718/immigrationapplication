@@ -1,4 +1,5 @@
 ﻿@model ImmigrationApplication.Model.LastArrivalDetail
+@using ImmigrationApplication.DataAccess
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
 <div>
     <h4>LastArrivalDetail</h4>
@@ -79,6 +80,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LastArrivalDetailsID }) |
+    @{
+        EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+        string personid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Edit", "Edit", new {id = personid }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

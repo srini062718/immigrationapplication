@@ -34,21 +34,25 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // Get details of one particular Children
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            var child = _uow.RepositoryFor<Child>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var child = _uow.RepositoryFor<Child>().Get(personid);
             return View(child);
         }
 
         [HttpGet]
-        public ActionResult Create(int personId)
+        public ActionResult Create(string personId)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             Child c;
-            if (personId > 0)
+            if (personid > 0)
             {
                 c = new Child
                 {
-                    PersonID = personId
+                    PersonID = personid
                 };
 
             }
@@ -56,7 +60,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                  c = new Child
                 {
-                    PersonID = Convert.ToInt32(TempData["id"])
+                    PersonID = Convert.ToInt32(TempData["personid"])
                 };
             }
            
@@ -74,9 +78,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int personid)
+        public ActionResult Edit(string id)
         {
-           var child = _uow.RepositoryFor<Child>().GetAll();
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var child = _uow.RepositoryFor<Child>().GetAll();
             return View(child.SingleOrDefault(x=>x.PersonID == personid));
         }
 

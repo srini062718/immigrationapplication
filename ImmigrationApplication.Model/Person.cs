@@ -23,10 +23,10 @@ namespace ImmigrationApplication.Model
             this.FormerSpouses = new HashSet<FormerSpouse>();
             this.LastArrivalDetails = new HashSet<LastArrivalDetail>();
             this.OtherDetails = new HashSet<OtherDetail>();
-            this.Parents = new HashSet<Parent>();
             this.PreviousApplications = new HashSet<PreviousApplication>();
             this.USRelatives = new HashSet<USRelative>();
             this.Children = new HashSet<Child>();
+            this.Parents = new HashSet<Parent>();
         }
     
         public int PersonID { get; set; }
@@ -69,12 +69,12 @@ namespace ImmigrationApplication.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtherDetail> OtherDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Parent> Parents { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PreviousApplication> PreviousApplications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USRelative> USRelatives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Child> Children { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Parent> Parents { get; set; }
     }
 }

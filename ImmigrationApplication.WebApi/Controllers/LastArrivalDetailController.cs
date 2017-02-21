@@ -40,28 +40,32 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // Get details of one particular LastArrivalDetail
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(personid);
             return View(lastarrivaldetail);
         }
 
         [HttpGet]
-        public ActionResult Create(int personId)
+        public ActionResult Create(string personId)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             LastArrivalDetail lad;
-            if (personId > 0)
+            if (personid > 0)
             {
                 lad = new LastArrivalDetail
                 {
-                    PersonID = personId
+                    PersonID = personid
                 };
             }
             else
             {
                 lad = new LastArrivalDetail
                 {
-                    PersonID = Convert.ToInt32(TempData["id"])
+                    PersonID = Convert.ToInt32(TempData["personid"])
                 };
             }
             return View(lad);
@@ -78,9 +82,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(personid);
             return View(lastarrivaldetail);
         }
 

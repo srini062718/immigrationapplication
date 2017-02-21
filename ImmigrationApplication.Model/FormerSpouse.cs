@@ -22,10 +22,6 @@ namespace ImmigrationApplication.Model
         public Nullable<System.DateTime> DateofMarriage { get; set; }
         public string CityofMarriage { get; set; }
         public string CountryofMarriage { get; set; }
-        public string CityofDivorced { get; set; }
-        public string CountryofDivorced { get; set; }
-        public Nullable<System.DateTime> DateofDiverse { get; set; }
-        public Nullable<System.DateTime> DateofDeath { get; set; }
         public int PersonID { get; set; }
     
         public virtual Person Person { get; set; }

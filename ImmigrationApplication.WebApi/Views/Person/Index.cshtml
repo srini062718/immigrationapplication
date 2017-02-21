@@ -86,8 +86,7 @@
                     string personid = encdyc.EncryptToBase64(item.PersonID);
                 }
                 @Html.ActionLink("Edit", "Edit", new { personId = personid}) |
-                @Html.ActionLink("Details", "Details", new { personId = personid }) |
-                @Html.ActionLink("Delete", "Delete", new { personId = personid })
+                @Html.ActionLink("Details", "Details", new { personId = personid }) 
             </td>
         </tr>
     }

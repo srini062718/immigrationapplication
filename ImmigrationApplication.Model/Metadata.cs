@@ -18,7 +18,7 @@ namespace ImmigrationApplication.Model
 
         [Required]
         [Display(Name = "Date of Birth")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime DateofBirth;
 
         [Display(Name ="Middle Name")]
@@ -43,18 +43,18 @@ namespace ImmigrationApplication.Model
         public DateTime VisaIssueDate;
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         [Display(Name = "Date of Visa Expiration")]
         public DateTime VisaExpiryDate;
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         [Display(Name = "Date of Last US Entry")]
         // ReSharper disable once InconsistentNaming
         public DateTime LastUSEntryDate;
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         [Display(Name = "I-94 Expiration Date")]
         public DateTime I94ExpiryDate;
 
@@ -80,12 +80,12 @@ namespace ImmigrationApplication.Model
         public string CountryIssued;
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",  ApplyFormatInEditMode = false)]
         [Display(Name ="Date of Passport Issue")]
         public DateTime DateIssued;
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         [Display(Name = "Date of Passport Expiration")]
         public DateTime DateExpired;
 
@@ -94,7 +94,7 @@ namespace ImmigrationApplication.Model
         public string SpouseName;
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         [Display(Name = "Date of Marriage")]
         public DateTime DateofMarriage;
 
@@ -370,19 +370,12 @@ namespace ImmigrationApplication.Model
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateofMarriage;
 
-        [Display(Name = "Date of Divorce")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime DateofDiverse;
-
         [Display(Name ="City of Marriage")]
         public string CityofMarriage;
 
         [Display(Name ="Country of Marriage")]
         public string CountryofMarriage;
-
-        [Display(Name ="Date of Death")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime DateofDeath;
+        
     }
 
     public class LastArrivalDetailsMetaData

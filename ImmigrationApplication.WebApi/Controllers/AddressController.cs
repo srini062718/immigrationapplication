@@ -33,17 +33,20 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
         
         // Get single address 
-        public ActionResult Details(int personid)
+        public ActionResult Details(string personId)
         {
-
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             var a = _uow.RepositoryFor<Address>().GetAll();
             return View(a.FirstOrDefault(x => x.PersonID == personid));
         }
 
 
         [HttpGet]
-        public ActionResult Create(int personid)
+        public ActionResult Create(string personId)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             Address a;
             if (personid > 0)
             {
@@ -70,25 +73,29 @@ namespace ImmigrationApplication.WebApi.Controllers
             var g = _uow.RepositoryFor<Address>();
             g.Add(address);
             _uow.Complete();
-            return RedirectToAction("Index", "Address", new { personid = address.PersonID });
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+            string pid = encdyc.EncryptToBase64(address.PersonID);
+            return RedirectToAction("Index", "Address", new { personid = pid });
         }
 
 
         // address/edit/id
         [HttpGet]
-        public ActionResult Edit(int personid)
+        public ActionResult Edit(string personId)
         {
-
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             var a = _uow.RepositoryFor<Address>().GetAll();
             return View(a.FirstOrDefault(x => x.PersonID == personid));
-        //    Address a = _uow.RepositoryFor<Address>().Get(id);
-        //    return View(a);
-
         }
 
         [HttpPost]
         public ActionResult Edit(Address a)
         {
+            string pid = Request.QueryString["PersonID"];
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+           int personid =  encdyc.DecryptToBase64(pid);
+            a.PersonID = personid;
            if (!ModelState.IsValid) return View(a);
            var  address = _uow.RepositoryFor<Address>();
             address.Update(a);
@@ -98,16 +105,18 @@ namespace ImmigrationApplication.WebApi.Controllers
 
       //  Address/delete/id
         [HttpGet]
-        public ActionResult Delete(int personid)
+        public ActionResult Delete(string personId)
         {
-           var a = _uow.RepositoryFor<Address>().GetAll();
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
+            var a = _uow.RepositoryFor<Address>().GetAll();
             return View(a.SingleOrDefault(x=>x.PersonID==personid));
         }
 
         [HttpPost,ActionName("Delete")]
         public ActionResult Deleteconfirmed(int id)
         {
-         Address a =   _uow.RepositoryFor<Address>().Get(id);
+             Address a = _uow.RepositoryFor<Address>().Get(id);
             _uow.RepositoryFor<Address>().Delete(a.AddressID);
             _uow.Complete();
             return RedirectToAction("Index", "Address");

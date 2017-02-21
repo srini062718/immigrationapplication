@@ -32,29 +32,33 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         // get by id
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            var usrelative = _uow.RepositoryFor<USRelative>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var usrelative = _uow.RepositoryFor<USRelative>().Get(personid);
             return View(usrelative);
         }
 
         // add a new 
         [HttpGet]
-        public ActionResult Create(int personId)
+        public ActionResult Create(string personId)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             USRelative usrelative;
-            if (personId > 0)
+            if (personid > 0)
             {
                 usrelative = new USRelative
                 {
-                    PersonID = personId
+                    PersonID = personid
                 };
             }
             else
             {
                 usrelative = new USRelative
                 {
-                    PersonID = Convert.ToInt32(TempData["id"])
+                    PersonID = Convert.ToInt32(TempData["personid"])
                 };
             }
            
@@ -72,9 +76,11 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // edit a detail
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            var usrelative = _uow.RepositoryFor<USRelative>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var usrelative = _uow.RepositoryFor<USRelative>().Get(personid);
             return View(usrelative);
         }
 

@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="immigrationModel.FormerSpouse" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.LastArrivalDetail" Width="1.5" PointX="3" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.OtherDetail" Width="1.5" PointX="3" PointY="28.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="immigrationModel.Parent" Width="1.5" PointX="3" PointY="31.875" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.Person" Width="1.5" PointX="0.75" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.PreviousApplication" Width="1.5" PointX="3" PointY="35.625" IsExpanded="true" />
         <EntityTypeShape EntityType="immigrationModel.USRelative" Width="1.5" PointX="3" PointY="38.875" IsExpanded="true" />
@@ -21,7 +20,6 @@
         <AssociationConnector Association="immigrationModel.FK_FormerSpouse_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_LastArrivalDetails_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_OtherDetails_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="immigrationModel.FK_Parent_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_PreviousApplication_Person" ManuallyRouted="false" />
         <AssociationConnector Association="immigrationModel.FK_USRelative_Person" ManuallyRouted="false" />
         <EntityTypeShape EntityType="immigrationModel.C__MigrationHistory" Width="1.5" PointX="5.375" PointY="6.75" />
@@ -34,6 +32,8 @@
         <AssociationConnector Association="immigrationModel.AspNetUserRoles" />
         <EntityTypeShape EntityType="immigrationModel.Child" Width="1.5" PointX="3" PointY="6.25" />
         <AssociationConnector Association="immigrationModel.FK_Children_Person" />
+        <EntityTypeShape EntityType="immigrationModel.Parent" Width="1.5" PointX="3" PointY="42.875" />
+        <AssociationConnector Association="immigrationModel.FK_Parent_Person" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

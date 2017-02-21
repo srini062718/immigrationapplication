@@ -151,13 +151,9 @@ namespace ImmigrationApplication.DataAccess
                         MiddleName = row["MiddleName"].ToString(),
                         FormerSpouseID = Convert.ToInt32(row["FormerSpouseID"]),
                         CityofMarriage = row["CityofMarriage"].ToString(),
-                        CityofDivorced = row["CityofDivorced"].ToString(),
-                        CountryofDivorced = row["CountryofDivorced"].ToString(),
                         CountryofMarriage = row["CountryofMarriage"].ToString(),
                         DateofBirth = (DateTime)row["DateofBirth"],
                         DateofMarriage = (DateTime)row["DateofMarriage"],
-                        DateofDeath = (DateTime)row["DateofDeath"],
-                        DateofDiverse = (DateTime)row["DateofDiverse"],
                         PersonID = personId
                     };
                     _pd.FormerSpouse.Add(fp);

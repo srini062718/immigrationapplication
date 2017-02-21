@@ -33,7 +33,6 @@ namespace ImmigrationApplication.Model
         public virtual DbSet<FormerSpouse> FormerSpouses { get; set; }
         public virtual DbSet<LastArrivalDetail> LastArrivalDetails { get; set; }
         public virtual DbSet<OtherDetail> OtherDetails { get; set; }
-        public virtual DbSet<Parent> Parents { get; set; }
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<PreviousApplication> PreviousApplications { get; set; }
         public virtual DbSet<USRelative> USRelatives { get; set; }
@@ -43,6 +42,7 @@ namespace ImmigrationApplication.Model
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Child> Children { get; set; }
+        public virtual DbSet<Parent> Parents { get; set; }
     
         public virtual ObjectResult<sp_PrintDetails_Result> PrintDetails(Nullable<int> personID)
         {

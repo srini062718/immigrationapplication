@@ -5,17 +5,20 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ImmigrationApplication.DataAccess;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
     public class FileUploadController : Controller
     {
         // GET: FileUpload
-        public ActionResult Index(int personid)
+        public ActionResult Index(string personid)
         {
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+           int personId = encdyc.DecryptToBase64(personid);
             ViewBag.PersonID = personid;
             var path1 = Path.Combine(Server.MapPath("~/Uploads"));
-            var path2 = path1 + "/" + personid;
+            var path2 = path1 + "/" + personId;
             if (!Directory.Exists(path2))
             {
                 Directory.CreateDirectory(path2);
@@ -27,11 +30,13 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload(int personId)
+        public ActionResult Upload(string personId)
         {
-            if (Request.Files.Count <= 0) return RedirectToAction("Index");
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+            int personid = encdyc.DecryptToBase64(personId);
+            if (Request.Files.Count <= 0) return RedirectToAction("Index", new {personid = personId});
             var file = Request.Files[0];
-            if (file == null || file.ContentLength <= 0) return RedirectToAction("Index");
+            if (file == null || file.ContentLength <= 0) return RedirectToAction("Index", new {personid = personId});
             var filename = Path.GetFileName(file.FileName);
             if (filename == null)
             {
@@ -50,23 +55,28 @@ namespace ImmigrationApplication.WebApi.Controllers
                 Console.WriteLine("Maximum File Size is 2MB, Only files of below 2MB are allowed");
             }
             var path1 = Path.Combine(Server.MapPath("~/Uploads"));
-            if (!Directory.Exists(path1 + "/" + personId))
+            if (!Directory.Exists(path1 + "/" + personid))
             {
-                DirectoryInfo dir = Directory.CreateDirectory(path1 + "/" + personId);
+                DirectoryInfo dir = Directory.CreateDirectory(path1 + "/" + personid);
                 file.SaveAs(dir.FullName + "/" + filename);
             }
             else
             {
-                var path = path1 + "/" + personId + "/" + filename;
+                var path = path1 + "/" + personid + "/" + filename;
                 file.SaveAs(path);
             }
-
-            return RedirectToAction("Index", new { personid = personId });
+          string pid =   encdyc.EncryptToBase64(personid);
+            return RedirectToAction("Index", new {  personid = pid });
         }
 
-        public FileResult Download(string name)
+        public FileResult Download(string name,string extension)
         {
-            return new FilePathResult(name, System.Net.Mime.MediaTypeNames.Application.Octet);
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("content-disposition", "filename=" + extension);
+            Response.TransmitFile(name);
+            Response.End();
+           return new FilePathResult(name, System.Net.Mime.MediaTypeNames.Application.Zip);
         }
     }
 }

@@ -147,10 +147,6 @@
           <Property Name="DateofMarriage" Type="date" />
           <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" />
           <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" />
-          <Property Name="CityofDivorced" Type="nvarchar" MaxLength="50" />
-          <Property Name="CountryofDivorced" Type="nvarchar" MaxLength="50" />
-          <Property Name="DateofDiverse" Type="date" />
-          <Property Name="DateofDeath" Type="date" />
           <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LastArrivalDetails">
@@ -173,11 +169,11 @@
             <PropertyRef Name="OtherDetailsID" />
           </Key>
           <Property Name="OtherDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
-          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
-          <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
-          <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
+          <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Conviction" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Parent">
@@ -192,7 +188,7 @@
           <Property Name="CityofBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CityofResidence" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Relationship" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PersonID" Type="int" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -389,7 +385,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Parent_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
@@ -573,10 +569,6 @@
           <Property Name="DateofMarriage" Type="DateTime" Precision="0" />
           <Property Name="CityofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CountryofMarriage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CityofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryofDivorced" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateofDiverse" Type="DateTime" Precision="0" />
-          <Property Name="DateofDeath" Type="DateTime" Precision="0" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_FormerSpouse_Person" FromRole="FormerSpouse" ToRole="Person" />
         </EntityType>
@@ -601,28 +593,13 @@
             <PropertyRef Name="OtherDetailsID" />
           </Key>
           <Property Name="OtherDetailsID" Type="Int32" Nullable="false" />
-          <Property Name="AboutFirm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Conviction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OtherInformation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboutFirm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguagesSpoken" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Conviction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OtherInformation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PersonID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_OtherDetails_Person" FromRole="OtherDetails" ToRole="Person" />
-        </EntityType>
-        <EntityType Name="Parent">
-          <Key>
-            <PropertyRef Name="ParentID" />
-          </Key>
-          <Property Name="ParentID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CityofBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CityofResidence" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PersonID" Type="Int32" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Parent_Person" FromRole="Parent" ToRole="Person" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -655,7 +632,6 @@
           <NavigationProperty Name="FormerSpouses" Relationship="Self.FK_FormerSpouse_Person" FromRole="Person" ToRole="FormerSpouse" />
           <NavigationProperty Name="LastArrivalDetails" Relationship="Self.FK_LastArrivalDetails_Person" FromRole="Person" ToRole="LastArrivalDetails" />
           <NavigationProperty Name="OtherDetails" Relationship="Self.FK_OtherDetails_Person" FromRole="Person" ToRole="OtherDetails" />
-          <NavigationProperty Name="Parents" Relationship="Self.FK_Parent_Person" FromRole="Person" ToRole="Parent" />
           <NavigationProperty Name="PreviousApplications" Relationship="Self.FK_PreviousApplication_Person" FromRole="Person" ToRole="PreviousApplication" />
           <NavigationProperty Name="USRelatives" Relationship="Self.FK_USRelative_Person" FromRole="Person" ToRole="USRelative" />
           <Property Name="BirthCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -664,6 +640,7 @@
           <Property Name="CreatedByName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Children" Relationship="immigrationModel.FK_Children_Person" FromRole="Person" ToRole="Child" />
+          <NavigationProperty Name="Parents" Relationship="immigrationModel.FK_Parent_Person" FromRole="Person" ToRole="Parent" />
         </EntityType>
         <EntityType Name="PreviousApplication">
           <Key>
@@ -764,18 +741,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Parent_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="PersonID" />
-            </Principal>
-            <Dependent Role="Parent">
-              <PropertyRef Name="PersonID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PreviousApplication_Person">
           <End Role="Person" Type="Self.Person" Multiplicity="1" />
           <End Role="PreviousApplication" Type="Self.PreviousApplication" Multiplicity="*" />
@@ -807,7 +772,6 @@
           <EntitySet Name="FormerSpouses" EntityType="Self.FormerSpouse" />
           <EntitySet Name="LastArrivalDetails" EntityType="Self.LastArrivalDetail" />
           <EntitySet Name="OtherDetails" EntityType="Self.OtherDetail" />
-          <EntitySet Name="Parents" EntityType="Self.Parent" />
           <EntitySet Name="People" EntityType="Self.Person" />
           <EntitySet Name="PreviousApplications" EntityType="Self.PreviousApplication" />
           <EntitySet Name="USRelatives" EntityType="Self.USRelative" />
@@ -834,10 +798,6 @@
           <AssociationSet Name="FK_OtherDetails_Person" Association="Self.FK_OtherDetails_Person">
             <End Role="Person" EntitySet="People" />
             <End Role="OtherDetails" EntitySet="OtherDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Parent_Person" Association="Self.FK_Parent_Person">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Parent" EntitySet="Parents" />
           </AssociationSet>
           <AssociationSet Name="FK_PreviousApplication_Person" Association="Self.FK_PreviousApplication_Person">
             <End Role="Person" EntitySet="People" />
@@ -876,6 +836,11 @@
           <Parameter Name="PersonID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_personjoin" ReturnType="Collection(immigrationModel.sp_personjoin_Result)" />
+          <EntitySet Name="Parents" EntityType="immigrationModel.Parent" />
+          <AssociationSet Name="FK_Parent_Person" Association="immigrationModel.FK_Parent_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Parent" EntitySet="Parents" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -1065,6 +1030,35 @@
           <Property Type="Int32" Name="ZipCode" Nullable="true" />
           <Property Type="Int32" Name="PersonID1" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="ParentID" />
+          </Key>
+          <Property Name="ParentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateofBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CityofBirth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityofResidence" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Relationship" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="immigrationModel.FK_Parent_Person" FromRole="Parent" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_Parent_Person">
+          <End Type="immigrationModel.Person" Role="Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="immigrationModel.Parent" Role="Parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Parent">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1134,10 +1128,6 @@
                 <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
                 <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
                 <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
-                <ScalarProperty Name="CityofDivorced" ColumnName="CityofDivorced" />
-                <ScalarProperty Name="CountryofDivorced" ColumnName="CountryofDivorced" />
-                <ScalarProperty Name="DateofDiverse" ColumnName="DateofDiverse" />
-                <ScalarProperty Name="DateofDeath" ColumnName="DateofDeath" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1167,21 +1157,6 @@
                 <ScalarProperty Name="LanguagesSpoken" ColumnName="LanguagesSpoken" />
                 <ScalarProperty Name="Conviction" ColumnName="Conviction" />
                 <ScalarProperty Name="OtherInformation" ColumnName="OtherInformation" />
-                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Parents">
-            <EntityTypeMapping TypeName="immigrationModel.Parent">
-              <MappingFragment StoreEntitySet="Parent">
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
-                <ScalarProperty Name="CityofBirth" ColumnName="CityofBirth" />
-                <ScalarProperty Name="CityofResidence" ColumnName="CityofResidence" />
-                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1433,6 +1408,21 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Parents">
+            <EntityTypeMapping TypeName="immigrationModel.Parent">
+              <MappingFragment StoreEntitySet="Parent">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+                <ScalarProperty Name="CityofResidence" ColumnName="CityofResidence" />
+                <ScalarProperty Name="CityofBirth" ColumnName="CityofBirth" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

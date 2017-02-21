@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ImmigrationApplication.Model;
 using ImmigrationApplication.DataAccess;
-using ImmigrationApplication.DataAccess.Repositories;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -41,21 +38,25 @@ namespace ImmigrationApplication.WebApi.Controllers
 
 
         // Get details of one particular FormerSpouse
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            FormerSpouse formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            FormerSpouse formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(personid);
             return View(formerspouse);
         }
 
         [HttpGet]
-        public ActionResult Create(int personId)
+        public ActionResult Create(string personId)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
             FormerSpouse fs;
-            if (personId > 0)
+            if (personid > 0)
             {
                 fs = new FormerSpouse
                 {
-                    PersonID = personId
+                    PersonID = personid
                 };
             }
             else
@@ -79,9 +80,11 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            var formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(personid);
             return View(formerspouse);
         }
 

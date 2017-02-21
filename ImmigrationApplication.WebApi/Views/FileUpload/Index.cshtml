@@ -1,4 +1,11 @@
-﻿@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", ViewBag.PersonID } })
+﻿
+@using ImmigrationApplication.DataAccess
+@{
+    EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+    int personid = encdyc.DecryptToBase64(ViewBag.PersonID);
+}
+
+@Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", personid } })
 @using System.Data;
 <style>
     
@@ -52,8 +59,9 @@ tr:nth-child(even) {
     @foreach(string str in ViewBag.fir)
     {
         FileInfo fi = new FileInfo(str);
+        string ext = fi.Name;
         <tr>
-            <td>@Html.ActionLink(@fi.Name, "Download",new {name = str})</td>
+            <td>@Html.ActionLink(@fi.Name, "Download",new {name = str, extension = ext})</td>
             <td>@fi.Length</td>
             <td>@fi.Extension</td>
         </tr>

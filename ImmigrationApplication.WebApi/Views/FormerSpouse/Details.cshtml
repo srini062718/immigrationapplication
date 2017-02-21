@@ -1,4 +1,5 @@
 ﻿@model ImmigrationApplication.Model.FormerSpouse
+@using ImmigrationApplication.DataAccess
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
 <div>
     <h4>FormerSpouse</h4>
@@ -61,48 +62,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CityofDivorced)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CityofDivorced)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CountryofDivorced)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CountryofDivorced)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateofDiverse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateofDiverse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateofDeath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateofDeath)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Person.LastName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Person.LastName)
         </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FormerSpouseID }) |
+    @{
+        EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+        string personid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Edit", "Edit", new {id = personid}) |
     @Html.ActionLink("Back to List", "Index")
 </p>

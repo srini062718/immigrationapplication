@@ -142,10 +142,6 @@
     <Property Name="DateofMarriage" Type="date" />
     <Property Name="CityofMarriage" Type="nvarchar" MaxLength="50" />
     <Property Name="CountryofMarriage" Type="nvarchar" MaxLength="50" />
-    <Property Name="CityofDivorced" Type="nvarchar" MaxLength="50" />
-    <Property Name="CountryofDivorced" Type="nvarchar" MaxLength="50" />
-    <Property Name="DateofDiverse" Type="date" />
-    <Property Name="DateofDeath" Type="date" />
     <Property Name="PersonID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="LastArrivalDetails">
@@ -168,11 +164,11 @@
       <PropertyRef Name="OtherDetailsID" />
     </Key>
     <Property Name="OtherDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" />
-    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" />
-    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" />
-    <Property Name="Conviction" Type="nvarchar" MaxLength="50" />
-    <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" />
+    <Property Name="AboutFirm" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LanguagesSpoken" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Conviction" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OtherInformation" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PersonID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Parent">
@@ -187,7 +183,7 @@
     <Property Name="CityofBirth" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CityofResidence" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Relationship" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="PersonID" Type="int" />
+    <Property Name="PersonID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -384,7 +380,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parent_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="0..1">
+    <End Role="Person" Type="Self.Person" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Parent" Type="Self.Parent" Multiplicity="*" />

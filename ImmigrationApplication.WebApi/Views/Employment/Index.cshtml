@@ -1,7 +1,14 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.Employment>
+@using ImmigrationApplication.DataAccess
+@* ReSharper disable once PossibleNullReferenceException *@
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
 <p>
-    @Html.ActionLink("Create New", "Create",new {personId = Model.FirstOrDefault().PersonID})
+    @{
+        var endy = new EncryptAndDecrypt();
+        // ReSharper disable once PossibleNullReferenceException
+        var pid = endy.EncryptToBase64(Model.FirstOrDefault().PersonID);
+    }
+    @Html.ActionLink("Create New", "Create", new {personId = pid})
 </p>
 <table class="table">
     <tr>
@@ -82,9 +89,12 @@
             @Html.DisplayFor(modelItem => item.JobDescription)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
+            @{
+                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+                string personid = encdyc.EncryptToBase64(item.PersonID);
+            }
+            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
+            @Html.ActionLink("Details", "Details", new {id = personid }) 
         </td>
     </tr>
 }

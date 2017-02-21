@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using ImmigrationApplication.DataAccess;
 using ImmigrationApplication.Model;
@@ -81,27 +77,28 @@ namespace ImmigrationApplication.WebApi.Controllers
             var person = _uow.RepositoryFor<Person>();
             person.Add(p);
             _uow.Complete();
-            TempData.Add("id", p.PersonID.ToString());
-            return RedirectToAction("Details", "Person", new { id = p.PersonID });
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+            string pid = encdyc.EncryptToBase64(p.PersonID);
+            return RedirectToAction("Details", "Person", new { personId = pid });
         }
 
         [HttpGet]
-        public ActionResult Delete(int personId)
+        public ActionResult Delete(string personId)
         {
-            var person = _uow.RepositoryFor<Person>().Get(personId);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(personId);
+            var person = _uow.RepositoryFor<Person>().Get(personid);
             return View(person);
         }
 
         [Authorize]
         [HttpPost,ActionName("Delete")]
-        public ActionResult Deleteconfirmed(string personId)
+        public ActionResult Deleteconfirmed(int personId)
         {
-            var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(personId);
-            var person =  _uow.RepositoryFor<Person>().Get(personid);
+            var person =  _uow.RepositoryFor<Person>().Get(personId);
             _uow.RepositoryFor<Person>().Delete(person.PersonID);
             _uow.Complete();
-            return RedirectToAction("Index", "Person" , new { personid });
+            return RedirectToAction("Index", "Person" , new { personId });
         }
     }
 }

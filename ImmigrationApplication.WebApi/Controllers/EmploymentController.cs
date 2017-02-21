@@ -42,22 +42,26 @@ namespace ImmigrationApplication.WebApi.Controllers
 
 
         // Get details of one particular Employment
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            var employ = _uow.RepositoryFor<Employment>().Get(id);
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
+            var employ = _uow.RepositoryFor<Employment>().Get(personid);
             return View(employ);
         }
 
         [HttpGet]
-        public ActionResult Create(int personId)
+        public ActionResult Create(string personid)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var pid = encryptdecrypt.DecryptToBase64(personid);
             Employment employ;
-            if (personId > 0)
+            if (pid > 0)
             {
               employ = new Employment
                 {
-                    PersonID = personId
-                };
+                    PersonID = pid
+              };
             }
             else
             {
@@ -81,8 +85,10 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int personid)
+        public ActionResult Edit(string id)
         {
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var personid = encryptdecrypt.DecryptToBase64(id);
             var employ = _uow.RepositoryFor<Employment>().GetAll();
             return View(employ.SingleOrDefault(x=>x.PersonID==personid));
         }

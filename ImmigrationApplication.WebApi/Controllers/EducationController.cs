@@ -36,21 +36,26 @@ namespace ImmigrationApplication.WebApi.Controllers
 
 
         // Get details of one particular education
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-          var education =   _uow.RepositoryFor<Education>().Get(id);
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+            int personid = encdyc.DecryptToBase64(id);
+            var education = _uow.RepositoryFor<Education>().Get(personid);
             return View(education);
         }
 
         [HttpGet]
-        public ActionResult Create(int personId)
+        public ActionResult Create(string personId)
         {
 
-            if (personId > 0)
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+            int personid =   encdyc.DecryptToBase64(personId);
+            
+            if (personid > 0)
             {
                 var education = new Education
                 {
-                    PersonID = personId
+                    PersonID = personid
                 };
                 return View(education);
             }
@@ -68,10 +73,14 @@ namespace ImmigrationApplication.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int personid)
+        public ActionResult Edit(string personid)
         {
-          var education =  _uow.RepositoryFor<Education>().GetAll();
-            return View(education.SingleOrDefault(x=>x.PersonID==personid));
+            var encryptdecrypt = new EncryptAndDecrypt();
+            var id = encryptdecrypt.DecryptToBase64(personid);
+            var education =  _uow.RepositoryFor<Education>().GetAll();
+            return View(education.SingleOrDefault(x=>x.PersonID== id));
+
+
         }
 
         [HttpPost]

@@ -32,10 +32,11 @@ namespace ImmigrationApplication.WebApi.Controllers
             return View(p);
         }
 
-        public ActionResult ExportPdf(int id)
+        public ActionResult ExportPdf(string personid)
         {
-
-            return new ActionAsPdf("Details", new {personid = id})
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+           int personId =  encdyc.DecryptToBase64(personid);
+            return new ActionAsPdf("Details", new {personId})
             {
                 PageSize = Size.A4,
                 PageOrientation = Orientation.Portrait,

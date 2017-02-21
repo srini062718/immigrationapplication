@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.Address>
+@using ImmigrationApplication.DataAccess
 <style>
     dt, dd {
         padding-bottom: 10px;
@@ -6,9 +7,16 @@
 
 </style>
 
+@* ReSharper disable once PossibleNullReferenceException *@
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary {{ "PersonID", Model.FirstOrDefault().PersonID}})
 <p>
-    @Html.ActionLink("Create New", "Create", new { personid = Model.FirstOrDefault().PersonID })</p>
+    @{
+        var endy = new EncryptAndDecrypt();
+        // ReSharper disable once PossibleNullReferenceException
+        var pid =  endy.EncryptToBase64( Model.FirstOrDefault().PersonID);
+    }
+    @Html.ActionLink("Create New", "Create", new {personid = pid })
+</p>
 <table class="table">
     <tr>
         <th>
@@ -52,9 +60,12 @@
             @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { personid=item.PersonID }) |
-            @Html.ActionLink("Details", "Details", new {personid=item.PersonID }) |
-            @Html.ActionLink("Delete", "Delete", new {personid=item.PersonID })
+            @{
+                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+                string personid = encdyc.EncryptToBase64(item.PersonID);
+            }
+            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
+            @Html.ActionLink("Details", "Details", new {id = personid }) 
         </td>
     </tr>
 }
