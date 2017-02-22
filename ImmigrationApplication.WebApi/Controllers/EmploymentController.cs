@@ -18,12 +18,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             _uow = new UnitOfWork();
         }
-
-        public EmploymentController(UnitOfWork uow)
-        {
-            _uow = uow;
-        }
-
+    
         // GET: list of all Employment details
         public ActionResult Index(string personid)
         {
@@ -42,12 +37,12 @@ namespace ImmigrationApplication.WebApi.Controllers
 
 
         // Get details of one particular Employment
-        public ActionResult Details(string id)
+        public ActionResult Details(string employmentid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var employ = _uow.RepositoryFor<Employment>().Get(personid);
-            return View(employ);
+            var employid = encryptdecrypt.DecryptToBase64(employmentid);
+            var employ = _uow.RepositoryFor<Employment>().GetAll();
+            return View(employ.SingleOrDefault(x => x.EmploymentID == employid));
         }
 
         [HttpGet]
@@ -67,7 +62,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 employ = new Employment
                 {
-                    PersonID = Convert.ToInt32(TempData["id"])
+                    PersonID = Convert.ToInt32(TempData["pid"])
                 };
 
             }
@@ -77,29 +72,34 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Employment employment)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(employment);
             var ed = _uow.RepositoryFor<Employment>();
             ed.Add(employment);
             _uow.Complete();
-            return RedirectToAction("Index", "Employment", new {personid = employment.PersonID});
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(employment.PersonID);
+            return RedirectToAction("Index", "Employment", new {personid = pid});
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string employmentid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
+            var employid = encryptdecrypt.DecryptToBase64(employmentid);
             var employ = _uow.RepositoryFor<Employment>().GetAll();
-            return View(employ.SingleOrDefault(x=>x.PersonID==personid));
+            return View(employ.SingleOrDefault(x=>x.EmploymentID == employid));
         }
 
         [HttpPost]
         public ActionResult Edit(Employment employ)
         {
-            GenericRepository<Employment> ed = _uow.RepositoryFor<Employment>();
+            if (!ModelState.IsValid) return View(employ);
+            var ed = _uow.RepositoryFor<Employment>();
             ed.Update(employ);
             _uow.Complete();
-            return RedirectToAction("Details", "Employment", new { id = employ.EmploymentID });
+            var encdyc = new EncryptAndDecrypt();
+            var personId = encdyc.EncryptToBase64(employ.PersonID);
+            return RedirectToAction("Index", "Employment", new { personid = personId });
         }
 
         [HttpGet]

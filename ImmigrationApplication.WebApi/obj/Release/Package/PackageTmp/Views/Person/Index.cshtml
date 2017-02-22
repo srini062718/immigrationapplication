@@ -1,10 +1,10 @@
 ﻿@using Microsoft.AspNet.Identity
 @model IEnumerable<ImmigrationApplication.Model.Person>
+    @using ImmigrationApplication.DataAccess
 <style>
     .body-content {
-        padding-top:25px;
+        padding-top: 25px;
     }
-
 </style>
 @if (User.IsInRole("Admin"))
 {
@@ -47,44 +47,47 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateofBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MartialStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nationality)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.USVisaType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.I94ExpiryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PassportNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthCity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MartialStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.USVisaType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.I94ExpiryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthCity)
+            </td>
+            <td>
+                @{
+                    EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+                    string personid = encdyc.EncryptToBase64(item.PersonID);
+                }
+                @Html.ActionLink("Edit", "Edit", new { personId = personid}) |
+                @Html.ActionLink("Details", "Details", new { personId = personid }) 
+            </td>
+        </tr>
+    }
 </table>

@@ -1,4 +1,4 @@
-﻿
+﻿@using ImmigrationApplication.DataAccess;
 <style>
     .nav {
         margin-top: 10px;
@@ -61,7 +61,8 @@
 </style>
 
 @{
-    var personId = Convert.ToInt32(ViewData["PersonID"]);
+    EncryptAndDecrypt encryptdecrypt = new EncryptAndDecrypt();
+    var personId = encryptdecrypt.EncryptToBase64(Convert.ToInt32(ViewData["PersonID"]));
 }
 
 <div class="navbar-collapse collapse">
@@ -78,6 +79,6 @@
         <li class="link hvr-bounce-to-top">@Html.ActionLink("Last US Entry Details", "Index", "LastArrivalDetail", new { personid = personId }, null)</li>
         <li class="link hvr-bounce-to-top">@Html.ActionLink("Other Details", "Index", "OtherDetails", new { personid = personId }, null)</li>
         <li class="link hvr-bounce-to-top">@Html.ActionLink("File Uploads", "Index", "FileUpload", new { personid = personId }, null)</li>
-        <li class="link hvr-bounce-to-top">@Html.ActionLink("Print", "ExportPdf", "PrintDetails", new {id = personId }, null)</li>
+        <li class="link hvr-bounce-to-top">@Html.ActionLink("Print", "ExportPdf", "PrintDetails", new {personid = personId }, null)</li>
     </ul>
 </div>

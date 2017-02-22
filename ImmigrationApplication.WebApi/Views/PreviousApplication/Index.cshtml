@@ -1,9 +1,16 @@
 ﻿@using ImmigrationApplication.DataAccess
 @model IEnumerable<ImmigrationApplication.Model.PreviousApplication>
+@* ReSharper disable once PossibleNullReferenceException *@
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
 <p>
-    @Html.ActionLink("Create New", "Create", new { personId = Model.FirstOrDefault().PersonID })
+    @{
+        var endy = new EncryptAndDecrypt();
+        // ReSharper disable once PossibleNullReferenceException
+        var pid = endy.EncryptToBase64(Model.FirstOrDefault().PersonID);
+    }
+    @Html.ActionLink("Create New", "Create", new { personid = pid })
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -21,10 +28,6 @@
         <th>
             @Html.DisplayNameFor(model => model.CapGap)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -44,16 +47,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.CapGap)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person.LastName)
-        </td>
+      
         <td>
             @{
-                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-                string personid = encdyc.EncryptToBase64(item.PersonID);
+                var encdyc = new EncryptAndDecrypt();
+                var pied = encdyc.EncryptToBase64(item.PreviousApplicationID);
             }
-            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-            @Html.ActionLink("Details", "Details", new {id = personid })
+            @Html.ActionLink("Edit", "Edit", new {previousappid = pied }) |
+            @Html.ActionLink("Details", "Details", new {previousappid = pied })
         </td>
     </tr>
 }

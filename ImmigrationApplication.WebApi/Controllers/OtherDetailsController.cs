@@ -31,18 +31,18 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 return RedirectToAction("Create", "OtherDetails", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==id));
+            return View(enumerable.Where(x=>x.PersonID == id));
         }
 
 
         // get: single person detail
 
-        public ActionResult Details(string id)
+        public ActionResult Details(string otherdetailid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var detail =  _uow.RepositoryFor<OtherDetail>().Get(personid);
-            return View(detail);
+            var detailid = encryptdecrypt.DecryptToBase64(otherdetailid);
+            var detail =  _uow.RepositoryFor<OtherDetail>().GetAll();
+            return View(detail.SingleOrDefault(x => x.OtherDetailsID == detailid));
         }
 
         //  add a new detail
@@ -73,30 +73,35 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(OtherDetail detail)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(detail);
             var od = _uow.RepositoryFor<OtherDetail>();
             od.Add(detail);
             _uow.Complete();
-            return RedirectToAction("Index", "OtherDetails", new { personid = detail.PersonID });
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(detail.PersonID);
+            return RedirectToAction("Index", "OtherDetails", new { personid = pid });
         }
 
 
         // edit a detail
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string otherdetailid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var detail = _uow.RepositoryFor<OtherDetail>().Get(personid);
-            return View(detail);
+            var detailid = encryptdecrypt.DecryptToBase64(otherdetailid);
+            var detail = _uow.RepositoryFor<OtherDetail>().GetAll();
+            return View(detail.SingleOrDefault(x => x.OtherDetailsID == detailid));
         }
 
         [HttpPost]
         public ActionResult Edit(OtherDetail detail)
         {
-           _uow.RepositoryFor<OtherDetail>().Update(detail); 
+            if (!ModelState.IsValid) return View(detail);
+            _uow.RepositoryFor<OtherDetail>().Update(detail); 
             _uow.Complete();
-            return RedirectToAction("Details", "OtherDetails", new { id = detail.PersonID});
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(detail.PersonID);
+            return RedirectToAction("Index", "OtherDetails", new { personid = pid});
         }
 
 

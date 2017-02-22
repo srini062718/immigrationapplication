@@ -42,10 +42,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Degree)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -81,15 +77,12 @@
             @Html.DisplayFor(modelItem => item.Degree)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Person.LastName)
-        </td>
-        <td>
             @{
-                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-              string personid =   encdyc.EncryptToBase64(item.PersonID);
+                var encdyc = new EncryptAndDecrypt();
+                var eduid =   encdyc.EncryptToBase64(item.EducationID);
             }
-            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-            @Html.ActionLink("Details", "Details", new {id = personid })
+            @Html.ActionLink("Edit", "Edit", new {educationid = eduid }) |
+            @Html.ActionLink("Details", "Details", new {educationid = eduid })
         </td>
     </tr>
 }

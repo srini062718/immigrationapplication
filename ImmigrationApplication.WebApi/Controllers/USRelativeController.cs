@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ImmigrationApplication.Model;
 using ImmigrationApplication.DataAccess;
@@ -28,16 +26,16 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 return RedirectToAction("Create", "USRelative", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==id));
+            return View(enumerable.Where(x=>x.PersonID == id));
         }
 
         // get by id
-        public ActionResult Details(string id)
+        public ActionResult Details(string usrelativeid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var usrelative = _uow.RepositoryFor<USRelative>().Get(personid);
-            return View(usrelative);
+            var relativeid = encryptdecrypt.DecryptToBase64(usrelativeid);
+            var usrelative = _uow.RepositoryFor<USRelative>().GetAll();
+            return View(usrelative.SingleOrDefault(x => x.USRelativeID == relativeid));
         }
 
         // add a new 
@@ -68,28 +66,33 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(USRelative usrelative)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(usrelative);
             _uow.RepositoryFor<USRelative>().Add(usrelative);
             _uow.Complete();
-            return RedirectToAction("Index", "UsRelative" , new {personid = usrelative.PersonID});
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(usrelative.PersonID);
+            return RedirectToAction("Index", "UsRelative" , new {personid = pid});
         }
 
         // edit a detail
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string usrelativeid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var usrelative = _uow.RepositoryFor<USRelative>().Get(personid);
-            return View(usrelative);
+            var relativeid = encryptdecrypt.DecryptToBase64(usrelativeid);
+            var usrelative = _uow.RepositoryFor<USRelative>().GetAll();
+            return View(usrelative.SingleOrDefault(x => x.USRelativeID == relativeid));
         }
 
         [HttpPost]
         public ActionResult Edit(USRelative usrelative)
         {
+            if (!ModelState.IsValid) return View(usrelative);
             _uow.RepositoryFor<USRelative>().Update(usrelative);
             _uow.Complete();
-            return RedirectToAction("Details", "USRelative", new { id = usrelative.USRelativeID});
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(usrelative.PersonID);
+            return RedirectToAction("Index", "UsRelative", new { personid = pid });
         }
 
 

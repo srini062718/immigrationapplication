@@ -1,8 +1,7 @@
 ﻿@model ImmigrationApplication.Model.Person
-@using (Html.BeginForm("Create", "Person", FormMethod.Post))
+@using (Html.BeginForm("Create","Person",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
         <h4 style="margin-top:40px;">Enter the Details</h4>
         <hr />
@@ -187,19 +186,7 @@
     <script type="text/javascript">
        $(function () {
             $(".datepicker").datepicker();
-            $("#test").click(function () {
-                if ($("#lastname").val().length === 0) {
-                    $("#lastnamespan").text("This field is required");
-                    $("#lastnamespan").css("color", "red");
-                }
-                if ($("#firstname").val().length === 0) {
-                    $("#firstnamespan").text("This field is required");
-                    $("#firstnamespan").css("color", "red");
-                }
-                return false;
-            });
         });
-
     </script>
 }
 

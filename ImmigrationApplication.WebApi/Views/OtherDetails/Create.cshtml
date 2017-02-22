@@ -1,10 +1,10 @@
 ﻿@model ImmigrationApplication.Model.OtherDetail
-
+@using ImmigrationApplication.DataAccess
 
 @using (Html.BeginForm("Create", "OtherDetails", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.PersonID)
+    <input type="hidden" name="PersonID" value="@Model.PersonID" />
     <div class="form-horizontal">
         <h4>OtherDetail</h4>
         <hr />
@@ -60,9 +60,12 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        var encdyc = new EncryptAndDecrypt();
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

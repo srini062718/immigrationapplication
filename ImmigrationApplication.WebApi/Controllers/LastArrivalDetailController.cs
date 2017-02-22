@@ -18,12 +18,7 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             _uow = new UnitOfWork();
         }
-
-        public LastArrivalDetailController(UnitOfWork uow)
-        {
-            _uow = uow;
-        }
-
+       
         // GET: list of all LastArrivalDetail details
         public ActionResult Index(string personid)
         {
@@ -36,16 +31,16 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 return RedirectToAction("Create", "LastArrivalDetail", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==id));
+            return View(enumerable.Where(x=>x.PersonID == id));
         }
 
         // Get details of one particular LastArrivalDetail
-        public ActionResult Details(string id)
+        public ActionResult Details(string lastarrivaldetailid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(personid);
-            return View(lastarrivaldetail);
+            var arrivalid = encryptdecrypt.DecryptToBase64(lastarrivaldetailid);
+            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().GetAll();
+            return View(lastarrivaldetail.SingleOrDefault(x => x.LastArrivalDetailsID == arrivalid));
         }
 
         [HttpGet]
@@ -74,30 +69,34 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(LastArrivalDetail lastArrivalDetail)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(lastArrivalDetail);
             var ed = _uow.RepositoryFor<LastArrivalDetail>();
             ed.Add(lastArrivalDetail);
             _uow.Complete();
-            return RedirectToAction("Index", "LastArrivalDetail", new {personid = lastArrivalDetail.PersonID});
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(lastArrivalDetail.PersonID);
+            return RedirectToAction("Index", "LastArrivalDetail", new {personid = pid});
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string lastarrivalid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().Get(personid);
-            return View(lastarrivaldetail);
+            var arrivalid = encryptdecrypt.DecryptToBase64(lastarrivalid);
+            var lastarrivaldetail = _uow.RepositoryFor<LastArrivalDetail>().GetAll();
+            return View(lastarrivaldetail.SingleOrDefault(x => x.LastArrivalDetailsID == arrivalid));
         }
 
         [HttpPost]
         public ActionResult Edit(LastArrivalDetail lastarrivaldetail)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(lastarrivaldetail);
             var ed = _uow.RepositoryFor<LastArrivalDetail>();
             ed.Update(lastarrivaldetail);
             _uow.Complete();
-            return RedirectToAction("Details", "LastArrivalDetail", new { id = lastarrivaldetail.LastArrivalDetailsID });
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(lastarrivaldetail.PersonID);
+            return RedirectToAction("Index", "LastArrivalDetail", new { personid = pid });
         }
 
         [HttpGet]

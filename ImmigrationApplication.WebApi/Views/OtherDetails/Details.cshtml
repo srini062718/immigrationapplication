@@ -1,6 +1,7 @@
 ﻿@model ImmigrationApplication.Model.OtherDetail
 @using ImmigrationApplication.DataAccess
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+@Html.HiddenFor(model => model.PersonID)
 <div>
     <h4>OtherDetail</h4>
     <hr />
@@ -45,21 +46,14 @@
             @Html.DisplayFor(model => model.OtherInformation)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Person.LastName)
-        </dd>
-
     </dl>
 </div>
 <p>
     @{
-        EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-        string personid = encdyc.EncryptToBase64(Model.PersonID);
+        var encdyc = new EncryptAndDecrypt();
+        var detailid = encdyc.EncryptToBase64(Model.OtherDetailsID);
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
     }
-    @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new {otherdetailid = detailid }) |
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </p>

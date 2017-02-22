@@ -30,16 +30,16 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 return RedirectToAction("Create", "Parent", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==id));
+            return View(enumerable.Where(x=>x.PersonID == id));
         }
 
         // get by id
-        public ActionResult Details(string id)
+        public ActionResult Details(string parentid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var parent = _uow.RepositoryFor<Parent>().Get(personid);
-            return View(parent);
+            var pareid = encryptdecrypt.DecryptToBase64(parentid);
+            var parent = _uow.RepositoryFor<Parent>().GetAll();
+            return View(parent.SingleOrDefault(x => x.ParentID == pareid));
         }
 
        // add a new 
@@ -70,29 +70,33 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Parent parent)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(parent);
             _uow.RepositoryFor<Parent>().Add(parent);
             _uow.Complete();
-            TempData.Add("id", parent.PersonID.ToString());
-            return RedirectToAction("Index", "Parent", new { personid = parent.PersonID });
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(parent.PersonID);
+            return RedirectToAction("Index", "Parent", new { personid = pid });
         }
 
         // edit a detail
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string parentid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var parent = _uow.RepositoryFor<Parent>().Get(personid);
-            return View(parent);
+            var pareid = encryptdecrypt.DecryptToBase64(parentid);
+            var parent = _uow.RepositoryFor<Parent>().GetAll();
+            return View(parent.SingleOrDefault(x => x.ParentID == pareid));
         }
 
         [HttpPost]
-        public ActionResult Edit(Parent detail)
+        public ActionResult Edit(Parent parent)
         {
-            _uow.RepositoryFor<Parent>().Update(detail);
+            if (!ModelState.IsValid) return View(parent);
+            _uow.RepositoryFor<Parent>().Update(parent);
             _uow.Complete();
-            return RedirectToAction("Details", "Parent", new { id = detail.PersonID });
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(parent.PersonID);
+            return RedirectToAction("Index", "Parent", new { personid = pid });
         }
 
 

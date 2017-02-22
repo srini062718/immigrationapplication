@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ImmigrationApplication.Model.PreviousApplication>
+﻿@using ImmigrationApplication.DataAccess
+@model IEnumerable<ImmigrationApplication.Model.PreviousApplication>
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
 <p>
     @Html.ActionLink("Create New", "Create", new { personId = Model.FirstOrDefault().PersonID })
@@ -47,11 +48,13 @@
             @Html.DisplayFor(modelItem => item.Person.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
+            @{
+                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+                string personid = encdyc.EncryptToBase64(item.PersonID);
+            }
+            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
+            @Html.ActionLink("Details", "Details", new {id = personid })
         </td>
     </tr>
 }
-
 </table>

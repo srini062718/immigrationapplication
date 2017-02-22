@@ -22,24 +22,24 @@ namespace ImmigrationApplication.WebApi.Controllers
         public ActionResult Index(string personid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var id = encryptdecrypt.DecryptToBase64(personid);
+            var personId = encryptdecrypt.DecryptToBase64(personid);
             var children = _uow.RepositoryFor<Child>().GetAll();
             var enumerable = children as Child[] ?? children.ToArray();
-            var childlist = enumerable.Where(x=>x.PersonID==id).ToList();
+            var childlist = enumerable.Where(x=>x.PersonID == personId).ToList();
             if (childlist.Count == 0)
             {
-                return RedirectToAction("Create", "Children", new {personId = personid});
+                return RedirectToAction("Create", "Children", new {personid = personId});
             }
-            return View(enumerable.Where(x=>x.PersonID==id));
+            return View(enumerable.Where(x=>x.PersonID == personId));
         }
 
         // Get details of one particular Children
-        public ActionResult Details(string id)
+        public ActionResult Details(string childrenid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var child = _uow.RepositoryFor<Child>().Get(personid);
-            return View(child);
+            var childid = encryptdecrypt.DecryptToBase64(childrenid);
+            var child = _uow.RepositoryFor<Child>().GetAll();
+            return View(child.SingleOrDefault(x=>x.ChildrenID == childid));
         }
 
         [HttpGet]
@@ -70,29 +70,34 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(Child children)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(children);
             var ed = _uow.RepositoryFor<Child>();
             ed.Add(children);
             _uow.Complete();
-            return RedirectToAction("Index", "Children", new {personid = children.PersonID});
+            var encdyc = new EncryptAndDecrypt();
+            var personId = encdyc.EncryptToBase64(children.PersonID);
+            return RedirectToAction("Index", "Children", new {personid = personId});
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string childrenid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
+            var childid = encryptdecrypt.DecryptToBase64(childrenid);
             var child = _uow.RepositoryFor<Child>().GetAll();
-            return View(child.SingleOrDefault(x=>x.PersonID == personid));
+            return View(child.SingleOrDefault(x=>x.ChildrenID == childid));
         }
 
         [HttpPost]
         public ActionResult Edit(Child child)
         {
-            GenericRepository<Child> ed = _uow.RepositoryFor<Child>();
-            ed.Update(child);
+             if (!ModelState.IsValid) return View(child);
+             var ed = _uow.RepositoryFor<Child>();
+             ed.Update(child);
             _uow.Complete();
-            return RedirectToAction("Details", "Children", new { id = child.ChildrenID });
+             var encdyc = new EncryptAndDecrypt();
+             var personId = encdyc.EncryptToBase64(child.PersonID);
+             return RedirectToAction("Index", "Children", new { personid = personId });
         }
 
         [HttpGet]

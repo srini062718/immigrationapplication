@@ -48,11 +48,11 @@
         </td>
         <td>
             @{
-                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-                string personid = encdyc.EncryptToBase64(item.PersonID);
+                var encdyc = new EncryptAndDecrypt();
+                var detailid = encdyc.EncryptToBase64(item.OtherDetailsID);
             }
-            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-            @Html.ActionLink("Details", "Details", new {id = personid }) 
+            @Html.ActionLink("Edit", "Edit", new {otherdetailid = detailid }) |
+            @Html.ActionLink("Details", "Details", new {otherdetailid = detailid }) 
         </td>
     </tr>
 }

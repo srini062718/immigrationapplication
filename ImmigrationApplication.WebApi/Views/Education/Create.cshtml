@@ -1,9 +1,9 @@
 ﻿@model ImmigrationApplication.Model.Education
-
+@using ImmigrationApplication.DataAccess
 @using (Html.BeginForm("Create","Education",FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.PersonID)
+    <input type="hidden" name="PersonID" value="@Model.PersonID" />
     <div class="form-horizontal">
         <h4 style="margin-top:40px;">Education</h4>
         <hr />
@@ -103,7 +103,11 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        var encdyc = new EncryptAndDecrypt();
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </div>
 
 @section Scripts {

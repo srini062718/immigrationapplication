@@ -69,15 +69,12 @@
             @Html.DisplayFor(modelItem => item.USConsulate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Person.LastName)
-        </td>
-        <td>
                @{
-                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-                string personid = encdyc.EncryptToBase64(item.PersonID);
+                var encdyc = new EncryptAndDecrypt();
+                var arrivalsid = encdyc.EncryptToBase64(item.LastArrivalDetailsID);
             }
-            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-            @Html.ActionLink("Details", "Details", new {id = personid }) 
+            @Html.ActionLink("Edit", "Edit", new { lastarrivalid = arrivalsid }) |
+            @Html.ActionLink("Details", "Details", new { lastarrivalid = arrivalsid }) 
         </td>
     </tr>
 }

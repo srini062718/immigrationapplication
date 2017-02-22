@@ -1,6 +1,7 @@
 ﻿@model ImmigrationApplication.Model.Child
 @using ImmigrationApplication.DataAccess
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+@Html.HiddenFor(model => model.PersonID)
 <div>
     <h4>Child</h4>
     <hr />
@@ -121,9 +122,10 @@
 </div>
 <p>
     @{
-        EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-        string personid = encdyc.EncryptToBase64(Model.PersonID);
+        var encdyc = new EncryptAndDecrypt();
+        var childid = encdyc.EncryptToBase64(Model.ChildrenID);
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
     }
-    @Html.ActionLink("Edit", "Edit", new {id = personid}) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new {childrenid = childid}) |
+    @Html.ActionLink("Back to List", "Index",new {personid = perid})
 </p>

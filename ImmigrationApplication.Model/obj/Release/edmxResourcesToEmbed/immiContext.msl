@@ -64,10 +64,6 @@
           <ScalarProperty Name="DateofMarriage" ColumnName="DateofMarriage" />
           <ScalarProperty Name="CityofMarriage" ColumnName="CityofMarriage" />
           <ScalarProperty Name="CountryofMarriage" ColumnName="CountryofMarriage" />
-          <ScalarProperty Name="CityofDivorced" ColumnName="CityofDivorced" />
-          <ScalarProperty Name="CountryofDivorced" ColumnName="CountryofDivorced" />
-          <ScalarProperty Name="DateofDiverse" ColumnName="DateofDiverse" />
-          <ScalarProperty Name="DateofDeath" ColumnName="DateofDeath" />
           <ScalarProperty Name="PersonID" ColumnName="PersonID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -97,21 +93,6 @@
           <ScalarProperty Name="LanguagesSpoken" ColumnName="LanguagesSpoken" />
           <ScalarProperty Name="Conviction" ColumnName="Conviction" />
           <ScalarProperty Name="OtherInformation" ColumnName="OtherInformation" />
-          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Parents">
-      <EntityTypeMapping TypeName="immigrationModel.Parent">
-        <MappingFragment StoreEntitySet="Parent">
-          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
-          <ScalarProperty Name="CityofBirth" ColumnName="CityofBirth" />
-          <ScalarProperty Name="CityofResidence" ColumnName="CityofResidence" />
-          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
           <ScalarProperty Name="PersonID" ColumnName="PersonID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -363,5 +344,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Parents">
+      <EntityTypeMapping TypeName="immigrationModel.Parent">
+        <MappingFragment StoreEntitySet="Parent">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="CityofResidence" ColumnName="CityofResidence" />
+          <ScalarProperty Name="CityofBirth" ColumnName="CityofBirth" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

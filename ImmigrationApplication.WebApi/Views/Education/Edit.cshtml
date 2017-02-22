@@ -1,16 +1,16 @@
 ﻿@model ImmigrationApplication.Model.Education
-
+@using ImmigrationApplication.DataAccess
 
 @using (Html.BeginForm("Edit","Education",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(model => model.PersonID)
+    <input type="hidden" name="EducationID" value="@Model.EducationID" />
+
     <div class="form-horizontal">
         <h4>Education</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.EducationID)
-
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -100,7 +100,11 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        var encdyc = new EncryptAndDecrypt();
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </div>
 
 @section Scripts {

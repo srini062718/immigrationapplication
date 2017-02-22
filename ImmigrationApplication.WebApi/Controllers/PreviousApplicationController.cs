@@ -28,16 +28,16 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 return RedirectToAction("Create", "PreviousApplication", new { personId = personid });
             }
-            return View(enumerable.Where(x=>x.PersonID==id));
+            return View(enumerable.Where(x=>x.PersonID == id));
         }
 
         // get by id
-        public ActionResult Details(string id)
+        public ActionResult Details(string previousappid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var previousapplication = _uow.RepositoryFor<PreviousApplication>().Get(personid);
-            return View(previousapplication);
+            var previousid = encryptdecrypt.DecryptToBase64(previousappid);
+            var previousapplication = _uow.RepositoryFor<PreviousApplication>().GetAll();
+            return View(previousapplication.SingleOrDefault(x => x.PreviousApplicationID == previousid));
         }
 
         // add a new 
@@ -68,29 +68,33 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(PreviousApplication previousapplication)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(previousapplication);
             _uow.RepositoryFor<PreviousApplication>().Add(previousapplication);
             _uow.Complete();
-            return RedirectToAction("Index", "PreviousApplication", new { personid = previousapplication.PersonID });
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(previousapplication.PersonID);
+            return RedirectToAction("Index", "PreviousApplication", new { personid = pid });
         }
 
         // edit a detail
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string previousappid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var previousapplication = _uow.RepositoryFor<PreviousApplication>().Get(personid);
-            return View(previousapplication);
+            var previousid = encryptdecrypt.DecryptToBase64(previousappid);
+            var previousapplication = _uow.RepositoryFor<PreviousApplication>().GetAll();
+            return View(previousapplication.SingleOrDefault(x => x.PreviousApplicationID == previousid));
         }
 
         [HttpPost]
         public ActionResult Edit(PreviousApplication previousapplication)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(previousapplication);
             _uow.RepositoryFor<PreviousApplication>().Update(previousapplication);
             _uow.Complete();
-            return RedirectToAction("Details", "PreviousApplication", new { id = previousapplication.PreviousApplicationID });
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(previousapplication.PersonID);
+            return RedirectToAction("Index", "PreviousApplication", new { personid = pid });
         }
 
 

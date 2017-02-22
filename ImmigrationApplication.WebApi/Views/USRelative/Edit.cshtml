@@ -1,16 +1,15 @@
 ﻿@model ImmigrationApplication.Model.USRelative
+@using ImmigrationApplication.DataAccess
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "USRelative", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(model => model.PersonID)
+    <input type="hidden" name="USRelativeID" value="@Model.USRelativeID" />
     <div class="form-horizontal">
         <h4>USRelative</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.USRelativeID)
-
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -68,7 +67,11 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        var encdyc = new EncryptAndDecrypt();
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </div>
 
 @section Scripts {

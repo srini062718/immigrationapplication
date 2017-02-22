@@ -60,11 +60,11 @@
         </td>
         <td>
             @{
-                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-                string personid = encdyc.EncryptToBase64(item.PersonID);
+                var encdyc = new EncryptAndDecrypt();
+                var spouseid = encdyc.EncryptToBase64(item.FormerSpouseID);
             }
-            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-            @Html.ActionLink("Details", "Details", new {id = personid }) 
+            @Html.ActionLink("Edit", "Edit", new {formerspouseid = spouseid }) |
+            @Html.ActionLink("Details", "Details", new {formerspouseid = spouseid }) 
         </td>
     </tr>
 }

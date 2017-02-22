@@ -266,7 +266,6 @@
         <td>@item.LastName</td>
         <td>@item.MiddleName</td>
         <td>@item.CityofMarriage</td>
-        <td>@item.CityofDivorced</td>
         <td>@item.CountryofMarriage</td>
     </tr>
     }
@@ -274,20 +273,14 @@
 <br />
 <table>
     <tr>
-        <th>Country of Divorce</th>
         <th>Date of Birth</th>
         <th>Date of Marriage</th>
-        <th>Date of Death</th>
-        <th>Date of Divorce</th>
     </tr>
     @foreach (var item in Model.FormerSpouse)
     {
         <tr>
-            <td>@item.CountryofDivorced</td>
             <td>@item.DateofBirth</td>
             <td>@item.DateofMarriage</td>
-            <td>@item.DateofDeath</td>
-            <td>@item.DateofDiverse</td>
         </tr>
     }
 </table>

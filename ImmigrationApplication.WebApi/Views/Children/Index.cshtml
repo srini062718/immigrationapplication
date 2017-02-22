@@ -98,10 +98,10 @@
         <td>
             @{
                 EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-                string personid =  encdyc.EncryptToBase64(item.PersonID);
+                string childid =  encdyc.EncryptToBase64(item.ChildrenID);
             }
-            @Html.ActionLink("Edit", "Edit", new { id= personid }) |
-            @Html.ActionLink("Details", "Details", new { id= personid }) 
+            @Html.ActionLink("Edit", "Edit", new { childrenid= childid }) |
+            @Html.ActionLink("Details", "Details", new { childrenid= childid }) 
         </td>
     </tr>
 }

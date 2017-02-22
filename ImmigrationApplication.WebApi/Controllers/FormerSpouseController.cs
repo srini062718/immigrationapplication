@@ -16,11 +16,6 @@ namespace ImmigrationApplication.WebApi.Controllers
             _uow = new UnitOfWork();
         }
 
-        public FormerSpouseController(UnitOfWork uow)
-        {
-            _uow = uow;
-        }
-
         // GET: list of all FormerSpouse details
         public ActionResult Index(string personid)
         {
@@ -33,17 +28,17 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 return RedirectToAction("Create", "FormerSpouse", new {personId = personid});
             }
-            return View(enumerable.Where(x=>x.PersonID==id));
+            return View(enumerable.Where(x=>x.PersonID == id));
         }
 
 
         // Get details of one particular FormerSpouse
-        public ActionResult Details(string id)
+        public ActionResult Details(string formerspouseid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            FormerSpouse formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(personid);
-            return View(formerspouse);
+            var spouseid = encryptdecrypt.DecryptToBase64(formerspouseid);
+            var formerspouse = _uow.RepositoryFor<FormerSpouse>().GetAll();
+            return View(formerspouse.SingleOrDefault(x =>x.FormerSpouseID == spouseid));
         }
 
         [HttpGet]
@@ -63,7 +58,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             {
                 fs = new FormerSpouse
                 {
-                    PersonID = Convert.ToInt32(TempData["id"])
+                    PersonID = Convert.ToInt32(TempData["personid"])
                 };
             }
             return View(fs);
@@ -72,42 +67,47 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Create(FormerSpouse formerSpouse)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(formerSpouse);
             var ed = _uow.RepositoryFor<FormerSpouse>();
             ed.Add(formerSpouse);
             _uow.Complete();
-            return RedirectToAction("Index", "FormerSpouse", new {personid = formerSpouse.PersonID});
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(formerSpouse.PersonID);
+            return RedirectToAction("Index", "FormerSpouse", new {personid = pid });
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string formerspouseid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var personid = encryptdecrypt.DecryptToBase64(id);
-            var formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(personid);
-            return View(formerspouse);
+            var spouseid = encryptdecrypt.DecryptToBase64(formerspouseid);
+            var formerspouse = _uow.RepositoryFor<FormerSpouse>().GetAll();
+            return View(formerspouse.SingleOrDefault(x => x.FormerSpouseID == spouseid));
         }
 
         [HttpPost]
         public ActionResult Edit(FormerSpouse formerspouse)
         {
+            if (!ModelState.IsValid) return View(formerspouse);
             var ed = _uow.RepositoryFor<FormerSpouse>();
             ed.Update(formerspouse);
             _uow.Complete();
-            return RedirectToAction("Details", "FormerSpouse", new { id = formerspouse.FormerSpouseID });
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(formerspouse.PersonID);
+            return RedirectToAction("Index", "FormerSpouse", new { personid = pid });
         }
 
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            FormerSpouse formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
+            var formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
             return View(formerspouse);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult Deleteconfirmed(int id)
         {
-            FormerSpouse formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
+            var formerspouse = _uow.RepositoryFor<FormerSpouse>().Get(id);
             _uow.RepositoryFor<FormerSpouse>().Delete(formerspouse.FormerSpouseID);
             _uow.Complete();
             return RedirectToAction("Index", "FormerSpouse");

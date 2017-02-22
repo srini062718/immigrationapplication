@@ -1,6 +1,6 @@
 ﻿@using ImmigrationApplication.DataAccess
 @model IEnumerable<ImmigrationApplication.Model.Parent>
-@@* ReSharper disable once PossibleNullReferenceException *@
+@* ReSharper disable once PossibleNullReferenceException *@
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
 <p>
     @{
@@ -33,10 +33,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Relationship)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -63,15 +59,12 @@
             @Html.DisplayFor(modelItem => item.Relationship)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Person.LastName)
-        </td>
-        <td>
             @{
-                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-                string personid = encdyc.EncryptToBase64((item.PersonID));
+                var encdyc = new EncryptAndDecrypt();
+                var pied = encdyc.EncryptToBase64((item.ParentID));
             }
-            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-            @Html.ActionLink("Details", "Details", new {id = personid }) 
+            @Html.ActionLink("Edit", "Edit", new {parentid = pied }) |
+            @Html.ActionLink("Details", "Details", new {parentid = pied }) 
         </td>
     </tr>
 }

@@ -1,5 +1,5 @@
 ﻿@model ImmigrationApplication.Model.Address
-
+@using ImmigrationApplication.DataAccess
 @{
     ViewBag.Title = "Create";
 }
@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Create","Address",FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.PersonID)
+    <input type="hidden" name="PersonID" value="@Model.PersonID" />
     <div class="form-horizontal">
         <h4>Address</h4>
         <hr />
@@ -72,5 +72,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index","Person")
+    @{
+        var encdyc = new EncryptAndDecrypt();
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </div>

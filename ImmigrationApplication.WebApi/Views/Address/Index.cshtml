@@ -4,7 +4,6 @@
     dt, dd {
         padding-bottom: 10px;
     }
-
 </style>
 
 @* ReSharper disable once PossibleNullReferenceException *@
@@ -61,13 +60,12 @@
         </td>
         <td>
             @{
-                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-                string personid = encdyc.EncryptToBase64(item.PersonID);
+                var encdyc = new EncryptAndDecrypt();
+                var addid = encdyc.EncryptToBase64(item.AddressID);
             }
-            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-            @Html.ActionLink("Details", "Details", new {id = personid }) 
+            @Html.ActionLink("Edit", "Edit", new {addressid = addid }) |
+            @Html.ActionLink("Details", "Details", new {addressid = addid }) 
         </td>
     </tr>
 }
-
 </table>

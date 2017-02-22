@@ -1,10 +1,10 @@
 ﻿@model ImmigrationApplication.Model.Child
-
+@using ImmigrationApplication.DataAccess
 
 @using (Html.BeginForm("Create","Children",FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.PersonID)
+    <input type="hidden" name="PersonID" value="@Model.PersonID" />
     <div class="form-horizontal">
         <h4>Child</h4>
 
@@ -124,12 +124,16 @@
     <script type="text/javascript">
         $(function() {
             $("#datepicker").datepicker();
-        })
+        });
     </script>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+        string perid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </div>
 
 @section Scripts {

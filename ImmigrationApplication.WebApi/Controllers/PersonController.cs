@@ -59,7 +59,9 @@ namespace ImmigrationApplication.WebApi.Controllers
             var person = _uow.RepositoryFor<Person>();
             person.Update(p);
             _uow.Complete();
-            return RedirectToAction("Details", "Person", new { id = p.PersonID });
+            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+            string personid =  encdyc.EncryptToBase64(p.PersonID);
+            return RedirectToAction("Details", "Person", new { personId = personid });
         }
 
 

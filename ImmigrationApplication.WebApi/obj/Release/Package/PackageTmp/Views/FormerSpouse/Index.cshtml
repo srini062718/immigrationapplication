@@ -1,7 +1,14 @@
 ﻿@model IEnumerable<ImmigrationApplication.Model.FormerSpouse>
+@using ImmigrationApplication.DataAccess
+@* ReSharper disable once PossibleNullReferenceException *@
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.FirstOrDefault().PersonID } })
 <p>
-    @Html.ActionLink("Create New", "Create",new {personid = Model.FirstOrDefault().PersonID})
+    @{
+        var endy = new EncryptAndDecrypt();
+        // ReSharper disable once PossibleNullReferenceException
+        var pid = endy.EncryptToBase64(Model.FirstOrDefault().PersonID);
+    }
+    @Html.ActionLink("Create New", "Create", new { personId = pid })
 </p>
 <table class="table">
     <tr>
@@ -26,22 +33,6 @@
         <th>
             @Html.DisplayNameFor(model => model.CountryofMarriage)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CityofDivorced)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CountryofDivorced)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateofDiverse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateofDeath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -68,24 +59,12 @@
             @Html.DisplayFor(modelItem => item.CountryofMarriage)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CityofDivorced)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountryofDivorced)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateofDiverse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateofDeath)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PersonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PersonID })
+            @{
+                EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
+                string personid = encdyc.EncryptToBase64(item.PersonID);
+            }
+            @Html.ActionLink("Edit", "Edit", new {id = personid }) |
+            @Html.ActionLink("Details", "Details", new {id = personid }) 
         </td>
     </tr>
 }

@@ -1,5 +1,7 @@
 ﻿@model ImmigrationApplication.Model.Education
+@using ImmigrationApplication.DataAccess
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
+@Html.HiddenFor(model => model.PersonID)
 <div>
     <h4>Education</h4>
     <hr />
@@ -79,26 +81,17 @@
         <dt>
             @Html.DisplayNameFor(model => model.Degree)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Degree)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Person.LastName)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new
-    {
-        id = Model.PersonID
-    
-    }) |
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        var encdyc = new EncryptAndDecrypt();
+        var educationid = encdyc.EncryptToBase64(Model.EducationID);
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
+    }
+    @Html.ActionLink("Edit", "Edit", new { educationid }) |
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </p>

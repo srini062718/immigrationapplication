@@ -1,7 +1,7 @@
 ﻿@model ImmigrationApplication.Model.Parent
 @using ImmigrationApplication.DataAccess
 @Html.Partial("~/Views/Shared/_navbar.cshtml", new ViewDataDictionary { { "PersonID", Model.PersonID } })
-
+@Html.HiddenFor(model => model.PersonID)
 <style>
     a {
         color: black;
@@ -68,22 +68,15 @@
             @Html.DisplayFor(model => model.Relationship)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Person.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Person.LastName)
-        </dd>
-
     </dl>
 </div>
 <p>
     @{
-        EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-        string personid = encdyc.EncryptToBase64(Model.PersonID);
+        var encdyc = new EncryptAndDecrypt();
+        var pid = encdyc.EncryptToBase64(Model.ParentID);
+        var perid = encdyc.EncryptToBase64(Model.PersonID);
     }
-    @Html.ActionLink("Edit", "Edit", new {id = personid }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new {parentid = pid }) |
+    @Html.ActionLink("Back to List", "Index", new { personid = perid })
 </p>
 

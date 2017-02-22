@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ImmigrationApplication.Model;
 using ImmigrationApplication.DataAccess;
-using ImmigrationApplication.DataAccess.Repositories;
 
 namespace ImmigrationApplication.WebApi.Controllers
 {
@@ -21,6 +18,7 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         // GET: list of all Education details
         public ActionResult Index(string personid)
+
         {
             var encryptdecrypt = new EncryptAndDecrypt();
             var id = encryptdecrypt.DecryptToBase64(personid);
@@ -36,49 +34,57 @@ namespace ImmigrationApplication.WebApi.Controllers
 
 
         // Get details of one particular education
-        public ActionResult Details(string id)
+        public ActionResult Details(string educationid)
         {
-            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-            int personid = encdyc.DecryptToBase64(id);
-            var education = _uow.RepositoryFor<Education>().Get(personid);
-            return View(education);
+            var encdyc = new EncryptAndDecrypt();
+            var educatid = encdyc.DecryptToBase64(educationid);
+            var education = _uow.RepositoryFor<Education>().GetAll();
+            return View(education.SingleOrDefault(x=> x.EducationID == educatid));
         }
 
         [HttpGet]
         public ActionResult Create(string personId)
         {
-
-            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-            int personid =   encdyc.DecryptToBase64(personId);
-            
+            var encdyc = new EncryptAndDecrypt();
+            var personid =   encdyc.DecryptToBase64(personId);
+            Education e;
             if (personid > 0)
             {
-                var education = new Education
+               e = new Education
                 {
                     PersonID = personid
                 };
-                return View(education);
             }
-            return View();
+            else
+            {
+                e = new Education
+                {
+                    PersonID = Convert.ToInt32(TempData["personid"])
+                };
+
+            }
+            return View(e);
         }
 
         [HttpPost]
         public ActionResult Create(Education education)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return View(education);
             var ed = _uow.RepositoryFor<Education>();
             ed.Add(education);
             _uow.Complete();
-            return RedirectToAction("Index", "Education",new {personid = education.PersonID});
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(education.PersonID);
+            return RedirectToAction("Index", "Education",new {personid = pid });
         }
 
         [HttpGet]
-        public ActionResult Edit(string personid)
+        public ActionResult Edit(string educationid)
         {
             var encryptdecrypt = new EncryptAndDecrypt();
-            var id = encryptdecrypt.DecryptToBase64(personid);
+            var eduid = encryptdecrypt.DecryptToBase64(educationid);
             var education =  _uow.RepositoryFor<Education>().GetAll();
-            return View(education.SingleOrDefault(x=>x.PersonID== id));
+            return View(education.FirstOrDefault(x=>x.EducationID == eduid));
 
 
         }
@@ -86,10 +92,13 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Edit(Education education)
         {
-         var ed = _uow.RepositoryFor<Education>();
+            if (!ModelState.IsValid) return View(education);
+            var ed = _uow.RepositoryFor<Education>();
             ed.Update(education);
             _uow.Complete();
-            return RedirectToAction("Details", "Education", new {id = education.EducationID});
+            var encdyc = new EncryptAndDecrypt();
+            var personId = encdyc.EncryptToBase64(education.PersonID);
+            return RedirectToAction("Index", "Education", new {personid = personId});
         }
 
         [HttpGet]
