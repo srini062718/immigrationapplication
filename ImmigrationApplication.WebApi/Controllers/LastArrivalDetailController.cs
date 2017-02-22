@@ -48,22 +48,22 @@ namespace ImmigrationApplication.WebApi.Controllers
         {
             var encryptdecrypt = new EncryptAndDecrypt();
             var personid = encryptdecrypt.DecryptToBase64(personId);
-            LastArrivalDetail lad;
+            LastArrivalDetail lastarrivaldetail;
             if (personid > 0)
             {
-                lad = new LastArrivalDetail
+                lastarrivaldetail = new LastArrivalDetail
                 {
                     PersonID = personid
                 };
             }
             else
             {
-                lad = new LastArrivalDetail
+                lastarrivaldetail = new LastArrivalDetail
                 {
                     PersonID = Convert.ToInt32(TempData["personid"])
                 };
             }
-            return View(lad);
+            return View(lastarrivaldetail);
         }
 
         [HttpPost]
