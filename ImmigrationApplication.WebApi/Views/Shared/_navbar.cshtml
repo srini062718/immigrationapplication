@@ -61,7 +61,7 @@
 </style>
 
 @{
-    EncryptAndDecrypt encryptdecrypt = new EncryptAndDecrypt();
+    var encryptdecrypt = new EncryptAndDecrypt();
     var personId = encryptdecrypt.EncryptToBase64(Convert.ToInt32(ViewData["PersonID"]));
 }
 

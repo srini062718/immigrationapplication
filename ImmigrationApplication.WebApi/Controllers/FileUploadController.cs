@@ -14,8 +14,8 @@ namespace ImmigrationApplication.WebApi.Controllers
         // GET: FileUpload
         public ActionResult Index(string personid)
         {
-            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-           int personId = encdyc.DecryptToBase64(personid);
+            var encdyc = new EncryptAndDecrypt();
+            var personId = encdyc.DecryptToBase64(personid);
             ViewBag.PersonID = personid;
             var path1 = Path.Combine(Server.MapPath("~/Uploads"));
             var path2 = path1 + "/" + personId;
@@ -32,8 +32,8 @@ namespace ImmigrationApplication.WebApi.Controllers
         [HttpPost]
         public ActionResult Upload(string personId)
         {
-            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-            int personid = encdyc.DecryptToBase64(personId);
+            var encdyc = new EncryptAndDecrypt();
+            var personid = encdyc.DecryptToBase64(personId);
             if (Request.Files.Count <= 0) return RedirectToAction("Index", new {personid = personId});
             var file = Request.Files[0];
             if (file == null || file.ContentLength <= 0) return RedirectToAction("Index", new {personid = personId});
@@ -57,7 +57,7 @@ namespace ImmigrationApplication.WebApi.Controllers
             var path1 = Path.Combine(Server.MapPath("~/Uploads"));
             if (!Directory.Exists(path1 + "/" + personid))
             {
-                DirectoryInfo dir = Directory.CreateDirectory(path1 + "/" + personid);
+                var dir = Directory.CreateDirectory(path1 + "/" + personid);
                 file.SaveAs(dir.FullName + "/" + filename);
             }
             else
@@ -65,11 +65,11 @@ namespace ImmigrationApplication.WebApi.Controllers
                 var path = path1 + "/" + personid + "/" + filename;
                 file.SaveAs(path);
             }
-          string pid =   encdyc.EncryptToBase64(personid);
+            var pid =   encdyc.EncryptToBase64(personid);
             return RedirectToAction("Index", new {  personid = pid });
         }
 
-        public FileResult Download(string name,string extension)
+        public FileResult Download(string name , string extension)
         {
             Response.Clear();
             Response.ContentType = "application/octet-stream";

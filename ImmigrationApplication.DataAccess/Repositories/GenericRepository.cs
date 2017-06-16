@@ -47,8 +47,8 @@ namespace ImmigrationApplication.DataAccess.Repositories
 
         public void Delete(object id)
         {
-           var entity = Context.Set<TEntity>().Find(id);
-            Context.Set<TEntity>().Remove(entity);
+            var entity = Context.Set<TEntity>().Find(id);
+            if (entity != null) Context.Set<TEntity>().Remove(entity);
         }
 
         public void Delete(TEntity entity)

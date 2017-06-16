@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace ImmigrationApplication.Model
 {
-    [DataContract]
+   [DataContract]
    public  class  PersonMetadata
     { 
         [Display(Name ="Last Name")]

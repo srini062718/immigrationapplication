@@ -34,8 +34,8 @@ namespace ImmigrationApplication.WebApi.Controllers
 
         public ActionResult ExportPdf(string personid)
         {
-            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-           int personId =  encdyc.DecryptToBase64(personid);
+            var encdyc = new EncryptAndDecrypt();
+           var personId =  encdyc.DecryptToBase64(personid);
             return new ActionAsPdf("Details", new {personId})
             {
                 PageSize = Size.A4,

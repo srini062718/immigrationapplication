@@ -9,13 +9,17 @@ namespace ImmigrationApplication.WebApi.Controllers
     [Authorize]
     public class PersonController : Controller
     {
-        private readonly UnitOfWork _uow = null;
+        private readonly IUnitOfWork _uow;
 
         public Person Person { get; private set; }
 
-        public PersonController()
+        public PersonController() : base()
         {
-            _uow = new UnitOfWork();
+            
+        }
+        public PersonController(IUnitOfWork uow)
+        {
+          _uow = uow;
         }
 
         public ActionResult Index()
@@ -59,8 +63,8 @@ namespace ImmigrationApplication.WebApi.Controllers
             var person = _uow.RepositoryFor<Person>();
             person.Update(p);
             _uow.Complete();
-            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-            string personid =  encdyc.EncryptToBase64(p.PersonID);
+            var encdyc = new EncryptAndDecrypt();
+            var personid =  encdyc.EncryptToBase64(p.PersonID);
             return RedirectToAction("Details", "Person", new { personId = personid });
         }
 
@@ -79,8 +83,8 @@ namespace ImmigrationApplication.WebApi.Controllers
             var person = _uow.RepositoryFor<Person>();
             person.Add(p);
             _uow.Complete();
-            EncryptAndDecrypt encdyc = new EncryptAndDecrypt();
-            string pid = encdyc.EncryptToBase64(p.PersonID);
+            var encdyc = new EncryptAndDecrypt();
+            var pid = encdyc.EncryptToBase64(p.PersonID);
             return RedirectToAction("Details", "Person", new { personId = pid });
         }
 
